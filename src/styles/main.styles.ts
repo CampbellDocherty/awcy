@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   padding: 1px 20px;
+  margin-top: 35px;
 `;
 
 export const Main = styled.main`
