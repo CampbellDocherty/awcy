@@ -70,6 +70,7 @@ Error generating stack: `+o.message+`
   flex-direction: row;
   justify-content: center;
   padding: 1px 20px;
+  margin-top: 35px;
 `,Am=en.main`
   max-width: 502px;
   flex: auto;
@@ -80,4 +81,4 @@ Error generating stack: `+o.message+`
   & > article {
     margin-bottom: 30px;
   }
-`,Um=""+new URL("tee-647bc5ea.png",import.meta.url).href,Bm=""+new URL("one-487c1466.jpeg",import.meta.url).href,Hm=""+new URL("two-e3020c9f.jpeg",import.meta.url).href,Vm=""+new URL("three-1cf22c5f.jpeg",import.meta.url).href,Wm=""+new URL("four-b88c12ca.jpeg",import.meta.url).href,Qm=[Bm,Vm,Hm,Wm],Ym=rt.lazy(()=>Lh(()=>import("./LazyImage-fbe09e7d.js"),[],import.meta.url)),Km=()=>bu(Cd,{children:[bu(Mm,{children:[Me(jm,{children:Me("img",{src:Um,alt:"are we cool yet t-shirt"})}),Me(Dm,{children:"arewecoolyet.blog"}),Me(Om,{children:"YOU'RE ALL WELCOME"})]}),Me(Fm,{children:Me(Am,{children:Qm.map(e=>Me(rt.Suspense,{fallback:Me("p",{children:"loading..."}),children:Me(Ym,{src:e})},e))})})]});Go.createRoot(document.getElementById("root")).render(Me(xn.StrictMode,{children:Me(Km,{})}));export{Me as j,en as u};
+`,Um=""+new URL("tee-647bc5ea.png",import.meta.url).href,Bm=""+new URL("one-487c1466.jpeg",import.meta.url).href,Hm=""+new URL("two-e3020c9f.jpeg",import.meta.url).href,Vm=""+new URL("three-1cf22c5f.jpeg",import.meta.url).href,Wm=""+new URL("four-b88c12ca.jpeg",import.meta.url).href,Qm=[Bm,Vm,Hm,Wm],Ym=rt.lazy(()=>Lh(()=>import("./LazyImage-f7574da4.js"),[],import.meta.url)),Km=()=>bu(Cd,{children:[bu(Mm,{children:[Me(jm,{children:Me("img",{src:Um,alt:"are we cool yet t-shirt"})}),Me(Dm,{children:"arewecoolyet.blog"}),Me(Om,{children:"YOU'RE ALL WELCOME"})]}),Me(Fm,{children:Me(Am,{children:Qm.map(e=>Me(rt.Suspense,{fallback:Me("p",{children:"loading..."}),children:Me(Ym,{src:e})},e))})})]});Go.createRoot(document.getElementById("root")).render(Me(xn.StrictMode,{children:Me(Km,{})}));export{Me as j,en as u};
