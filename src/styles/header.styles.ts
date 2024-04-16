@@ -4,6 +4,10 @@ export const Subtitle = styled.p`
   margin-top: 10px;
   color: rgba(12, 0, 0, 0.7);
   display: block;
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 15px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -14,6 +18,10 @@ export const Title = styled.h1`
   line-height: 1.2;
   margin: 10px 0 0;
   word-wrap: break-word;
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 36px;
+  }
 `;
 
 export const Header = styled.header`
