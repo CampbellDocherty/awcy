@@ -42,6 +42,10 @@ Error generating stack: `+o.message+`
   margin-top: 10px;
   color: rgba(12, 0, 0, 0.7);
   display: block;
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 15px;
+  }
 `,Dm=en.h1`
   font-family: 'Typewriter FS', serif, 'Helvetica Neue', HelveticaNeue, Arial,
     sans-serif;
@@ -50,6 +54,10 @@ Error generating stack: `+o.message+`
   line-height: 1.2;
   margin: 10px 0 0;
   word-wrap: break-word;
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 36px;
+  }
 `,Mm=en.header`
   padding: 1px 20px;
   padding-top: 140px;
@@ -71,6 +79,11 @@ Error generating stack: `+o.message+`
   justify-content: center;
   padding: 1px 20px;
   margin-top: 35px;
+
+  @media screen and (max-device-width: 568px) {
+    padding: 1px 0;
+    margin-top: 10px;
+  }
 `,Am=en.main`
   max-width: 502px;
   flex: auto;
@@ -81,4 +94,4 @@ Error generating stack: `+o.message+`
   & > article {
     margin-bottom: 30px;
   }
-`,Um=""+new URL("tee-647bc5ea.png",import.meta.url).href,Bm=""+new URL("one-487c1466.jpeg",import.meta.url).href,Hm=""+new URL("two-e3020c9f.jpeg",import.meta.url).href,Vm=""+new URL("three-1cf22c5f.jpeg",import.meta.url).href,Wm=""+new URL("four-b88c12ca.jpeg",import.meta.url).href,Qm=[Bm,Vm,Hm,Wm],Ym=rt.lazy(()=>Lh(()=>import("./LazyImage-f7574da4.js"),[],import.meta.url)),Km=()=>bu(Cd,{children:[bu(Mm,{children:[Me(jm,{children:Me("img",{src:Um,alt:"are we cool yet t-shirt"})}),Me(Dm,{children:"arewecoolyet.blog"}),Me(Om,{children:"YOU'RE ALL WELCOME"})]}),Me(Fm,{children:Me(Am,{children:Qm.map(e=>Me(rt.Suspense,{fallback:Me("p",{children:"loading..."}),children:Me(Ym,{src:e})},e))})})]});Go.createRoot(document.getElementById("root")).render(Me(xn.StrictMode,{children:Me(Km,{})}));export{Me as j,en as u};
+`,Um=""+new URL("tee-647bc5ea.png",import.meta.url).href,Bm=""+new URL("one-487c1466.jpeg",import.meta.url).href,Hm=""+new URL("two-e3020c9f.jpeg",import.meta.url).href,Vm=""+new URL("three-1cf22c5f.jpeg",import.meta.url).href,Wm=""+new URL("four-b88c12ca.jpeg",import.meta.url).href,Qm=[Bm,Vm,Hm,Wm],Ym=rt.lazy(()=>Lh(()=>import("./LazyImage-a255547e.js"),[],import.meta.url)),Km=()=>bu(Cd,{children:[bu(Mm,{children:[Me(jm,{children:Me("img",{src:Um,alt:"are we cool yet t-shirt"})}),Me(Dm,{children:"arewecoolyet.blog"}),Me(Om,{children:"YOU'RE ALL WELCOME"})]}),Me(Fm,{children:Me(Am,{children:Qm.map(e=>Me(rt.Suspense,{fallback:Me("p",{children:"loading..."}),children:Me(Ym,{src:e})},e))})})]});Go.createRoot(document.getElementById("root")).render(Me(xn.StrictMode,{children:Me(Km,{})}));export{Me as j,en as u};
