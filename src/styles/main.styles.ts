@@ -6,6 +6,11 @@ export const Container = styled.div`
   justify-content: center;
   padding: 1px 20px;
   margin-top: 35px;
+
+  @media screen and (max-device-width: 568px) {
+    padding: 1px 0;
+    margin-top: 10px;
+  }
 `;
 
 export const Main = styled.main`
