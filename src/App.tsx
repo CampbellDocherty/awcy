@@ -1,5 +1,10 @@
 const App = () => {
-  return <p>Frontend fork by Cammy!</p>;
+  return (
+    <>
+      <h1>arewecoolyet.blog</h1>
+      <p>YOU&apos;RE ALL WELCOME</p>
+    </>
+  );
 };
 
 export default App;
