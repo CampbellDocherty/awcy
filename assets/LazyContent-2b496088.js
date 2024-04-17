@@ -1,0 +1,1 @@
+import{C as t,j as e,A as a,S as s,a as l,B as o,b as c}from"./index-f80eb6b1.js";const u=({content:r})=>r.contentType===t.MP4?e(a,{children:e(s,{children:l(o,{loop:!0,autoPlay:!0,muted:!0,children:[e("source",{src:r.src,type:r.contentType}),e("meta",{itemProp:"name",content:r.alt})]})})}):e(a,{children:e(s,{children:e(c,{src:r.src,alt:r.alt})})});export{u as default};
