@@ -1,11 +1,11 @@
 import { Suspense, lazy } from 'react';
+import { Fallback } from './Fallback';
+import { Content, blogContent } from './assets/blogImages';
+import tee from './assets/tee.png';
 import { Header, HeaderImage, Subtitle, Title } from './styles/header.styles';
 import { Container, Main } from './styles/main.styles';
-import tee from './assets/tee.png';
-import { blogImages } from './assets/blogImages';
-import { Fallback } from './Fallback';
 
-const LazyImage = lazy(() => import('./LazyImage'));
+const LazyContent = lazy(() => import('./LazyContent'));
 
 const App = () => {
   return (
@@ -19,9 +19,9 @@ const App = () => {
       </Header>
       <Container>
         <Main>
-          {blogImages.map((image) => (
-            <Suspense key={image} fallback={<Fallback />}>
-              <LazyImage src={image} />
+          {blogContent.map((content: Content) => (
+            <Suspense key={content.src} fallback={<Fallback />}>
+              <LazyContent content={content} />
             </Suspense>
           ))}
         </Main>

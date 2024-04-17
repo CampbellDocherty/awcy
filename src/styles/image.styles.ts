@@ -18,6 +18,12 @@ export const BlogImage = styled.img`
   object-fit: cover;
 `;
 
+export const BlogVideo = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 export const Placeholder = styled.div`
   background-color: lightgrey;
   opacity: 0.2;
