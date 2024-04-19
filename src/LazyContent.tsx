@@ -6,7 +6,7 @@ const LazyImage = ({ content }: { content: Content }) => {
     return (
       <Article>
         <Section>
-          <BlogVideo loop autoPlay muted>
+          <BlogVideo loop autoPlay playsInline muted>
             <source src={content.src} type={content.contentType} />
             <meta itemProp="name" content={content.alt}></meta>
           </BlogVideo>
