@@ -1,26 +1,35 @@
 // eslint-disable-next-line import/named
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { Suspense, lazy, useEffect, useState } from 'react';
-import { Fallback } from './Fallback';
-import { SignIn } from './SignIn';
-import { Content, blogContent } from './assets/blogImages';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import tee from './assets/tee.png';
-import plus from './assets/plus.svg';
-import { auth } from './firebase/app';
-import { Header, HeaderImage, Subtitle, Title } from './styles/header.styles';
-import { Container, Main, Plus } from './styles/main.styles';
+import { Fallback } from './Fallback';
 import { FileUpload } from './FileUpload';
+import { auth } from './firebase/app';
+import { FirebaseStorageContent, getFiles } from './firebase/storage';
+import { SignIn } from './SignIn';
+import { Header, HeaderImage, Subtitle, Title } from './styles/header.styles';
+import { Container, Main } from './styles/main.styles';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
 const App = () => {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState<User | null>(null);
+  const [content, setContent] = useState<FirebaseStorageContent[] | null>(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
+  }, []);
+
+  useEffect(() => {
+    const get = async () => {
+      const files = await getFiles();
+      setContent(files);
+    };
+
+    get();
   }, []);
 
   if (count >= 10 && !user) {
@@ -39,11 +48,12 @@ const App = () => {
       <Container>
         <Main>
           {user && <FileUpload />}
-          {blogContent.map((content: Content) => (
-            <Suspense key={content.src} fallback={<Fallback />}>
-              <LazyContent content={content} />
-            </Suspense>
-          ))}
+          {content &&
+            content.map((content: FirebaseStorageContent) => (
+              <Suspense key={content.downloadUrl} fallback={<Fallback />}>
+                <LazyContent content={content} />
+              </Suspense>
+            ))}
         </Main>
       </Container>
     </>

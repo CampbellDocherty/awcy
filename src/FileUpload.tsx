@@ -2,6 +2,7 @@ import { SyntheticEvent, useState } from 'react';
 import { Plus } from './styles/main.styles';
 import plus from './assets/plus.svg';
 import { uploadFile } from './firebase/storage';
+import { Form } from './styles/fileUpload.styles';
 
 export const FileUpload = () => {
   const [addContent, setAddContent] = useState(false);
@@ -36,7 +37,7 @@ export const FileUpload = () => {
       />
       {addContent && (
         <>
-          <form style={{ marginBottom: '30px' }} onSubmit={handleUpload}>
+          <Form onSubmit={handleUpload}>
             <div>
               <label htmlFor="caption">Caption</label>
             </div>
@@ -70,7 +71,7 @@ export const FileUpload = () => {
               />
             </div>
             {file && <button type="submit">Upload a file</button>}
-          </form>
+          </Form>
         </>
       )}
     </>
