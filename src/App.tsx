@@ -5,9 +5,11 @@ import { Fallback } from './Fallback';
 import { SignIn } from './SignIn';
 import { Content, blogContent } from './assets/blogImages';
 import tee from './assets/tee.png';
+import plus from './assets/plus.svg';
 import { auth } from './firebase/app';
 import { Header, HeaderImage, Subtitle, Title } from './styles/header.styles';
-import { Container, Main } from './styles/main.styles';
+import { Container, Main, Plus } from './styles/main.styles';
+import { FileUpload } from './FileUpload';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -36,6 +38,7 @@ const App = () => {
       </Header>
       <Container>
         <Main>
+          {user && <FileUpload />}
           {blogContent.map((content: Content) => (
             <Suspense key={content.src} fallback={<Fallback />}>
               <LazyContent content={content} />
