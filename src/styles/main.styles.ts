@@ -24,3 +24,11 @@ export const Main = styled.main`
     margin-bottom: 30px;
   }
 `;
+
+export const Plus = styled.img`
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+`;
