@@ -20,7 +20,15 @@ import {
 export const auth = getAuth(app);
 
 export const signIn = async (email: string, password: string) => {
-  await signInWithEmailAndPassword(auth, email, password);
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    return res;
+  } catch {
+    return {
+      error: true,
+      type: 'Something went wrong',
+    };
+  }
 };
 
 export const uiConfig = {
