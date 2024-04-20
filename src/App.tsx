@@ -1,4 +1,5 @@
-import { User, onAuthStateChanged } from 'firebase/auth';
+// eslint-disable-next-line import/named
+import { onAuthStateChanged, User } from 'firebase/auth';
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Fallback } from './Fallback';
 import { SignIn } from './SignIn';
@@ -15,7 +16,9 @@ const App = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    onAuthStateChanged(auth, setUser);
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
   }, []);
 
   if (count >= 10 && !user) {

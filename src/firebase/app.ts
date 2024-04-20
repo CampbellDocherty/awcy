@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDnxKM18oUWFNsxVbWu8LUNJUL7VzxdskA',
@@ -10,12 +11,6 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  EmailAuthProvider,
-} from 'firebase/auth';
 
 export const auth = getAuth(app);
 
@@ -29,12 +24,4 @@ export const signIn = async (email: string, password: string) => {
       type: 'Something went wrong',
     };
   }
-};
-
-export const uiConfig = {
-  signInFlow: 'popup',
-  signInOptions: [EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD],
-  callbacks: {
-    signInSuccessWithAuthResult: () => false,
-  },
 };
