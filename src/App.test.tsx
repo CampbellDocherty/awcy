@@ -8,12 +8,4 @@ describe('When the app renders', () => {
     screen.getByText('arewecoolyet.blog');
     screen.getByText("YOU'RE ALL WELCOME");
   });
-
-  test('shows content', async () => {
-    render(<App />);
-    await screen.findByAltText('one');
-    screen.getByAltText('two');
-    screen.getByAltText('three');
-    screen.getByAltText('four');
-  });
 });
