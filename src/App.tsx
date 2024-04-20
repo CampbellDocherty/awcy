@@ -23,10 +23,6 @@ const App = () => {
     });
   }, []);
 
-  if (count >= 10 && !user) {
-    return <SignIn />;
-  }
-
   useEffect(() => {
     const get = async () => {
       const files = await getFiles();
@@ -35,6 +31,10 @@ const App = () => {
 
     get();
   }, []);
+
+  if (count >= 10 && !user) {
+    return <SignIn />;
+  }
 
   return (
     <>
