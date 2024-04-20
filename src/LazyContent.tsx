@@ -1,5 +1,5 @@
 import { Content, ContentType } from './assets/blogImages';
-import { Article, Section, BlogImage, BlogVideo } from './styles/image.styles';
+import { Article, BlogImage, BlogVideo, Section } from './styles/image.styles';
 
 const LazyImage = ({ content }: { content: Content }) => {
   if (content.contentType === ContentType.MP4) {
