@@ -7,6 +7,7 @@ import {
   getMetadata,
   // eslint-disable-next-line import/named
   FullMetadata,
+  deleteObject,
 } from 'firebase/storage';
 import { app } from './app';
 
@@ -54,4 +55,9 @@ export const getFiles = async () => {
   });
   const files: FirebaseStorageContent[] = await Promise.all(promisedFiles);
   return files;
+};
+
+export const deleteFile = async (name: string) => {
+  const storageRef = ref(storage, name);
+  await deleteObject(storageRef);
 };

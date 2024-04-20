@@ -55,9 +55,18 @@ const App = () => {
             />
           )}
           {content &&
-            content.map((content: FirebaseStorageContent) => (
-              <Suspense key={content.downloadUrl} fallback={<Fallback />}>
-                <LazyContent content={content} />
+            content.map((item: FirebaseStorageContent) => (
+              <Suspense key={item.downloadUrl} fallback={<Fallback />}>
+                <LazyContent
+                  content={item}
+                  user={user}
+                  onDelete={(file: FirebaseStorageContent) => {
+                    const newContent = content.filter(
+                      (item) => item.downloadUrl !== file.downloadUrl
+                    );
+                    setContent(newContent);
+                  }}
+                />
               </Suspense>
             ))}
         </Main>
