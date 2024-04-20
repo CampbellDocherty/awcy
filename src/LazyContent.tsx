@@ -6,7 +6,6 @@ enum ContentType {
 }
 
 const LazyImage = ({ content }: { content: FirebaseStorageContent }) => {
-  console.log(content.metadata.cacheControl);
   if (content.metadata.contentType === ContentType.MP4) {
     return (
       <Article>

@@ -47,7 +47,13 @@ const App = () => {
       </Header>
       <Container>
         <Main>
-          {user && <FileUpload />}
+          {user && (
+            <FileUpload
+              onUpload={(file: FirebaseStorageContent) => {
+                setContent([file, ...(content ? content : [])]);
+              }}
+            />
+          )}
           {content &&
             content.map((content: FirebaseStorageContent) => (
               <Suspense key={content.downloadUrl} fallback={<Fallback />}>

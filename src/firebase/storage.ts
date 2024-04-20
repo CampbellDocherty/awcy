@@ -17,18 +17,28 @@ type Metadata = {
   caption?: string;
 };
 
-export const uploadFile = (file: File, metadata: Metadata) => {
+export type FirebaseStorageContent = {
+  downloadUrl: string;
+  metadata: FullMetadata;
+};
+
+export const uploadFile = async (file: File, metadata: Metadata) => {
   const storageRef = ref(storage, metadata.name);
-  uploadBytesResumable(storageRef, file, {
+  const uploadTask = uploadBytesResumable(storageRef, file, {
     contentType: file.type,
     cacheControl: 'public,max-age=3600',
     customMetadata: metadata,
   });
-};
 
-export type FirebaseStorageContent = {
-  downloadUrl: string;
-  metadata: FullMetadata;
+  const content = await uploadTask.then(async (snapshot) => {
+    const downloadUrl = await getDownloadURL(snapshot.ref);
+    const metadata = snapshot.metadata;
+    return {
+      downloadUrl,
+      metadata,
+    };
+  });
+  return content as FirebaseStorageContent;
 };
 
 export const getFiles = async () => {

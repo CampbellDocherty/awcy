@@ -1,10 +1,14 @@
 import { SyntheticEvent, useState } from 'react';
 import { Plus } from './styles/main.styles';
 import plus from './assets/plus.svg';
-import { uploadFile } from './firebase/storage';
+import { FirebaseStorageContent, uploadFile } from './firebase/storage';
 import { Form } from './styles/fileUpload.styles';
 
-export const FileUpload = () => {
+export const FileUpload = ({
+  onUpload,
+}: {
+  onUpload: (file: FirebaseStorageContent) => void;
+}) => {
   const [addContent, setAddContent] = useState(false);
   const [caption, setCaption] = useState('');
   const [name, setName] = useState('');
@@ -20,7 +24,8 @@ export const FileUpload = () => {
   const handleUpload = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (file) {
-      uploadFile(file, { name, caption });
+      const content = await uploadFile(file, { name, caption });
+      onUpload(content);
       setFile(null);
       setCaption('');
       setName('');
