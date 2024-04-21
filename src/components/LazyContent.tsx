@@ -1,13 +1,13 @@
-// eslint-disable-next-line import/named
-import { User } from 'firebase/auth';
-import { FirebaseStorageContent, deleteFile } from './firebase/storage';
+import { FirebaseStorageContent, deleteFile } from '../firebase/storage';
 import {
   Article,
   BlogImage,
   BlogVideo,
   Caption,
   Section,
-} from './styles/image.styles';
+} from '../styles/image.styles';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 enum ContentType {
   MP4 = 'video/mp4',
@@ -15,13 +15,12 @@ enum ContentType {
 
 const LazyImage = ({
   content,
-  user,
   onDelete,
 }: {
   content: FirebaseStorageContent;
-  user: User | null;
   onDelete: (item: FirebaseStorageContent) => void;
 }) => {
+  const user = useContext(UserContext);
   const handleDelete = async () => {
     await deleteFile(content.metadata.name);
     onDelete(content);

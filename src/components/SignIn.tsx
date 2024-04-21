@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from 'react';
-import { signIn } from './firebase/app';
+import { signIn } from '../firebase/app';
 
 export const SignIn = () => {
   const [email, setEmail] = useState('eantwibawua1@gmail.com');
