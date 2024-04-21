@@ -1,4 +1,4 @@
-import { Article, Placeholder, Section } from '../styles/image.styles';
+import { Article, Placeholder, Section } from '../../styles/image.styles';
 
 export const Fallback = () => (
   <Article>

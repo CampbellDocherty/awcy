@@ -1,13 +1,13 @@
-import { FirebaseStorageContent, deleteFile } from '../firebase/storage';
+import { FirebaseStorageContent, deleteFile } from '../../firebase/storage';
 import {
   Article,
   BlogImage,
   BlogVideo,
   Caption,
   Section,
-} from '../styles/image.styles';
+} from '../../styles/image.styles';
 import { useContext } from 'react';
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 
 enum ContentType {
   MP4 = 'video/mp4',

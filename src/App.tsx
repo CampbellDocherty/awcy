@@ -1,4 +1,4 @@
-import { Blog } from './Blog';
+import { Blog } from './pages/Blog';
 import { UserProvider } from './context/UserProvider';
 
 const App = () => {

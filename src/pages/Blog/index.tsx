@@ -1,14 +1,19 @@
 import { Suspense, lazy, useContext, useEffect, useState } from 'react';
-import tee from './assets/tee.png';
-import { Fallback } from './components/Fallback';
-import { FileUpload } from './components/FileUpload';
-import { SignIn } from './components/SignIn';
-import { UserContext } from './context/UserContext';
-import { FirebaseStorageContent, getFiles } from './firebase/storage';
-import { Header, HeaderImage, Subtitle, Title } from './styles/header.styles';
-import { Container, Main } from './styles/main.styles';
+import tee from '../../assets/tee.png';
+import { Fallback } from './Fallback';
+import { FileUpload } from './FileUpload';
+import { SignIn } from './SignIn';
+import { UserContext } from '../../context/UserContext';
+import { FirebaseStorageContent, getFiles } from '../../firebase/storage';
+import {
+  Header,
+  HeaderImage,
+  Subtitle,
+  Title,
+} from '../../styles/header.styles';
+import { Container, Main } from '../../styles/main.styles';
 
-const LazyContent = lazy(() => import('./components/LazyContent'));
+const LazyContent = lazy(() => import('./LazyContent'));
 
 export const Blog = () => {
   const [count, setCount] = useState(0);
