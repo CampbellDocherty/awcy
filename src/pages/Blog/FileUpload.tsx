@@ -1,8 +1,8 @@
 import { SyntheticEvent, useState } from 'react';
-import { FirebaseStorageContent, uploadFile } from '../firebase/storage';
-import { Form } from '../styles/fileUpload.styles';
-import { Plus } from '../styles/main.styles';
-import plus from '../assets/plus.svg';
+import { FirebaseStorageContent, uploadFile } from '../../firebase/storage';
+import { Form } from '../../styles/fileUpload.styles';
+import { Plus } from '../../styles/main.styles';
+import plus from '../../assets/plus.svg';
 
 export const FileUpload = ({
   onUpload,

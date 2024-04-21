@@ -1,5 +1,5 @@
-import { Blog } from './Blog';
 import { UserProvider } from './context/UserProvider';
+import { Blog } from './pages/Blog';
 
 const App = () => {
   return (
