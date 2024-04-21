@@ -1,13 +1,13 @@
 // eslint-disable-next-line import/named
 import { User } from 'firebase/auth';
-import { FirebaseStorageContent, deleteFile } from './firebase/storage';
+import { FirebaseStorageContent, deleteFile } from '../firebase/storage';
 import {
   Article,
   BlogImage,
   BlogVideo,
   Caption,
   Section,
-} from './styles/image.styles';
+} from '../styles/image.styles';
 
 enum ContentType {
   MP4 = 'video/mp4',
