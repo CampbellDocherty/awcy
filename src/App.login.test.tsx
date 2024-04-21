@@ -1,6 +1,6 @@
 import { describe, test } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
-import App from './Blog';
+import App from './App';
 
 describe('When a user clicks the title 10 times', () => {
   test('it shows the sign in form', async () => {

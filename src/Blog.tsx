@@ -51,7 +51,6 @@ export const Blog = () => {
               <Suspense key={item.downloadUrl} fallback={<Fallback />}>
                 <LazyContent
                   content={item}
-                  user={user}
                   onDelete={(file: FirebaseStorageContent) => {
                     const newContent = content.filter(
                       (item) => item.downloadUrl !== file.downloadUrl
