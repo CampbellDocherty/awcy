@@ -44,3 +44,11 @@ export const Placeholder = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+export const Caption = styled.p`
+  margin-top: 15px;
+  text-align: left;
+  padding: 0px 20px;
+  line-height: 1.6;
+  color: #444;
+`;
