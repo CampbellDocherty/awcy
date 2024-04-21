@@ -5,7 +5,8 @@ import { Game } from '..';
 describe('When the game renders', () => {
   test('it shows the title', () => {
     render(<Game />);
-    screen.getByText('Game');
+    screen.getByText('AWCY');
+    screen.getByText('version 1.0');
   });
 
   test('it shows the first login screen', () => {
