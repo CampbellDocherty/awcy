@@ -16,9 +16,23 @@ import * as _ from 'lodash';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
+const calculateHowManyColumns = () => {
+  if (window.innerWidth <= 568) {
+    return 1;
+  }
+  if (window.innerWidth <= 660) {
+    return 2;
+  }
+  if (window.innerWidth <= 990) {
+    return 3;
+  }
+  return 4;
+};
+
 export const Blog = () => {
   const [count, setCount] = useState(0);
   const user = useContext(UserContext);
+  const [columns, setColumns] = useState(calculateHowManyColumns());
   const [content, setContent] = useState<Array<
     FirebaseStorageContent[]
   > | null>(null);
@@ -26,12 +40,37 @@ export const Blog = () => {
   useEffect(() => {
     const get = async () => {
       const files = await getFiles();
-      const chunked = _.chunk(files, 3);
+      const chunked = _.chunk(files, Math.ceil(files.length / columns));
       setContent(chunked);
     };
 
     get();
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newColumns = calculateHowManyColumns();
+      setColumns(newColumns);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!content) {
+      return;
+    }
+
+    const splitArrays = _.chunk(
+      content.flat(),
+      Math.ceil(content.flat().length / columns)
+    );
+    setContent(splitArrays);
+  }, [columns]);
 
   if (count >= 10 && !user) {
     return <SignIn />;

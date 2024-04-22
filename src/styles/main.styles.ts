@@ -15,12 +15,20 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 30px;
   color: #444;
 
-  & > article {
-    margin-bottom: 30px;
+  @media (max-width: 568px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 660px) and (min-width: 569px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 990px) and (min-width: 661px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 
