@@ -15,6 +15,10 @@ export const Article = styled.article`
   border: 1px solid #eee;
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding-bottom: 50px;
+
+  @media (max-width: 660px) {
+    padding-bottom: 20px;
+  }
 `;
 
 export const Section = styled.section`
@@ -50,4 +54,8 @@ export const Caption = styled.p`
   padding: 0px 20px;
   line-height: 1.6;
   color: #444;
+  margin-bottom: 0px;
+  @media (max-width: 660px) {
+    padding-left: 10px;
+  }
 `;

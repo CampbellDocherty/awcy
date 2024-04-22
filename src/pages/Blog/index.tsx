@@ -17,9 +17,6 @@ import * as _ from 'lodash';
 const LazyContent = lazy(() => import('./LazyContent'));
 
 const calculateHowManyColumns = () => {
-  if (window.innerWidth <= 568) {
-    return 1;
-  }
   if (window.innerWidth <= 660) {
     return 2;
   }
