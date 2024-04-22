@@ -2,7 +2,6 @@ import { styled } from 'styled-components';
 
 export const Article = styled.article`
   margin-bottom: 30px;
-  min-height: 300px;
   background: #fff;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
