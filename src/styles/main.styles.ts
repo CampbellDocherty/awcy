@@ -14,14 +14,24 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  max-width: 502px;
-  flex: auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
   color: #444;
 
   & > article {
     margin-bottom: 30px;
+  }
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > article {
+    margin-bottom: 30px;
+    width: 100%;
   }
 `;
 
