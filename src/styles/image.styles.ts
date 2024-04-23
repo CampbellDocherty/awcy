@@ -14,7 +14,7 @@ export const Article = styled.article`
   background-clip: padding-box;
   border: 1px solid #eee;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 
   @media (max-width: 660px) {
     padding-bottom: 20px;
