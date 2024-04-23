@@ -22,6 +22,7 @@ export const Main = styled.main`
   align-items: center;
   color: #444;
   margin: 0px 30px 30px 30px;
+  aspect-ratio: 1/1;
 `;
 
 export const GameWindow = styled.div`
@@ -90,4 +91,20 @@ export const Form = styled.form`
 export const Backdrop = styled.img`
   width: 100%;
   object-fit: cover;
+`;
+
+export const Character = styled.img`
+  width: 110px;
+  height: 120px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+`;
+
+export const Bouncer = styled.img`
+  width: 160px;
+  height: 200px;
+  position: absolute;
+  left: 45%;
+  top: 40%;
 `;

@@ -6,6 +6,8 @@ import {
   LogoColumn,
   Main,
   Container,
+  Character,
+  Bouncer,
 } from '../../styles/game.styles';
 import club from '../../assets/club.jpg';
 import bouncer from '../../assets/bouncer.png';
@@ -44,8 +46,8 @@ export const Game = () => {
           {stage === 'club' && (
             <>
               <Backdrop src={club} alt="club" />
-              <img src={character} alt="character" />
-              <img src={bouncer} alt="bouncer" />
+              <Character src={character} alt="character" />
+              <Bouncer src={bouncer} alt="bouncer" />
             </>
           )}
         </GameWindow>
