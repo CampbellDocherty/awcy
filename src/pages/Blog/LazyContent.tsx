@@ -11,6 +11,7 @@ import { UserContext } from '../../context/UserContext';
 
 enum ContentType {
   MP4 = 'video/mp4',
+  QUICKTIME = 'video/quicktime',
 }
 
 const LazyImage = ({
@@ -26,15 +27,15 @@ const LazyImage = ({
     onDelete(content);
   };
 
-  if (content.metadata.contentType === ContentType.MP4) {
+  if (
+    content.metadata.contentType === ContentType.MP4 ||
+    content.metadata.contentType === ContentType.QUICKTIME
+  ) {
     return (
       <Article>
         <Section>
           <BlogVideo loop autoPlay playsInline muted>
-            <source
-              src={content.downloadUrl}
-              type={content.metadata.contentType}
-            />
+            <source src={content.downloadUrl} type={ContentType.MP4} />
             <meta itemProp="name" content={content.metadata.name}></meta>
           </BlogVideo>
         </Section>

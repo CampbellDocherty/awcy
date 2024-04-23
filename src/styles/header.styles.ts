@@ -45,6 +45,8 @@ export const Title = styled.h1`
 export const Header = styled.header`
   padding: 1px 20px;
   padding-top: 140px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const grow = keyframes`
@@ -76,4 +78,12 @@ export const HeaderImage = styled.figure`
     max-width: 100%;
     object-fit: cover;
   }
+`;
+
+export const AudioContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
 `;
