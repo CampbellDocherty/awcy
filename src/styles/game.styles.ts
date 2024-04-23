@@ -93,12 +93,12 @@ export const Backdrop = styled.img`
   object-fit: cover;
 `;
 
-export const Character = styled.img`
-  width: 110px;
-  height: 120px;
+export const Character = styled.img<{ $stage: string }>`
+  width: ${(props) => (props.$stage === 'club' ? '120px' : '190px')};
+  height: ${(props) => (props.$stage === 'club' ? '120px' : '190px')};
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 10px;
 `;
 
 export const Bouncer = styled.img`

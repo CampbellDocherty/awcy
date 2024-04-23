@@ -10,6 +10,7 @@ import {
   Bouncer,
 } from '../../styles/game.styles';
 import club from '../../assets/club.jpg';
+import home from '../../assets/room.jpg';
 import bouncer from '../../assets/bouncer.png';
 import character from '../../assets/character.png';
 
@@ -46,8 +47,16 @@ export const Game = () => {
           {stage === 'club' && (
             <>
               <Backdrop src={club} alt="club" />
-              <Character src={character} alt="character" />
+              <Character $stage={stage} src={character} alt="character" />
               <Bouncer src={bouncer} alt="bouncer" />
+              <button onClick={() => setStage('home')}>{'>'}</button>
+            </>
+          )}
+          {stage === 'home' && (
+            <>
+              <button onClick={() => setStage('club')}>{'<'}</button>
+              <Backdrop src={home} alt="home" />
+              <Character $stage={stage} src={character} alt="character" />
             </>
           )}
         </GameWindow>
