@@ -14,9 +14,15 @@ import home from '../../assets/room.jpg';
 import bouncer from '../../assets/bouncer.png';
 import character from '../../assets/character.png';
 
+enum Stage {
+  LOGIN = 'login',
+  CLUB = 'club',
+  HOME = 'home',
+}
+
 export const Game = () => {
   const [name, setName] = useState<string>('');
-  const [stage, setStage] = useState<string>('login');
+  const [stage, setStage] = useState<string>(Stage.LOGIN);
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name) return;
@@ -26,7 +32,7 @@ export const Game = () => {
     <Container>
       <Main>
         <GameWindow>
-          {stage === 'login' && (
+          {stage === Stage.LOGIN && (
             <>
               <LogoColumn>
                 <p>AWCY</p>
@@ -44,7 +50,7 @@ export const Game = () => {
               </Form>
             </>
           )}
-          {stage === 'club' && (
+          {stage === Stage.CLUB && (
             <>
               <Backdrop src={club} alt="club" />
               <Character $stage={stage} src={character} alt="character" />
@@ -52,7 +58,7 @@ export const Game = () => {
               <button onClick={() => setStage('home')}>{'>'}</button>
             </>
           )}
-          {stage === 'home' && (
+          {stage === Stage.HOME && (
             <>
               <button onClick={() => setStage('club')}>{'<'}</button>
               <Backdrop src={home} alt="home" />

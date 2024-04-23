@@ -18,6 +18,7 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   display: flex;
+  width: 600px;
   justify-content: center;
   align-items: center;
   color: #444;
