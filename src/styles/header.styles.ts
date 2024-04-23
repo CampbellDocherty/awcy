@@ -84,6 +84,7 @@ export const HeaderImage = styled.figure`
 export const Audio = styled.audio`
   width: 300px;
   max-width: 300px;
+  animation: ${slideUp} 0.5s ease-in-out;
 
   &::-webkit-media-controls-panel {
     background-color: #fefafa;

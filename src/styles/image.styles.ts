@@ -1,4 +1,20 @@
-import { styled } from 'styled-components';
+import { keyframes, styled } from 'styled-components';
+
+const slideUp = keyframes`
+0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 20px, 0);
+    -moz-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0);
+}
+
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0, 0);
+    -moz-transform: translate(0, 0, 0);
+    -o-transform: translate(0, 0, 0);
+    transform: translate(0, 0, 0);
+}`;
 
 export const Article = styled.article`
   margin-bottom: 30px;
@@ -15,6 +31,7 @@ export const Article = styled.article`
   border: 1px solid #eee;
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding-bottom: 30px;
+  animation: ${slideUp} 0.75s ease-in;
 
   @media (max-width: 660px) {
     padding-bottom: 20px;
