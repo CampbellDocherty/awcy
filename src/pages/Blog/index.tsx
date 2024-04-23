@@ -15,6 +15,7 @@ import { Column, Container, Main } from '../../styles/main.styles';
 import { Fallback } from './Fallback';
 import { FileUpload } from './FileUpload';
 import { SignIn } from './SignIn';
+import { auth } from '../../firebase/app';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -75,6 +76,11 @@ export const Blog = () => {
     return <SignIn />;
   }
 
+  const logOut = () => {
+    setCount(0);
+    auth.signOut();
+  };
+
   return (
     <>
       <Header>
@@ -91,16 +97,19 @@ export const Blog = () => {
           <track default kind="captions" src={awcyAudio} />
         </Audio>
         {user && (
-          <FileUpload
-            onUpload={(file: FirebaseStorageContent) => {
-              if (!content) {
-                setContent([[file]]);
-                return;
-              }
-              const lastContent = content[content.length - 1];
-              setContent([...content.slice(0, -1), [...lastContent, file]]);
-            }}
-          />
+          <>
+            <FileUpload
+              onUpload={(file: FirebaseStorageContent) => {
+                if (!content) {
+                  setContent([[file]]);
+                  return;
+                }
+                const lastContent = content[content.length - 1];
+                setContent([...content.slice(0, -1), [...lastContent, file]]);
+              }}
+            />
+            <button onClick={logOut}>Log out</button>
+          </>
         )}
       </Header>
       <Container>
