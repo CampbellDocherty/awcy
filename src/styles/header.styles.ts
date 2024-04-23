@@ -17,8 +17,8 @@ const slideUp = keyframes`
 }`;
 
 export const Subtitle = styled.p`
-  margin-top: 10px;
   color: rgba(12, 0, 0, 0.7);
+  flex: 1;
   display: block;
   animation: ${slideUp} 0.5s ease-in-out;
 
@@ -47,6 +47,7 @@ export const Header = styled.header`
   padding-top: 140px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const grow = keyframes`
@@ -80,10 +81,20 @@ export const HeaderImage = styled.figure`
   }
 `;
 
-export const AudioContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
+export const Audio = styled.audio`
+  width: 300px;
+  max-width: 300px;
+
+  &::-webkit-media-controls-panel {
+    background-color: #fefafa;
+    color: #fefafa;
+  }
+
+  &::-webkit-media-controls-current-time-display {
+    display: none;
+  }
+
+  &::-webkit-media-controls-time-remaining-display {
+    display: none;
+  }
 `;

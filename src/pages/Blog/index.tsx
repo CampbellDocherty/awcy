@@ -5,7 +5,7 @@ import tee from '../../assets/tee.png';
 import { UserContext } from '../../context/UserContext';
 import { FirebaseStorageContent, getFiles } from '../../firebase/storage';
 import {
-  AudioContainer,
+  Audio,
   Header,
   HeaderImage,
   Subtitle,
@@ -83,11 +83,13 @@ export const Blog = () => {
         </HeaderImage>
         <Title onClick={() => setCount(count + 1)}>arewecoolyet.blog</Title>
         <Subtitle>YOU&apos;RE ALL WELCOME</Subtitle>
-        <AudioContainer>
-          <audio controls src={awcyAudio}>
-            <track default kind="captions" src={awcyAudio} />
-          </audio>
-        </AudioContainer>
+        <Audio
+          controlsList="nodownload noplaybackrate"
+          controls
+          src={awcyAudio}
+        >
+          <track default kind="captions" src={awcyAudio} />
+        </Audio>
         {user && (
           <FileUpload
             onUpload={(file: FirebaseStorageContent) => {
