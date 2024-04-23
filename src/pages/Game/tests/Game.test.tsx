@@ -1,5 +1,5 @@
-import { describe, test } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, expect, test } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Game } from '..';
 
 describe('When the game renders', () => {
@@ -13,5 +13,27 @@ describe('When the game renders', () => {
     render(<Game />);
     screen.getByText('Select character name:');
     screen.getByText('Play');
+  });
+
+  test('goes to club when submit name', () => {
+    render(<Game />);
+    const input = screen.getByLabelText('Select character name:');
+    fireEvent.change(input, { target: { value: 'Cammy' } });
+    fireEvent.click(screen.getByText('Play'));
+    screen.getByAltText('club');
+    screen.getByAltText('character');
+    screen.getByAltText('bouncer');
+  });
+
+  test('goes home when right arrow clicked', () => {
+    render(<Game />);
+    const input = screen.getByLabelText('Select character name:');
+    fireEvent.change(input, { target: { value: 'Cammy' } });
+    fireEvent.click(screen.getByText('Play'));
+    fireEvent.click(screen.getByText('>'));
+
+    screen.getByAltText('home');
+    screen.getByAltText('character');
+    expect(screen.queryByAltText('bouncer')).toBeNull();
   });
 });
