@@ -14,15 +14,13 @@ export const GameProvider = ({
     (newGameState: Partial<Game>) => {
       setGameState({ ...gameState, ...newGameState });
     },
-    [setGameState, gameState]
+    [gameState]
   );
 
   const providerValue = {
     ...gameState,
     update,
   };
-
-  console.log('gameState', providerValue);
 
   return (
     <GameContext.Provider value={providerValue}>

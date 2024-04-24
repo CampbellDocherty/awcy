@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Game } from '../Game';
+import { Game } from '../Backdrops/Game';
 import { GameProvider } from '../../../context/Game/GameProvider';
 
 const renderGame = () => {

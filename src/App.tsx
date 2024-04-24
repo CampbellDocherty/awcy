@@ -1,6 +1,6 @@
 import { UserProvider } from './context/User';
 import { Blog } from './pages/Blog';
-import { GameWrapper } from './pages/Game/GameWrapper';
+import { GameWrapper } from './pages/Game';
 
 const App = () => {
   return (
