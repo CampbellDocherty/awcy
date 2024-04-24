@@ -44,6 +44,7 @@ export const Game = () => {
   };
 
   const onHomeClick = () => {
+    setStats(null);
     setShowOutfits(true);
   };
 
