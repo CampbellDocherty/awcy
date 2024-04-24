@@ -52,7 +52,7 @@ describe('When the game renders', () => {
     expect(screen.queryByAltText('bouncer')).toBeNull();
   });
 
-  test.only('shows outfits when home clicked', () => {
+  test('shows outfits when home clicked', () => {
     renderGame();
     enterNameAndPlay();
     clickToGoHome();
