@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Game } from '..';
+import { Game } from '../Game';
 
 describe('When the game renders', () => {
   test('it shows the title', () => {

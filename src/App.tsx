@@ -1,12 +1,12 @@
 import { UserProvider } from './context/UserProvider';
 import { Blog } from './pages/Blog';
-// import { Game } from './pages/Game';
+import { GameWrapper } from './pages/Game/GameWrapper';
 
 const App = () => {
   return (
     <UserProvider>
       <Blog />
-      {/* <Game /> */}
+      <GameWrapper />
     </UserProvider>
   );
 };

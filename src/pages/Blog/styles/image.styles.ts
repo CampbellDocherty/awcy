@@ -35,6 +35,7 @@ export const Article = styled.article`
 
   @media (max-width: 660px) {
     padding-bottom: 20px;
+    margin-bottom: 15px;
   }
 `;
 
