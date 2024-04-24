@@ -174,3 +174,66 @@ export const Outfit = styled.img`
     animation: ${grow} 2s ease-in-out;
   }
 `;
+
+const slideRight = keyframes`
+0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20px, 0, 0);
+    -moz-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
+}
+
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0, 0);
+    -moz-transform: translate(0, 0, 0);
+    -o-transform: translate(0, 0, 0);
+    transform: translate(0, 0, 0);
+}`;
+
+export const Stats = styled.div`
+  position: absolute;
+  bottom: 4%;
+  left: 2%;
+  width: 20%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;
+
+export const StatBar = styled.progress<{ $stat: string }>`
+  width: 100%;
+  height: 40px;
+
+  &:nth-of-type(1) {
+    margin-bottom: 0.1em;
+    animation: ${slideRight} 0.7s ease-in;
+  }
+
+  &:nth-of-type(2) {
+    margin-bottom: 0.1em;
+    animation: ${slideRight} 1s ease-in;
+  }
+
+  &[value] {
+    border-radius: 5px;
+  }
+
+  &[value]::-webkit-progress-bar {
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: white;
+    padding: 2px;
+  }
+  &[value]::-webkit-progress-value {
+    background: ${(props) => (props.$stat === 'health' ? 'red' : 'green')};
+    border-radius: 8px;
+  }
+  &[value]::-moz-progress-bar {
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: white;
+    padding: 2px;
+  }
+`;
