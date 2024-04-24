@@ -13,7 +13,11 @@ import {
   InnerAspectRatioBox,
   LeftButton,
   LogoColumn,
+  Outfit,
+  OutfitContainer,
   RightButton,
+  StatBar,
+  Stats,
   Wrapper,
 } from './styles/game.styles';
 
@@ -23,14 +27,35 @@ enum Stage {
   HOME = 'home',
 }
 
+type Stats = {
+  health: number;
+  clout: number;
+};
+
 export const Game = () => {
   const [name, setName] = useState<string>('');
   const [stage, setStage] = useState<string>(Stage.LOGIN);
+  const [showOutfits, setShowOutfits] = useState<boolean>(false);
+  const [stats, setStats] = useState<Stats | null>(null);
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name) return;
     setStage('club');
   };
+
+  const onHomeClick = () => {
+    setStats(null);
+    setShowOutfits(true);
+  };
+
+  const onOutfitSelect = () => {
+    setShowOutfits(false);
+    setStats({
+      health: 80,
+      clout: 80,
+    });
+  };
+
   return (
     <Wrapper>
       <AspectRatioBox>
@@ -67,9 +92,26 @@ export const Game = () => {
             {stage === Stage.HOME && (
               <>
                 <LeftButton onClick={() => setStage('club')}>{'<'}</LeftButton>
-                <Backdrop src={home} alt="home" />
+                <Backdrop src={home} alt="home" onClick={onHomeClick} />
                 <Character $stage={stage} src={character} alt="character" />
+                {showOutfits && (
+                  <OutfitContainer>
+                    <Outfit onClick={onOutfitSelect} src="" alt="outfit-1" />
+                    <Outfit onClick={onOutfitSelect} src="" alt="outfit-2" />
+                    <Outfit onClick={onOutfitSelect} src="" alt="outfit-3" />
+                  </OutfitContainer>
+                )}
               </>
+            )}
+            {stats && stage !== Stage.LOGIN && (
+              <Stats>
+                <StatBar $stat="health" max="100" value={stats.health}>
+                  Health: {stats.health}
+                </StatBar>
+                <StatBar $stat="clout" max="100" value={stats.clout}>
+                  Clout: {stats.clout}
+                </StatBar>
+              </Stats>
             )}
           </GameWindow>
         </InnerAspectRatioBox>
