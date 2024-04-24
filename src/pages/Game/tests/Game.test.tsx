@@ -36,4 +36,19 @@ describe('When the game renders', () => {
     screen.getByAltText('character');
     expect(screen.queryByAltText('bouncer')).toBeNull();
   });
+
+  test('shows outfits when home clicked', () => {
+    render(<Game />);
+    const input = screen.getByLabelText('Select character name:');
+    fireEvent.change(input, { target: { value: 'Cammy' } });
+    fireEvent.click(screen.getByText('Play'));
+    fireEvent.click(screen.getByText('>'));
+
+    expect(screen.queryByAltText('outfit-1')).toBeNull();
+    const home = screen.getByAltText('home');
+    fireEvent.click(home);
+    screen.getByAltText('outfit-1');
+    screen.getByAltText('outfit-2');
+    screen.getByAltText('outfit-3');
+  });
 });

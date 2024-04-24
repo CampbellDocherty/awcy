@@ -13,6 +13,8 @@ import {
   InnerAspectRatioBox,
   LeftButton,
   LogoColumn,
+  Outfit,
+  OutfitContainer,
   RightButton,
   Wrapper,
 } from './styles/game.styles';
@@ -26,11 +28,17 @@ enum Stage {
 export const Game = () => {
   const [name, setName] = useState<string>('');
   const [stage, setStage] = useState<string>(Stage.LOGIN);
+  const [showOutfits, setShowOutfits] = useState<boolean>(false);
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name) return;
     setStage('club');
   };
+
+  const onHomeClick = () => {
+    setShowOutfits(true);
+  };
+
   return (
     <Wrapper>
       <AspectRatioBox>
@@ -67,8 +75,15 @@ export const Game = () => {
             {stage === Stage.HOME && (
               <>
                 <LeftButton onClick={() => setStage('club')}>{'<'}</LeftButton>
-                <Backdrop src={home} alt="home" />
+                <Backdrop src={home} alt="home" onClick={onHomeClick} />
                 <Character $stage={stage} src={character} alt="character" />
+                {showOutfits && (
+                  <OutfitContainer>
+                    <Outfit src="" alt="outfit-1" />
+                    <Outfit src="" alt="outfit-2" />
+                    <Outfit src="" alt="outfit-3" />
+                  </OutfitContainer>
+                )}
               </>
             )}
           </GameWindow>
