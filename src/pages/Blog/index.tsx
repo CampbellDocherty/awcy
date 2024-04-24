@@ -1,7 +1,7 @@
 import { Suspense, lazy, useContext, useEffect, useState } from 'react';
 import awcyAudio from '../../assets/awcy.mp3';
 import tee from '../../assets/tee.png';
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '../../context/User';
 import { auth } from '../../firebase/app';
 import { FirebaseStorageContent, getFiles } from '../../firebase/storage';
 import {

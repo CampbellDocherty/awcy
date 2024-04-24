@@ -7,7 +7,7 @@ import {
   Section,
 } from './styles/image.styles';
 import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '../../context/User';
 
 enum ContentType {
   MP4 = 'video/mp4',

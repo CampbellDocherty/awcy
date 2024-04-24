@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 
 import { UserContext } from './UserContext';
-import { auth } from '../firebase/app';
+import { auth } from '../../firebase/app';
 // eslint-disable-next-line import/named
 import { onAuthStateChanged, User } from '@firebase/auth';
 
