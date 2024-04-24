@@ -21,7 +21,7 @@ export const Main = styled.main`
   margin: 0px 30px 30px 30px;
 
   @media (max-width: 660px) {
-    margin: 0px 10px 10px 10px;
+    margin: 0px;
   }
 
   @media (max-width: 990px) {
@@ -42,11 +42,6 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  & > article {
-    margin-bottom: 30px;
-    width: 100%;
-  }
 `;
 
 export const Plus = styled.img`
