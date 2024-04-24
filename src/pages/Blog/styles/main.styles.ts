@@ -1,8 +1,4 @@
 import { styled } from 'styled-components';
-import {
-  MAX_THREE_COLUMN_WIDTH,
-  MAX_TWO_COLUMN_WIDTH,
-} from '../columnCalculator/calculateHowManyColumns';
 
 export const Container = styled.div`
   display: flex;
@@ -28,12 +24,12 @@ export const Main = styled.main`
     margin: 0px 10px 10px 10px;
   }
 
-  @media (max-width: ${MAX_TWO_COLUMN_WIDTH}) {
+  @media (max-width: 990px) {
     grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
   }
 
-  @media (max-width: ${MAX_THREE_COLUMN_WIDTH}) and (min-width: ${MAX_TWO_COLUMN_WIDTH}) {
+  @media (max-width: 1319px) and (min-width: 991px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
