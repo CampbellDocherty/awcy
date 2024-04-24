@@ -1,8 +1,8 @@
-import * as _ from 'lodash';
 import { Suspense, lazy, useContext, useEffect, useState } from 'react';
 import awcyAudio from '../../assets/awcy.mp3';
 import tee from '../../assets/tee.png';
 import { UserContext } from '../../context/UserContext';
+import { auth } from '../../firebase/app';
 import { FirebaseStorageContent, getFiles } from '../../firebase/storage';
 import {
   Audio,
@@ -10,24 +10,15 @@ import {
   HeaderImage,
   Subtitle,
   Title,
-} from '../../styles/header.styles';
-import { Column, Container, Main } from '../../styles/main.styles';
+} from './styles/header.styles';
+import { Column, Container, Main } from './styles/main.styles';
 import { Fallback } from './Fallback';
 import { FileUpload } from './FileUpload';
 import { SignIn } from './SignIn';
-import { auth } from '../../firebase/app';
+import { splitArray } from './columnCalculator/splitArray';
+import { calculateHowManyColumns } from './columnCalculator/calculateHowManyColumns';
 
 const LazyContent = lazy(() => import('./LazyContent'));
-
-const calculateHowManyColumns = () => {
-  if (window.innerWidth <= 660) {
-    return 2;
-  }
-  if (window.innerWidth <= 990) {
-    return 3;
-  }
-  return 4;
-};
 
 export const Blog = () => {
   const [count, setCount] = useState(0);
@@ -40,7 +31,7 @@ export const Blog = () => {
   useEffect(() => {
     const get = async () => {
       const files = await getFiles();
-      const chunked = _.chunk(files, Math.ceil(files.length / columns));
+      const chunked = splitArray(files, columns);
       setContent(chunked);
     };
 
@@ -65,10 +56,7 @@ export const Blog = () => {
       return;
     }
 
-    const splitArrays = _.chunk(
-      content.flat(),
-      Math.ceil(content.flat().length / columns)
-    );
+    const splitArrays = splitArray(content.flat(), columns);
     setContent(splitArrays);
   }, [columns]);
 

@@ -8,7 +8,7 @@ import {
   Container,
   Character,
   Bouncer,
-} from '../../styles/game.styles';
+} from './styles/game.styles';
 import club from '../../assets/club.jpg';
 import home from '../../assets/room.jpg';
 import bouncer from '../../assets/bouncer.png';
