@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { UserContext } from '../../context/User';
 import { Game } from './Game';
+import { GameProvider } from '../../context/Game/GameProvider';
 
 export const GameWrapper = () => {
   const user = useContext(UserContext);
@@ -9,5 +10,9 @@ export const GameWrapper = () => {
     return null;
   }
 
-  return <Game />;
+  return (
+    <GameProvider>
+      <Game />
+    </GameProvider>
+  );
 };

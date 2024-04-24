@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useContext, useState } from 'react';
 import bouncer from '../../assets/bouncer.png';
 import character from '../../assets/character.png';
 import club from '../../assets/club.jpg';
@@ -20,40 +20,30 @@ import {
   Stats,
   Wrapper,
 } from './styles/game.styles';
-
-enum Stage {
-  LOGIN = 'login',
-  CLUB = 'club',
-  HOME = 'home',
-}
-
-type Stats = {
-  health: number;
-  clout: number;
-};
+import { GameContext } from '../../context/Game';
+import { Stage } from '../../context/Game/types';
 
 export const Game = () => {
+  const { stats, stage, update } = useContext(GameContext);
+
   const [name, setName] = useState<string>('');
-  const [stage, setStage] = useState<string>(Stage.LOGIN);
+
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
-  const [stats, setStats] = useState<Stats | null>(null);
+
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name) return;
-    setStage('club');
+    update({ name, stage: Stage.CLUB });
   };
 
   const onHomeClick = () => {
-    setStats(null);
+    update({ stats: null });
     setShowOutfits(true);
   };
 
   const onOutfitSelect = () => {
     setShowOutfits(false);
-    setStats({
-      health: 80,
-      clout: 80,
-    });
+    update({ stats: { health: 80, clout: 80 } });
   };
 
   return (
@@ -84,14 +74,16 @@ export const Game = () => {
                 <Backdrop src={club} alt="club" />
                 <Character $stage={stage} src={character} alt="character" />
                 <Bouncer src={bouncer} alt="bouncer" />
-                <RightButton onClick={() => setStage('home')}>
+                <RightButton onClick={() => update({ stage: Stage.HOME })}>
                   {'>'}
                 </RightButton>
               </>
             )}
             {stage === Stage.HOME && (
               <>
-                <LeftButton onClick={() => setStage('club')}>{'<'}</LeftButton>
+                <LeftButton onClick={() => update({ stage: Stage.CLUB })}>
+                  {'<'}
+                </LeftButton>
                 <Backdrop src={home} alt="home" onClick={onHomeClick} />
                 <Character $stage={stage} src={character} alt="character" />
                 {showOutfits && (

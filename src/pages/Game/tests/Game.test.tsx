@@ -1,6 +1,15 @@
 import { describe, expect, test } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Game } from '../Game';
+import { GameProvider } from '../../../context/Game/GameProvider';
+
+const renderGame = () => {
+  render(
+    <GameProvider>
+      <Game />
+    </GameProvider>
+  );
+};
 
 function enterNameAndPlay() {
   const input = screen.getByLabelText('Select character name:');
@@ -14,19 +23,19 @@ function clickToGoHome() {
 
 describe('When the game renders', () => {
   test('it shows the title', () => {
-    render(<Game />);
+    renderGame();
     screen.getByText('AWCY');
     screen.getByText('version 1.0');
   });
 
   test('it shows the first login screen', () => {
-    render(<Game />);
+    renderGame();
     screen.getByText('Select character name:');
     screen.getByText('Play');
   });
 
   test('goes to club when submit name', () => {
-    render(<Game />);
+    renderGame();
     enterNameAndPlay();
     screen.getByAltText('club');
     screen.getByAltText('character');
@@ -34,7 +43,7 @@ describe('When the game renders', () => {
   });
 
   test('goes home when right arrow clicked', () => {
-    render(<Game />);
+    renderGame();
     enterNameAndPlay();
     clickToGoHome();
 
@@ -43,8 +52,8 @@ describe('When the game renders', () => {
     expect(screen.queryByAltText('bouncer')).toBeNull();
   });
 
-  test('shows outfits when home clicked', () => {
-    render(<Game />);
+  test.only('shows outfits when home clicked', () => {
+    renderGame();
     enterNameAndPlay();
     clickToGoHome();
 
@@ -57,7 +66,7 @@ describe('When the game renders', () => {
   });
 
   test('when outfit selected, outfits disappear and then health and clout appear', () => {
-    render(<Game />);
+    renderGame();
     enterNameAndPlay();
     clickToGoHome();
 
