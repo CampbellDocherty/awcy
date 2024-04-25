@@ -70,12 +70,14 @@ export const BlogImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 export const BlogVideo = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 export const Placeholder = styled.div`
@@ -94,5 +96,36 @@ export const Caption = styled.p`
   margin-bottom: 0px;
   @media (max-width: 660px) {
     padding-left: 10px;
+  }
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background-color: hsla(0, 0%, 7%, 0.92);
+`;
+
+export const ModalContent = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: 0px 20px;
+
+  & > img,
+  & > video {
+    position: absolute;
+    object-fit: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 70%;
+    max-width: 70%;
   }
 `;
