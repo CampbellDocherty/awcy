@@ -32,11 +32,18 @@ export const Article = styled.article`
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding-bottom: 30px;
   animation: ${slideUp} 0.75s ease-in;
+  position: relative;
 
   @media (max-width: 660px) {
     padding-bottom: 20px;
     margin-bottom: 15px;
   }
+`;
+
+export const Delete = styled.button`
+  position: absolute;
+  bottom: 0;
+  right: 0;
 `;
 
 export const Section = styled.section`
