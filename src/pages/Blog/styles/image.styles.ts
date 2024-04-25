@@ -121,11 +121,11 @@ export const ModalContent = styled.div`
   & > img,
   & > video {
     position: absolute;
-    object-fit: contain;
+    object-fit: scale-down;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: 70%;
-    max-width: 70%;
+    max-height: 85%;
+    max-width: 85%;
   }
 `;
