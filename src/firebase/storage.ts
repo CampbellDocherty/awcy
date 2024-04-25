@@ -8,6 +8,7 @@ import {
   // eslint-disable-next-line import/named
   FullMetadata,
   deleteObject,
+  updateMetadata,
 } from 'firebase/storage';
 import { app } from './app';
 
@@ -60,4 +61,13 @@ export const getFiles = async () => {
 export const deleteFile = async (name: string) => {
   const storageRef = ref(storage, name);
   await deleteObject(storageRef);
+};
+
+export const updateCaption = async (name: string, caption: string) => {
+  const storageRef = ref(storage, name);
+  await updateMetadata(storageRef, {
+    customMetadata: {
+      caption,
+    },
+  });
 };

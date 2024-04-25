@@ -46,6 +46,18 @@ export const Delete = styled.button`
   right: 0;
 `;
 
+export const Edit = styled.button`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+`;
+
+export const EditInput = styled.input`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+`;
+
 export const Section = styled.section`
   overflow: hidden;
   display: block;
