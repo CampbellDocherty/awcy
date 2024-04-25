@@ -4,6 +4,7 @@ import {
   BlogImage,
   BlogVideo,
   Caption,
+  Delete,
   Section,
 } from './styles/image.styles';
 import { useContext } from 'react';
@@ -42,7 +43,7 @@ const LazyImage = ({
         {content.metadata.customMetadata?.caption && (
           <Caption>{content.metadata.customMetadata?.caption}</Caption>
         )}
-        {user && <button onClick={handleDelete}>Delete</button>}
+        {user && <Delete onClick={handleDelete}>Delete</Delete>}
       </Article>
     );
   }
@@ -57,7 +58,7 @@ const LazyImage = ({
           <Caption>{content.metadata.customMetadata?.caption}</Caption>
         )}
       </div>
-      {user && <button onClick={handleDelete}>Delete</button>}
+      {user && <Delete onClick={handleDelete}>Delete</Delete>}
     </Article>
   );
 };
