@@ -82,6 +82,7 @@ export const HeaderImage = styled.figure`
 `;
 
 export const RsvpButton = styled.button`
+  font-weight: 700;
   border-radius: 15px;
   width: 150px;
   height: 45px;
@@ -96,12 +97,6 @@ export const RsvpButton = styled.button`
   &:active {
     outline: none;
     border: none;
-  }
-
-  & > a {
-    text-decoration: none;
-    color: black;
-    font-weight: 700;
   }
 `;
 
