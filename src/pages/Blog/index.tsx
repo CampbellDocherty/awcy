@@ -70,9 +70,15 @@ export const Blog = () => {
     auth.signOut();
   };
 
-  const [splashDone, setSplashDone] = useState(false);
+  const [FPS, setFPS] = useState<number | null>(null);
+  useEffect(() => {
+    requestAnimationFrame((t1) =>
+      requestAnimationFrame((t2) => setFPS(1000 / (t2 - t1)))
+    );
+  }, []);
 
-  if (!content || !splashDone) {
+  const [splashDone, setSplashDone] = useState(false);
+  if (!content || !splashDone || (FPS && FPS < 70)) {
     return <Splash onEnded={() => setSplashDone(true)} />;
   }
 
