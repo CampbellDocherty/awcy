@@ -1,6 +1,5 @@
-import { Suspense, lazy, useContext, useEffect, useRef, useState } from 'react';
+import { Suspense, lazy, useContext, useEffect, useState } from 'react';
 import awcyAudio from '../../assets/awcy.mp3';
-import splash from '../../assets/splash.mp4';
 import tee from '../../assets/tee.png';
 import { UserContext } from '../../context/User';
 import { auth } from '../../firebase/app';
@@ -18,6 +17,7 @@ import {
   Title,
 } from './styles/header.styles';
 import { Column, Container, Main } from './styles/main.styles';
+import { Splash } from './Splash';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -28,8 +28,6 @@ export const Blog = () => {
   const [content, setContent] = useState<Array<
     FirebaseStorageContent[]
   > | null>(null);
-
-  const splashRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const get = async () => {
@@ -75,17 +73,7 @@ export const Blog = () => {
   const [splashDone, setSplashDone] = useState(false);
 
   if (!content || !splashDone) {
-    return (
-      <video
-        onEnded={() => setSplashDone(true)}
-        ref={splashRef}
-        autoPlay
-        muted
-        playsInline
-        src={splash}
-        style={{ width: '100%', height: '100vh' }}
-      />
-    );
+    return <Splash onEnded={() => setSplashDone(true)} />;
   }
 
   return (
