@@ -3,6 +3,16 @@ import splash from '../../../assets/splash.mp4';
 
 export const Splash = ({ onEnded }: { onEnded: () => void }) => {
   const splashRef = useRef<HTMLVideoElement>(null);
+
+  const getFPS = () =>
+    new Promise((resolve) =>
+      requestAnimationFrame((t1) =>
+        requestAnimationFrame((t2) => resolve(1000 / (t2 - t1)))
+      )
+    );
+
+  // Calling the function to get the FPS
+  getFPS().then((fps) => console.log(fps));
   return (
     <div
       style={{
