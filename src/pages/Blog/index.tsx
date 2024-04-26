@@ -4,6 +4,11 @@ import tee from '../../assets/tee.png';
 import { UserContext } from '../../context/User';
 import { auth } from '../../firebase/app';
 import { FirebaseStorageContent, getFiles } from '../../firebase/storage';
+import { Fallback } from './Fallback';
+import { FileUpload } from './FileUpload';
+import { SignIn } from './SignIn';
+import { calculateHowManyColumns } from './columnCalculator/calculateHowManyColumns';
+import { splitArray } from './columnCalculator/splitArray';
 import {
   Audio,
   Header,
@@ -12,11 +17,7 @@ import {
   Title,
 } from './styles/header.styles';
 import { Column, Container, Main } from './styles/main.styles';
-import { Fallback } from './Fallback';
-import { FileUpload } from './FileUpload';
-import { SignIn } from './SignIn';
-import { splitArray } from './columnCalculator/splitArray';
-import { calculateHowManyColumns } from './columnCalculator/calculateHowManyColumns';
+import { Splash } from './Splash';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -68,6 +69,12 @@ export const Blog = () => {
     setCount(0);
     auth.signOut();
   };
+
+  const [splashDone, setSplashDone] = useState(false);
+
+  if (!content || !splashDone) {
+    return <Splash onEnded={() => setSplashDone(true)} />;
+  }
 
   return (
     <>
