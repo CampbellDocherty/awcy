@@ -67,26 +67,13 @@ export const Blog = () => {
     auth.signOut();
   };
 
-  const [FPS, setFPS] = useState<number | null>(null);
-  useEffect(() => {
-    requestAnimationFrame((t1) =>
-      requestAnimationFrame((t2) => setFPS(1000 / (t2 - t1)))
-    );
-  }, []);
-
   const [splashDone, setSplashDone] = useState(false);
-
-  const inLowerPowerMode = FPS && FPS < 100;
-
-  if (!FPS) {
-    return null;
-  }
 
   if (count >= 10 && !user) {
     return <SignIn />;
   }
 
-  if ((!content || !splashDone) && !inLowerPowerMode) {
+  if (!content || !splashDone) {
     return <Splash onEnded={() => setSplashDone(true)} />;
   }
 
