@@ -91,6 +91,7 @@ export const RsvpButton = styled.button`
   outline: none;
   color: black;
   animation: ${slideUp} 0.5s ease-in-out;
+  margin-bottom: 16px;
 
   &:hover,
   &:focus,
