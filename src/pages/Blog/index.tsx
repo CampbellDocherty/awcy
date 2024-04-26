@@ -85,6 +85,8 @@ export const Blog = () => {
     return <Splash onEnded={() => setSplashDone(true)} />;
   }
 
+  console.log(FPS, inLowerPowerMode);
+
   return (
     <>
       {FPS && user && (
