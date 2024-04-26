@@ -7,7 +7,7 @@ export const Splash = ({ onEnded }: { onEnded: () => void }) => {
     <div
       style={{
         width: '100vw',
-        height: '100vh',
+        height: window.innerHeight,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
