@@ -81,9 +81,11 @@ export const Blog = () => {
     return <SignIn />;
   }
 
-  if (!content || !splashDone || !inLowerPowerMode) {
+  if ((!content || !splashDone) && !inLowerPowerMode) {
     return <Splash onEnded={() => setSplashDone(true)} />;
   }
+
+  console.log(FPS, inLowerPowerMode);
 
   return (
     <>
