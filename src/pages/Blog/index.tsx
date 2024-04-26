@@ -75,7 +75,11 @@ export const Blog = () => {
 
   const [splashDone, setSplashDone] = useState(false);
 
-  const inLowerPowerMode = FPS && FPS < 70;
+  const inLowerPowerMode = FPS && FPS < 100;
+
+  if (!FPS) {
+    return null;
+  }
 
   if (count >= 10 && !user) {
     return <SignIn />;
@@ -85,13 +89,8 @@ export const Blog = () => {
     return <Splash onEnded={() => setSplashDone(true)} />;
   }
 
-  console.log(FPS, inLowerPowerMode);
-
   return (
     <>
-      {FPS && user && (
-        <p style={{ position: 'fixed', top: '0', left: '0' }}>{FPS}</p>
-      )}
       <Header>
         <HeaderImage onClick={() => setCount(count + 1)}>
           <img src={tee} alt="are we cool yet t-shirt" />
