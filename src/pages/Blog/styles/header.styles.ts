@@ -81,6 +81,25 @@ export const HeaderImage = styled.figure`
   }
 `;
 
+export const RsvpButton = styled.button`
+  font-weight: 700;
+  border-radius: 15px;
+  width: 150px;
+  height: 45px;
+  background-color: #61c433;
+  border: none;
+  outline: none;
+  color: black;
+  animation: ${slideUp} 0.5s ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    border: none;
+  }
+`;
+
 export const Audio = styled.audio`
   width: 300px;
   max-width: 300px;
