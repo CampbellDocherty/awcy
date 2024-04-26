@@ -13,6 +13,7 @@ import {
   Audio,
   Header,
   HeaderImage,
+  RsvpButton,
   Subtitle,
   Title,
 } from './styles/header.styles';
@@ -97,6 +98,15 @@ export const Blog = () => {
         </HeaderImage>
         <Title onClick={() => setCount(count + 1)}>arewecoolyet.blog</Title>
         <Subtitle>YOU&apos;RE ALL WELCOME</Subtitle>
+        <RsvpButton>
+          <a
+            href="https://docs.google.com/forms/d/1wfMFmWNQv8SBAu2mXO0d0ENfSCBPPf5e2Zn3ZFVc5Xc/edit?ts=662be83c&pli=1"
+            target="_blank"
+            rel="noreferrer"
+          >
+            PLEASE RSVP! CLICK HERE
+          </a>
+        </RsvpButton>
         <Audio
           controlsList="nodownload noplaybackrate"
           controls
