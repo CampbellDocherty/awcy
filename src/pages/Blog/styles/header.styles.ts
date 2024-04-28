@@ -16,29 +16,24 @@ const slideUp = keyframes`
     transform: translate(0, 0, 0);
 }`;
 
-export const Subtitle = styled.p`
-  color: rgba(12, 0, 0, 0.7);
-  flex: 1;
-  display: block;
+export const Subtitle = styled.img`
+  max-width: 14rem;
+  margin: 10px 0px 20px 0px;
   animation: ${slideUp} 0.5s ease-in-out;
 
   @media screen and (max-device-width: 568px) {
-    font-size: 15px;
+    max-width: 12rem;
+    margin: 0px 0px 20px 0px;
   }
 `;
 
-export const Title = styled.h1`
-  font-family: 'Typewriter FS', serif, 'Helvetica Neue', HelveticaNeue, Arial,
-    sans-serif;
-  font-weight: 900;
-  font-size: 56px;
-  line-height: 1.2;
-  margin: 10px 0 0;
-  word-wrap: break-word;
+export const Title = styled.img`
+  margin: 20px 0;
+  max-width: 25rem;
   animation: ${slideUp} 0.5s ease-in-out;
 
   @media screen and (max-device-width: 568px) {
-    font-size: 36px;
+    max-width: 20rem;
   }
 `;
 

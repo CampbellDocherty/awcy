@@ -19,6 +19,8 @@ import {
 } from './styles/header.styles';
 import { Column, Container, Main } from './styles/main.styles';
 import { Splash } from './Splash';
+import title from '../../assets/awcy.png';
+import yaw from '../../assets/yaw.png';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -80,11 +82,15 @@ export const Blog = () => {
   return (
     <>
       <Header>
-        <HeaderImage onClick={() => setCount(count + 1)}>
+        <HeaderImage>
           <img src={tee} alt="are we cool yet t-shirt" />
         </HeaderImage>
-        <Title onClick={() => setCount(count + 1)}>arewecoolyet.blog</Title>
-        <Subtitle>YOU&apos;RE ALL WELCOME</Subtitle>
+        <Title
+          onClick={() => setCount(count + 1)}
+          src={title}
+          alt="arewecoolyet.blog"
+        />
+        <Subtitle src={yaw} alt="YOU'RE ALL WELCOME" />
         <a
           href="https://forms.gle/8dzX8f76mTJm69iw7"
           target="_blank"
