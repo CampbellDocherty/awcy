@@ -11,6 +11,7 @@ import { calculateHowManyColumns } from './columnCalculator/calculateHowManyColu
 import { splitArray } from './columnCalculator/splitArray';
 import {
   Audio,
+  AudioCaption,
   Header,
   HeaderImage,
   RsvpButton,
@@ -105,6 +106,7 @@ export const Blog = () => {
         >
           <track default kind="captions" src={awcyAudio} />
         </Audio>
+        <AudioCaption>stu$h Auntie - Pattern [Up]</AudioCaption>
         {user && (
           <>
             <FileUpload

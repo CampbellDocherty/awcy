@@ -18,7 +18,7 @@ const slideUp = keyframes`
 
 export const Subtitle = styled.img`
   max-width: 14rem;
-  margin: 10px 0px 20px 0px;
+  margin: 0px 0px 30px 0px;
   animation: ${slideUp} 0.5s ease-in-out;
 
   @media screen and (max-device-width: 568px) {
@@ -114,4 +114,9 @@ export const Audio = styled.audio`
   &::-webkit-media-controls-time-remaining-display {
     display: none;
   }
+`;
+
+export const AudioCaption = styled.p`
+  animation: ${slideUp} 0.5s ease-in-out;
+  font-weight: 800;
 `;
