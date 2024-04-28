@@ -122,11 +122,6 @@ export const Audio = styled.audio`
 `;
 
 export const AudioCaption = styled.p`
-<<<<<<< HEAD
-  animation: ${slideUp} 0.5s ease-in-out;
-  font-weight: 800;
-=======
   margin-top: 5px;
   animation: ${slideUp} 0.5s ease-in-out;
->>>>>>> 467b42c (Keep caption)
 `;
