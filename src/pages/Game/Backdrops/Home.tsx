@@ -5,6 +5,7 @@ import message from '../../../assets/message.png';
 import phone from '../../../assets/phone.png';
 import home from '../../../assets/room.jpg';
 import smsTone from '../../../assets/sms-tone.mp3';
+import statBar from '../../../assets/hp-clout.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import {
@@ -22,7 +23,7 @@ import {
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { stage, update } = useContext(GameContext);
+  const { stage, update, stats } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
@@ -69,9 +70,11 @@ export const Home = () => {
       <audio ref={audioRef} controls={false} src={smsTone}>
         <track default kind="captions" src={smsTone} />
       </audio>
-      <LeftButton onClick={() => update({ stage: Stage.CLUB })}>
-        {'<'}
-      </LeftButton>
+      {stats && (
+        <LeftButton onClick={() => update({ stage: Stage.CLUB })}>
+          {'<'}
+        </LeftButton>
+      )}
       {showPhone && (
         <Phone onClick={onClickPhone} src={phone} alt="message received" />
       )}
