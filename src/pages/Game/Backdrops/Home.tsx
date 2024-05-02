@@ -1,22 +1,23 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import character from '../../../assets/character.png';
+import cupboard from '../../../assets/cupboard.jpg';
+import message from '../../../assets/message.png';
+import phone from '../../../assets/phone.png';
+import home from '../../../assets/room.jpg';
+import smsTone from '../../../assets/sms-tone.mp3';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
-import character from '../../../assets/character.png';
-import home from '../../../assets/room.jpg';
 import {
   Backdrop,
   Character,
+  Cupboard,
   LeftButton,
-  Phone,
+  Message,
+  MissionBanner,
   Outfit,
   OutfitContainer,
-  Message,
-  Cupboard,
+  Phone,
 } from '../styles/game.styles';
-import smsTone from '../../../assets/sms-tone.mp3';
-import phone from '../../../assets/phone.png';
-import message from '../../../assets/message.png';
-import cupboard from '../../../assets/cupboard.jpg';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -84,6 +85,11 @@ export const Home = () => {
       <Character $stage={stage} src={character} alt="character" />
       {messageSeen && (
         <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
+      )}
+      {messageSeen && (
+        <MissionBanner>
+          <p>Get changed and head to the club</p>
+        </MissionBanner>
       )}
       {showOutfits && (
         <OutfitContainer>

@@ -284,3 +284,18 @@ export const Cupboard = styled.img`
     outline: 3px solid lightblue;
   }
 `;
+
+export const MissionBanner = styled.div`
+  background: black;
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  width: 40%;
+  border-radius: 3%;
+  word-wrap: break-word;
+  animation: ${slideUp} 0.5s ease-in-out;
+`;
