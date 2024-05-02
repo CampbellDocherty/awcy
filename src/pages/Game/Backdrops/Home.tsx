@@ -7,12 +7,14 @@ import {
   Backdrop,
   Character,
   LeftButton,
-  MessageReceived,
+  Phone,
   Outfit,
   OutfitContainer,
+  Message,
 } from '../styles/game.styles';
 import smsTone from '../../../assets/sms-tone.mp3';
-import messageReceived from '../../../assets/message.png';
+import phone from '../../../assets/phone.png';
+import message from '../../../assets/message.png';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -30,7 +32,7 @@ export const Home = () => {
     update({ stats: { health: 80, clout: 80 } });
   };
 
-  const [showMessage, setShowMessage] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
 
   useEffect(() => {
     if (!audioRef) return;
@@ -40,26 +42,39 @@ export const Home = () => {
       } catch {
         console.log('No vibrator');
       }
-      setShowMessage(true);
+      setShowPhone(true);
       audioRef?.current?.play();
     }, 1000);
   }, []);
 
+  const [showMessage, setShowMessage] = useState(false);
+
+  const onClickPhone = () => {
+    setShowMessage(true);
+  };
+
+  const onClickMessage = () => {
+    setShowPhone(false);
+    setShowMessage(false);
+  };
+
   return (
     <>
-      <audio
-        ref={audioRef}
-        controlsList="nodownload noplaybackrate"
-        controls={false}
-        src={smsTone}
-      >
+      <audio ref={audioRef} controls={false} src={smsTone}>
         <track default kind="captions" src={smsTone} />
       </audio>
       <LeftButton onClick={() => update({ stage: Stage.CLUB })}>
         {'<'}
       </LeftButton>
+      {showPhone && (
+        <Phone onClick={onClickPhone} src={phone} alt="message received" />
+      )}
       {showMessage && (
-        <MessageReceived src={messageReceived} alt="message received" />
+        <Message
+          src={message}
+          onClick={onClickMessage}
+          alt="Yo what are you up to! Come whisky it's live"
+        />
       )}
       <Backdrop src={home} alt="home" onClick={onHomeClick} />
       <Character $stage={stage} src={character} alt="character" />

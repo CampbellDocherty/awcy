@@ -254,11 +254,20 @@ const slideUp = keyframes`
     transform: translate(0, 0, 0);
 }`;
 
-export const MessageReceived = styled.img`
+export const Phone = styled.img`
   max-width: 20%;
   position: absolute;
   bottom: -15%;
   left: 6%;
   animation: ${slideUp} 0.5s ease-in-out;
   cursor: pointer;
+`;
+
+export const Message = styled.img`
+  width: 100%;
+  position: absolute;
+  top: -15%;
+  left: 0;
+  cursor: pointer;
+  z-index: 200;
 `;
