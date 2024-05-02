@@ -14,6 +14,7 @@ import {
   LeftButton,
   Message,
   MissionBanner,
+  MissionText,
   Outfit,
   OutfitContainer,
   Phone,
@@ -88,7 +89,7 @@ export const Home = () => {
       )}
       {messageSeen && (
         <MissionBanner>
-          <p>Get changed and head to the club</p>
+          <MissionText>Get changed and head to the club</MissionText>
         </MissionBanner>
       )}
       {showOutfits && (

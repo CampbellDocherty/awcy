@@ -93,4 +93,8 @@ describe('home mission', () => {
     screen.getByAltText('outfit-2');
     screen.getByAltText('outfit-3');
   });
+
+  test('shows mission', () => {
+    screen.getByText('Get changed and head to the club');
+  });
 });

@@ -299,3 +299,11 @@ export const MissionBanner = styled.div`
   word-wrap: break-word;
   animation: ${slideUp} 0.5s ease-in-out;
 `;
+
+export const MissionText = styled.p`
+  font-size: 20px;
+  @media screen and (max-device-width: 568px) {
+    font-size: 12px;
+    margin: 4px;
+  }
+`;
