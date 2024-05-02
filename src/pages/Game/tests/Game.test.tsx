@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vitest } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Game } from '../Backdrops/Game';
 import { GameProvider } from '../../../context/Game/GameProvider';
@@ -17,10 +17,6 @@ function enterNameAndPlay() {
   fireEvent.click(screen.getByText('Play'));
 }
 
-function clickToGoHome() {
-  fireEvent.click(screen.getByText('>'));
-}
-
 describe('When the game renders', () => {
   test('it shows the title', () => {
     renderGame();
@@ -34,28 +30,34 @@ describe('When the game renders', () => {
     screen.getByText('Play');
   });
 
-  test('goes to club when submit name', () => {
+  test('goes to home when submit name', () => {
     renderGame();
     enterNameAndPlay();
-    screen.getByAltText('club');
+    screen.getByAltText('home');
     screen.getByAltText('character');
-    screen.getByAltText('bouncer');
   });
 
-  test('goes home when right arrow clicked', () => {
+  test('goes home when arrow clicked', async () => {
     renderGame();
     enterNameAndPlay();
-    clickToGoHome();
+    vitest
+      .spyOn(window.HTMLMediaElement.prototype, 'play')
+      .mockImplementation(async () => {
+        return;
+      });
 
     screen.getByAltText('home');
     screen.getByAltText('character');
-    expect(screen.queryByAltText('bouncer')).toBeNull();
+    vitest.useFakeTimers({ shouldAdvanceTime: true });
+
+    await screen.findByAltText('message received');
+    vitest.useRealTimers();
+    vitest.clearAllMocks();
   });
 
   test('shows outfits when home clicked', () => {
     renderGame();
     enterNameAndPlay();
-    clickToGoHome();
 
     expect(screen.queryByAltText('outfit-1')).toBeNull();
     const home = screen.getByAltText('home');
@@ -68,7 +70,6 @@ describe('When the game renders', () => {
   test('when outfit selected, outfits disappear and then health and clout appear', () => {
     renderGame();
     enterNameAndPlay();
-    clickToGoHome();
 
     expect(screen.queryByAltText('outfit-1')).toBeNull();
     const home = screen.getByAltText('home');
