@@ -207,17 +207,6 @@ const slideRight = keyframes`
     transform: translate(0, 0, 0);
 }`;
 
-export const Stats = styled.div`
-  position: absolute;
-  bottom: 4%;
-  left: 2%;
-  width: 20%;
-  height: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-`;
-
 export const StatsBar = styled.img`
   margin-left: auto;
   margin-right: auto;
@@ -227,42 +216,6 @@ export const StatsBar = styled.img`
   max-width: 30%;
   animation: ${slideDown} 0.5s ease-in-out;
   position: absolute;
-`;
-
-export const StatBar = styled.progress<{ $stat: string }>`
-  width: 100%;
-  height: 40px;
-
-  &:nth-of-type(1) {
-    margin-bottom: 0.1em;
-    animation: ${slideRight} 0.7s ease-in;
-  }
-
-  &:nth-of-type(2) {
-    margin-bottom: 0.1em;
-    animation: ${slideRight} 1s ease-in;
-  }
-
-  &[value] {
-    border-radius: 5px;
-  }
-
-  &[value]::-webkit-progress-bar {
-    border: 1px solid black;
-    border-radius: 8px;
-    background-color: white;
-    padding: 2px;
-  }
-  &[value]::-webkit-progress-value {
-    background: ${(props) => (props.$stat === 'health' ? 'red' : 'green')};
-    border-radius: 8px;
-  }
-  &[value]::-moz-progress-bar {
-    border: 1px solid black;
-    border-radius: 8px;
-    background-color: white;
-    padding: 2px;
-  }
 `;
 
 const slideUp = keyframes`
