@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import arrow from '../../../../assets/arrow.png';
 import character from '../../../../assets/character.png';
 import cupboard from '../../../../assets/cupboard.jpg';
 import message from '../../../../assets/message.png';
@@ -8,17 +7,14 @@ import home from '../../../../assets/room.jpg';
 import smsTone from '../../../../assets/sms-tone.mp3';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
-import { MissionBanner, MissionText } from '../../styles/game.styles';
 import {
-  Backdrop,
   Character,
-  Cupboard,
-  Message,
-  Outfit,
-  OutfitContainer,
-  Phone,
-  RightButton,
-} from './styles';
+  MissionBanner,
+  MissionText,
+  Backdrop,
+} from '../../styles/game.styles';
+import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
+import { NextStage } from '../NextStage';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -71,11 +67,7 @@ export const Home = () => {
         <track default kind="captions" src={smsTone} />
       </audio>
       {stats && (
-        <RightButton
-          src={arrow}
-          alt="right arrow"
-          onClick={() => update({ stage: Stage.CLUB })}
-        />
+        <NextStage right onClick={() => update({ stage: Stage.CLUB })} />
       )}
       {showPhone && (
         <Phone onClick={onClickPhone} src={phone} alt="message received" />

@@ -1,43 +1,5 @@
 import { keyframes, styled } from 'styled-components';
 
-export const Backdrop = styled.img`
-  width: 100%;
-  object-fit: cover;
-`;
-
-export const Character = styled.img<{ $stage: string }>`
-  width: ${(props) => (props.$stage === 'club' ? '16%' : '25%')};
-  height: ${(props) => (props.$stage === 'club' ? '26%' : '38%')};
-  position: absolute;
-  bottom: 0;
-  right: 3%;
-`;
-
-const bounce = keyframes`
-0% {
-    top: 50%;
-}
-
-50% {
-  top: 51%
-}
-
-100% {
-    top: 50%;
-}`;
-
-export const RightButton = styled.img`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-  cursor: pointer;
-  width: 10%;
-  transform: scaleX(-1);
-  animation: ${bounce} 1.5s infinite;
-`;
-
 export const OutfitContainer = styled.div`
   display: flex;
   justify-content: space-around;
