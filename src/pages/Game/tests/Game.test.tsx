@@ -1,7 +1,7 @@
-import { describe, expect, test, vitest } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Game } from '../Backdrops/Game';
+import { afterEach, beforeEach, describe, expect, test, vitest } from 'vitest';
 import { GameProvider } from '../../../context/Game/GameProvider';
+import { Game } from '../Backdrops/Game';
 
 const renderGame = () => {
   render(
@@ -15,6 +15,21 @@ function enterNameAndPlay() {
   const input = screen.getByLabelText('Select character name:');
   fireEvent.change(input, { target: { value: 'Cammy' } });
   fireEvent.click(screen.getByText('Play'));
+}
+
+function mocks() {
+  vitest
+    .spyOn(window.HTMLMediaElement.prototype, 'play')
+    .mockImplementation(async () => {
+      return;
+    });
+
+  vitest.useFakeTimers({ shouldAdvanceTime: true });
+}
+
+function clearMocks() {
+  vitest.clearAllMocks();
+  vitest.useRealTimers();
 }
 
 describe('When the game renders', () => {
@@ -36,45 +51,30 @@ describe('When the game renders', () => {
     screen.getByAltText('home');
     screen.getByAltText('character');
   });
+});
 
-  test('goes home when arrow clicked', async () => {
+describe('home mission', () => {
+  beforeEach(async () => {
     renderGame();
     enterNameAndPlay();
-    vitest
-      .spyOn(window.HTMLMediaElement.prototype, 'play')
-      .mockImplementation(async () => {
-        return;
-      });
+    mocks();
 
-    screen.getByAltText('home');
-    screen.getByAltText('character');
-    vitest.useFakeTimers({ shouldAdvanceTime: true });
-
-    await screen.findByAltText('message received');
-    vitest.useRealTimers();
-    vitest.clearAllMocks();
+    const phone = await screen.findByAltText('message received');
+    fireEvent.click(phone);
+    const message = screen.getByAltText(
+      "Yo what are you up to! Come whisky it's live"
+    );
+    fireEvent.click(message);
   });
 
-  test('shows outfits when home clicked', () => {
-    renderGame();
-    enterNameAndPlay();
-
-    expect(screen.queryByAltText('outfit-1')).toBeNull();
-    const home = screen.getByAltText('home');
-    fireEvent.click(home);
-    screen.getByAltText('outfit-1');
-    screen.getByAltText('outfit-2');
-    screen.getByAltText('outfit-3');
+  afterEach(() => {
+    clearMocks();
   });
 
-  test('when outfit selected, outfits disappear and then health and clout appear', () => {
-    renderGame();
-    enterNameAndPlay();
-
+  test('when outfit selected, outfits disappear and then health and clout appear', async () => {
     expect(screen.queryByAltText('outfit-1')).toBeNull();
-    const home = screen.getByAltText('home');
-    fireEvent.click(home);
-
+    const cupboard = screen.getByAltText('cupboard');
+    fireEvent.click(cupboard);
     const outfitOne = screen.getByAltText('outfit-1');
     fireEvent.click(outfitOne);
 
@@ -83,5 +83,14 @@ describe('When the game renders', () => {
 
     screen.getByText('Health: 80');
     screen.getByText('Clout: 80');
+  });
+
+  test('shows outfits when cupboard clicked', async () => {
+    expect(screen.queryByAltText('outfit-1')).toBeNull();
+    const cupboard = screen.getByAltText('cupboard');
+    fireEvent.click(cupboard);
+    screen.getByAltText('outfit-1');
+    screen.getByAltText('outfit-2');
+    screen.getByAltText('outfit-3');
   });
 });

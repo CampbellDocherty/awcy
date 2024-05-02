@@ -261,6 +261,7 @@ export const Phone = styled.img`
   left: 6%;
   animation: ${slideUp} 0.5s ease-in-out;
   cursor: pointer;
+  z-index: 190;
 `;
 
 export const Message = styled.img`
@@ -270,4 +271,31 @@ export const Message = styled.img`
   left: 0;
   cursor: pointer;
   z-index: 200;
+`;
+
+export const Cupboard = styled.img`
+  width: 19%;
+  cursor: pointer;
+  position: absolute;
+  left: 8.2%;
+  top: 32%;
+
+  &:hover {
+    outline: 3px solid lightblue;
+  }
+`;
+
+export const MissionBanner = styled.div`
+  background: black;
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  width: 40%;
+  border-radius: 3%;
+  word-wrap: break-word;
+  animation: ${slideUp} 0.5s ease-in-out;
 `;
