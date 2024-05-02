@@ -1,25 +1,24 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import arrow from '../../../assets/arrow.png';
-import character from '../../../assets/character.png';
-import cupboard from '../../../assets/cupboard.jpg';
-import message from '../../../assets/message.png';
-import phone from '../../../assets/phone.png';
-import home from '../../../assets/room.jpg';
-import smsTone from '../../../assets/sms-tone.mp3';
-import { GameContext } from '../../../context/Game';
-import { Stage } from '../../../context/Game/types';
+import arrow from '../../../../assets/arrow.png';
+import character from '../../../../assets/character.png';
+import cupboard from '../../../../assets/cupboard.jpg';
+import message from '../../../../assets/message.png';
+import phone from '../../../../assets/phone.png';
+import home from '../../../../assets/room.jpg';
+import smsTone from '../../../../assets/sms-tone.mp3';
+import { GameContext } from '../../../../context/Game';
+import { Stage } from '../../../../context/Game/types';
+import { MissionBanner, MissionText } from '../../styles/game.styles';
 import {
   Backdrop,
   Character,
   Cupboard,
   Message,
-  MissionBanner,
-  MissionText,
   Outfit,
   OutfitContainer,
   Phone,
   RightButton,
-} from '../styles/game.styles';
+} from './styles';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
