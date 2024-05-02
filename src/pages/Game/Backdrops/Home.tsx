@@ -11,10 +11,12 @@ import {
   Outfit,
   OutfitContainer,
   Message,
+  Cupboard,
 } from '../styles/game.styles';
 import smsTone from '../../../assets/sms-tone.mp3';
 import phone from '../../../assets/phone.png';
 import message from '../../../assets/message.png';
+import cupboard from '../../../assets/cupboard.jpg';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -48,6 +50,7 @@ export const Home = () => {
   }, []);
 
   const [showMessage, setShowMessage] = useState(false);
+  const [messageSeen, setMessageSeen] = useState(false);
 
   const onClickPhone = () => {
     setShowMessage(true);
@@ -56,6 +59,7 @@ export const Home = () => {
   const onClickMessage = () => {
     setShowPhone(false);
     setShowMessage(false);
+    setMessageSeen(true);
   };
 
   return (
@@ -76,8 +80,11 @@ export const Home = () => {
           alt="Yo what are you up to! Come whisky it's live"
         />
       )}
-      <Backdrop src={home} alt="home" onClick={onHomeClick} />
+      <Backdrop src={home} alt="home" />
       <Character $stage={stage} src={character} alt="character" />
+      {messageSeen && (
+        <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
+      )}
       {showOutfits && (
         <OutfitContainer>
           <Outfit onClick={onOutfitSelect} src="" alt="outfit-1" />

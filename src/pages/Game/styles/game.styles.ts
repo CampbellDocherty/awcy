@@ -261,6 +261,7 @@ export const Phone = styled.img`
   left: 6%;
   animation: ${slideUp} 0.5s ease-in-out;
   cursor: pointer;
+  z-index: 190;
 `;
 
 export const Message = styled.img`
@@ -270,4 +271,16 @@ export const Message = styled.img`
   left: 0;
   cursor: pointer;
   z-index: 200;
+`;
+
+export const Cupboard = styled.img`
+  width: 19%;
+  cursor: pointer;
+  position: absolute;
+  left: 8.2%;
+  top: 32%;
+
+  &:hover {
+    outline: 3px solid lightblue;
+  }
 `;
