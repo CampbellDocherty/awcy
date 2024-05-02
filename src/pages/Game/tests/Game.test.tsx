@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test, vitest } from 'vitest';
+import { describe, expect, test, vitest } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Game } from '../Backdrops/Game';
 import { GameProvider } from '../../../context/Game/GameProvider';
@@ -42,7 +42,9 @@ describe('When the game renders', () => {
     enterNameAndPlay();
     vitest
       .spyOn(window.HTMLMediaElement.prototype, 'play')
-      .mockImplementation(() => {});
+      .mockImplementation(async () => {
+        return;
+      });
 
     screen.getByAltText('home');
     screen.getByAltText('character');
