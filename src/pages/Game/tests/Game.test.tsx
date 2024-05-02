@@ -34,15 +34,14 @@ describe('When the game renders', () => {
     screen.getByText('Play');
   });
 
-  test('goes to club when submit name', () => {
+  test('goes to home when submit name', () => {
     renderGame();
     enterNameAndPlay();
-    screen.getByAltText('club');
+    screen.getByAltText('home');
     screen.getByAltText('character');
-    screen.getByAltText('bouncer');
   });
 
-  test('goes home when right arrow clicked', () => {
+  test('goes home when arrow clicked', () => {
     renderGame();
     enterNameAndPlay();
     clickToGoHome();

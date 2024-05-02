@@ -9,7 +9,7 @@ export const Login = () => {
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name) return;
-    update({ name, stage: Stage.CLUB });
+    update({ name, stage: Stage.HOME });
   };
 
   return (

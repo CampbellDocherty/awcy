@@ -237,3 +237,28 @@ export const StatBar = styled.progress<{ $stat: string }>`
     padding: 2px;
   }
 `;
+
+const slideUp = keyframes`
+0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 20px, 0);
+    -moz-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0);
+}
+
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0, 0);
+    -moz-transform: translate(0, 0, 0);
+    -o-transform: translate(0, 0, 0);
+    transform: translate(0, 0, 0);
+}`;
+
+export const MessageReceived = styled.img`
+  max-width: 20%;
+  position: absolute;
+  bottom: -15%;
+  left: 6%;
+  animation: ${slideUp} 0.5s ease-in-out;
+  cursor: pointer;
+`;
