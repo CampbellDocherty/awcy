@@ -127,7 +127,21 @@ export const Bouncer = styled.img`
   position: absolute;
   left: 42%;
   top: 48%;
+  cursor: pointer;
 `;
+
+const bounce = keyframes`
+0% {
+    top: 50%;
+}
+
+50% {
+  top: 51%
+}
+
+100% {
+    top: 50%;
+}`;
 
 export const RightButton = styled.img`
   position: absolute;
@@ -138,6 +152,7 @@ export const RightButton = styled.img`
   cursor: pointer;
   width: 10%;
   transform: scaleX(-1);
+  animation: ${bounce} 1.5s infinite;
 `;
 
 export const LeftButton = styled.img`
@@ -145,9 +160,10 @@ export const LeftButton = styled.img`
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 400;
+  z-index: 100;
   cursor: pointer;
   width: 10%;
+  animation: ${bounce} 1.5s infinite;
 `;
 
 export const OutfitContainer = styled.div`
@@ -195,22 +211,6 @@ export const Outfit = styled.img`
     animation: ${grow} 2s ease-in-out;
   }
 `;
-
-const slideRight = keyframes`
-0% {
-    opacity: 0;
-    -webkit-transform: translate3d(-20px, 0, 0);
-    -moz-transform: translate3d(-20px, 0, 0);
-    transform: translate3d(-20px, 0, 0);
-}
-
-100% {
-    opacity: 1;
-    -webkit-transform: translate(0, 0, 0);
-    -moz-transform: translate(0, 0, 0);
-    -o-transform: translate(0, 0, 0);
-    transform: translate(0, 0, 0);
-}`;
 
 export const StatsBar = styled.img`
   margin-left: auto;

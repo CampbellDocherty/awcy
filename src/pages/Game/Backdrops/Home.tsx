@@ -41,6 +41,7 @@ export const Home = () => {
 
   useEffect(() => {
     setTimeout(() => {
+      if (stats) return;
       if (!audioRef) return;
       if (!audioRef.current) return;
       if (!audioRef.current.play) return;
@@ -89,7 +90,7 @@ export const Home = () => {
       )}
       <Backdrop src={home} alt="home" />
       <Character $stage={stage} src={character} alt="character" />
-      {messageSeen && (
+      {(messageSeen || stats) && (
         <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
       )}
       {messageSeen && (
