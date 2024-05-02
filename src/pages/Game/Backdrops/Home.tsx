@@ -35,15 +35,15 @@ export const Home = () => {
   const [showPhone, setShowPhone] = useState(false);
 
   useEffect(() => {
-    if (!audioRef) return;
     setTimeout(() => {
-      try {
-        navigator.vibrate(200);
-      } catch {
-        console.log('No vibrator');
+      if (!audioRef) return;
+      if (!audioRef.current) return;
+      if (!audioRef.current.play) return;
+      if ('vibrator' in navigator) {
+        navigator.vibrate(500);
       }
       setShowPhone(true);
-      audioRef?.current?.play();
+      audioRef.current.play();
     }, 1000);
   }, []);
 
