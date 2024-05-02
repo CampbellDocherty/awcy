@@ -1,24 +1,24 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import arrow from '../../../assets/arrow.png';
 import character from '../../../assets/character.png';
 import cupboard from '../../../assets/cupboard.jpg';
 import message from '../../../assets/message.png';
 import phone from '../../../assets/phone.png';
 import home from '../../../assets/room.jpg';
 import smsTone from '../../../assets/sms-tone.mp3';
-import statBar from '../../../assets/hp-clout.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import {
   Backdrop,
   Character,
   Cupboard,
-  LeftButton,
   Message,
   MissionBanner,
   MissionText,
   Outfit,
   OutfitContainer,
   Phone,
+  RightButton,
 } from '../styles/game.styles';
 
 export const Home = () => {
@@ -71,9 +71,11 @@ export const Home = () => {
         <track default kind="captions" src={smsTone} />
       </audio>
       {stats && (
-        <LeftButton onClick={() => update({ stage: Stage.CLUB })}>
-          {'<'}
-        </LeftButton>
+        <RightButton
+          src={arrow}
+          alt="right arrow"
+          onClick={() => update({ stage: Stage.CLUB })}
+        />
       )}
       {showPhone && (
         <Phone onClick={onClickPhone} src={phone} alt="message received" />

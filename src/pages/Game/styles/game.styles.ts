@@ -129,20 +129,25 @@ export const Bouncer = styled.img`
   top: 48%;
 `;
 
-export const RightButton = styled.button`
+export const RightButton = styled.img`
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
   z-index: 100;
+  cursor: pointer;
+  width: 10%;
+  transform: scaleX(-1);
 `;
 
-export const LeftButton = styled.button`
+export const LeftButton = styled.img`
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 100;
+  z-index: 400;
+  cursor: pointer;
+  width: 10%;
 `;
 
 export const OutfitContainer = styled.div`
