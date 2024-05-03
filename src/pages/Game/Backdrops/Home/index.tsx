@@ -1,24 +1,49 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import character from '../../../../assets/character.png';
 import cupboard from '../../../../assets/cupboard.jpg';
 import message from '../../../../assets/message.png';
 import phone from '../../../../assets/phone.png';
 import home from '../../../../assets/room.jpg';
 import smsTone from '../../../../assets/sms-tone.mp3';
+import bigDripFront from '../../../../assets/big-drip-front.png';
+import steadyFront from '../../../../assets/steady-front.png';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
-import {
-  Character,
-  MissionBanner,
-  MissionText,
-  Backdrop,
-} from '../../styles/game.styles';
+import { MissionBanner, MissionText, Backdrop } from '../../styles/game.styles';
 import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
 import { NextStage } from '../NextStage';
+import { Character } from '../Character';
+
+type OutfitType = {
+  src: string;
+  alt: string;
+  stats: {
+    health: number;
+    clout: number;
+  };
+};
+
+const outfits: OutfitType[] = [
+  {
+    src: bigDripFront,
+    alt: 'drippy outfit',
+    stats: {
+      health: 20,
+      clout: 100,
+    },
+  },
+  {
+    src: steadyFront,
+    alt: 'steady outfit',
+    stats: {
+      health: 60,
+      clout: 40,
+    },
+  },
+];
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { stage, update, stats } = useContext(GameContext);
+  const { update, stats } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
@@ -27,9 +52,9 @@ export const Home = () => {
     setShowOutfits(true);
   };
 
-  const onOutfitSelect = () => {
+  const onOutfitSelect = (outfit: OutfitType) => {
     setShowOutfits(false);
-    update({ stats: { health: 80, clout: 80 } });
+    update({ stats: outfit.stats, outfit: outfit.src });
   };
 
   const [showPhone, setShowPhone] = useState(false);
@@ -80,7 +105,7 @@ export const Home = () => {
         />
       )}
       <Backdrop src={home} alt="home" />
-      <Character $stage={stage} src={character} alt="character" />
+      <Character />
       {(messageSeen || stats) && (
         <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
       )}
@@ -91,9 +116,16 @@ export const Home = () => {
       )}
       {showOutfits && (
         <OutfitContainer>
-          <Outfit onClick={onOutfitSelect} src="" alt="outfit-1" />
-          <Outfit onClick={onOutfitSelect} src="" alt="outfit-2" />
-          <Outfit onClick={onOutfitSelect} src="" alt="outfit-3" />
+          {outfits.map((outfit) => {
+            return (
+              <Outfit
+                key={outfit.src}
+                onClick={() => onOutfitSelect(outfit)}
+                src={outfit.src}
+                alt={outfit.alt}
+              />
+            );
+          })}
         </OutfitContainer>
       )}
     </>

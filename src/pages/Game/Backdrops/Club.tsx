@@ -1,19 +1,14 @@
 import { useContext } from 'react';
 import bouncer from '../../../assets/bouncer.png';
-import character from '../../../assets/character.png';
 import club from '../../../assets/club.jpg';
 import arrow from '../../../assets/arrow.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
-import {
-  Backdrop,
-  Bouncer,
-  Character,
-  LeftButton,
-} from '../styles/game.styles';
+import { Backdrop, Bouncer, LeftButton } from '../styles/game.styles';
+import { Character } from './Character';
 
 export const Club = () => {
-  const { stage, update } = useContext(GameContext);
+  const { update } = useContext(GameContext);
   return (
     <>
       <LeftButton
@@ -22,7 +17,7 @@ export const Club = () => {
         onClick={() => update({ stage: Stage.HOME })}
       />
       <Backdrop src={club} alt="club" />
-      <Character $stage={stage} src={character} alt="character" />
+      <Character />
       <Bouncer src={bouncer} alt="bouncer" />
     </>
   );

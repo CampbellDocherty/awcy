@@ -2,8 +2,8 @@ import { keyframes, styled } from 'styled-components';
 
 export const OutfitContainer = styled.div`
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -28,10 +28,8 @@ const grow = keyframes`
 }`;
 
 export const Outfit = styled.img`
-  width: 20%;
-  height: 20%;
-  border: 3px solid pink;
-  border-radius: 50%;
+  width: 30%;
+  cursor: pointer;
 
   &:nth-of-type(1) {
     animation: ${grow} 1s ease-in-out;
@@ -39,10 +37,6 @@ export const Outfit = styled.img`
 
   &:nth-of-type(2) {
     animation: ${grow} 1.5s ease-in-out;
-  }
-
-  &:nth-of-type(3) {
-    animation: ${grow} 2s ease-in-out;
   }
 `;
 

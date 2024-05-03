@@ -19,8 +19,14 @@ export const Login = () => {
         <p>version 1.0</p>
       </LogoColumn>
       <Form onSubmit={onSubmit}>
-        <label htmlFor="name">Select character name:</label>
+        <label
+          style={{ width: '60%', alignSelf: 'center', textAlign: 'left' }}
+          htmlFor="name"
+        >
+          Name:
+        </label>
         <input
+          style={{ width: '60%', alignSelf: 'center' }}
           required
           id="name"
           onChange={(e) => update({ name: e.target.value })}

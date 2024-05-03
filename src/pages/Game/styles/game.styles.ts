@@ -159,8 +159,6 @@ export const LeftButton = styled.img`
 `;
 
 export const Character = styled.img<{ $stage: string }>`
-  width: ${(props) => (props.$stage === 'club' ? '16%' : '25%')};
-  height: ${(props) => (props.$stage === 'club' ? '26%' : '38%')};
   position: absolute;
   bottom: 0;
   right: 3%;
@@ -210,6 +208,7 @@ export const MissionBanner = styled.div`
 
 export const MissionText = styled.p`
   font-size: 20px;
+  margin: 4px;
   @media screen and (max-device-width: 568px) {
     font-size: 12px;
     margin: 4px;
