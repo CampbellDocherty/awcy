@@ -210,6 +210,7 @@ export const MissionBanner = styled.div`
 
 export const MissionText = styled.p`
   font-size: 20px;
+  margin: 4px;
   @media screen and (max-device-width: 568px) {
     font-size: 12px;
     margin: 4px;
