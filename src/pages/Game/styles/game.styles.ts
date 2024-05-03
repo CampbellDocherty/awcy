@@ -159,8 +159,6 @@ export const LeftButton = styled.img`
 `;
 
 export const Character = styled.img<{ $stage: string }>`
-  width: ${(props) => (props.$stage === 'club' ? '15%' : '25%')};
-  height: ${(props) => (props.$stage === 'club' ? '24%' : '38%')};
   position: absolute;
   bottom: 0;
   right: 3%;

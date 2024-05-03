@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import character from '../../../../assets/character.png';
 import cupboard from '../../../../assets/cupboard.jpg';
 import message from '../../../../assets/message.png';
 import phone from '../../../../assets/phone.png';
@@ -9,14 +8,10 @@ import bigDripFront from '../../../../assets/big-drip-front.png';
 import steadyFront from '../../../../assets/steady-front.png';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
-import {
-  Character,
-  MissionBanner,
-  MissionText,
-  Backdrop,
-} from '../../styles/game.styles';
+import { MissionBanner, MissionText, Backdrop } from '../../styles/game.styles';
 import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
 import { NextStage } from '../NextStage';
+import { Character } from '../Character';
 
 type OutfitType = {
   src: string;
@@ -45,7 +40,7 @@ const outfits: OutfitType[] = [
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { stage, update, stats, outfit } = useContext(GameContext);
+  const { update, stats } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
@@ -107,11 +102,7 @@ export const Home = () => {
         />
       )}
       <Backdrop src={home} alt="home" />
-      {outfit ? (
-        <Character $stage={stage} src={outfit} alt="character" />
-      ) : (
-        <Character $stage={stage} src={character} alt="character" />
-      )}
+      <Character />
       {(messageSeen || stats) && (
         <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
       )}
