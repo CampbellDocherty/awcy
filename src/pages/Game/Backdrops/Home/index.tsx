@@ -45,7 +45,7 @@ const outfits: OutfitType[] = [
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { stage, update, stats } = useContext(GameContext);
+  const { stage, update, stats, outfit } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
@@ -56,7 +56,7 @@ export const Home = () => {
 
   const onOutfitSelect = (outfit: OutfitType) => {
     setShowOutfits(false);
-    update({ stats: outfit.stats });
+    update({ stats: outfit.stats, outfit: outfit.src });
   };
 
   const [showPhone, setShowPhone] = useState(false);
@@ -107,7 +107,11 @@ export const Home = () => {
         />
       )}
       <Backdrop src={home} alt="home" />
-      <Character $stage={stage} src={character} alt="character" />
+      {outfit ? (
+        <Character $stage={stage} src={outfit} alt="character" />
+      ) : (
+        <Character $stage={stage} src={character} alt="character" />
+      )}
       {(messageSeen || stats) && (
         <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
       )}
