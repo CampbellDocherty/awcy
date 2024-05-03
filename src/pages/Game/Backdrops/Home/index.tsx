@@ -5,6 +5,8 @@ import message from '../../../../assets/message.png';
 import phone from '../../../../assets/phone.png';
 import home from '../../../../assets/room.jpg';
 import smsTone from '../../../../assets/sms-tone.mp3';
+import bigDripFront from '../../../../assets/big-drip-front.png';
+import steadyFront from '../../../../assets/steady-front.png';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
 import {
@@ -15,6 +17,31 @@ import {
 } from '../../styles/game.styles';
 import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
 import { NextStage } from '../NextStage';
+
+type OutfitType = {
+  src: string;
+  stats: {
+    health: number;
+    clout: number;
+  };
+};
+
+const outfits: OutfitType[] = [
+  {
+    src: bigDripFront,
+    stats: {
+      health: 20,
+      clout: 100,
+    },
+  },
+  {
+    src: steadyFront,
+    stats: {
+      health: 60,
+      clout: 40,
+    },
+  },
+];
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -27,9 +54,9 @@ export const Home = () => {
     setShowOutfits(true);
   };
 
-  const onOutfitSelect = () => {
+  const onOutfitSelect = (outfit: OutfitType) => {
     setShowOutfits(false);
-    update({ stats: { health: 80, clout: 80 } });
+    update({ stats: outfit.stats });
   };
 
   const [showPhone, setShowPhone] = useState(false);
@@ -91,9 +118,16 @@ export const Home = () => {
       )}
       {showOutfits && (
         <OutfitContainer>
-          <Outfit onClick={onOutfitSelect} src="" alt="outfit-1" />
-          <Outfit onClick={onOutfitSelect} src="" alt="outfit-2" />
-          <Outfit onClick={onOutfitSelect} src="" alt="outfit-3" />
+          {outfits.map((outfit) => {
+            return (
+              <Outfit
+                key={outfit.src}
+                onClick={() => onOutfitSelect(outfit)}
+                src={outfit.src}
+                alt={outfit.src}
+              />
+            );
+          })}
         </OutfitContainer>
       )}
     </>
