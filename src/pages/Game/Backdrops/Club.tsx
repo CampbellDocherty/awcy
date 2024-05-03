@@ -13,7 +13,7 @@ import {
 } from '../styles/game.styles';
 
 export const Club = () => {
-  const { stage, update } = useContext(GameContext);
+  const { stage, update, outfit } = useContext(GameContext);
   return (
     <>
       <LeftButton
@@ -22,7 +22,11 @@ export const Club = () => {
         onClick={() => update({ stage: Stage.HOME })}
       />
       <Backdrop src={club} alt="club" />
-      <Character $stage={stage} src={character} alt="character" />
+      {outfit ? (
+        <Character $stage={stage} src={outfit} alt="character" />
+      ) : (
+        <Character $stage={stage} src={character} alt="character" />
+      )}
       <Bouncer src={bouncer} alt="bouncer" />
     </>
   );
