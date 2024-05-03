@@ -12,7 +12,7 @@ const renderGame = () => {
 };
 
 function enterNameAndPlay() {
-  const input = screen.getByLabelText('Select character name:');
+  const input = screen.getByLabelText('Name:');
   fireEvent.change(input, { target: { value: 'Cammy' } });
   fireEvent.click(screen.getByText('Play'));
 }
@@ -41,7 +41,7 @@ describe('When the game renders', () => {
 
   test('it shows the first login screen', () => {
     renderGame();
-    screen.getByText('Select character name:');
+    screen.getByText('Name:');
     screen.getByText('Play');
   });
 
@@ -72,25 +72,23 @@ describe('home mission', () => {
   });
 
   test('when outfit selected, outfits disappear and then health and clout appear', async () => {
-    expect(screen.queryByAltText('outfit-1')).toBeNull();
+    expect(screen.queryByAltText('drippy outfit')).toBeNull();
     const cupboard = screen.getByAltText('cupboard');
     fireEvent.click(cupboard);
-    const outfitOne = screen.getByAltText('outfit-1');
+    const outfitOne = screen.getByAltText('drippy outfit');
     fireEvent.click(outfitOne);
 
-    expect(screen.queryByAltText('outfit-2')).toBeNull();
-    expect(screen.queryByAltText('outfit-3')).toBeNull();
+    expect(screen.queryByAltText('steady outfit')).toBeNull();
 
     screen.getByAltText('stat bar');
   });
 
   test('shows outfits when cupboard clicked', async () => {
-    expect(screen.queryByAltText('outfit-1')).toBeNull();
+    expect(screen.queryByAltText('drippy outfit')).toBeNull();
     const cupboard = screen.getByAltText('cupboard');
     fireEvent.click(cupboard);
-    screen.getByAltText('outfit-1');
-    screen.getByAltText('outfit-2');
-    screen.getByAltText('outfit-3');
+    screen.getByAltText('drippy outfit');
+    screen.getByAltText('steady outfit');
   });
 
   test('shows mission', () => {

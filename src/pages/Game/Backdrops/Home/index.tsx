@@ -15,6 +15,7 @@ import { Character } from '../Character';
 
 type OutfitType = {
   src: string;
+  alt: string;
   stats: {
     health: number;
     clout: number;
@@ -24,6 +25,7 @@ type OutfitType = {
 const outfits: OutfitType[] = [
   {
     src: bigDripFront,
+    alt: 'drippy outfit',
     stats: {
       health: 20,
       clout: 100,
@@ -31,6 +33,7 @@ const outfits: OutfitType[] = [
   },
   {
     src: steadyFront,
+    alt: 'steady outfit',
     stats: {
       health: 60,
       clout: 40,
@@ -119,7 +122,7 @@ export const Home = () => {
                 key={outfit.src}
                 onClick={() => onOutfitSelect(outfit)}
                 src={outfit.src}
-                alt={outfit.src}
+                alt={outfit.alt}
               />
             );
           })}
