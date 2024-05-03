@@ -11,9 +11,10 @@ import {
 } from '../styles/game.styles';
 import { StatsWrapper } from '../StatsWrapper';
 import { Home } from './Home';
+import { Mission } from '../components/Mission';
 
 export const Game = () => {
-  const { stats, stage } = useContext(GameContext);
+  const { stats, stage, mission } = useContext(GameContext);
 
   return (
     <Wrapper>
@@ -24,6 +25,7 @@ export const Game = () => {
             {stage === Stage.CLUB && <Club />}
             {stage === Stage.HOME && <Home />}
             {stats && stage !== Stage.LOGIN && <StatsWrapper stats={stats} />}
+            {mission && stage !== Stage.LOGIN && <Mission />}
           </GameWindow>
         </InnerAspectRatioBox>
       </AspectRatioBox>

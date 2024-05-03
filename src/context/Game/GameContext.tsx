@@ -6,6 +6,7 @@ export const defaultValues = {
   stats: null,
   outfit: null,
   stage: Stage.LOGIN,
+  mission: null,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   update: () => {},
 };

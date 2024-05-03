@@ -14,5 +14,6 @@ export type Game = {
   stats: Stats | null;
   outfit: string | null;
   stage: Stage;
+  mission: string | null;
   update: (newGameState: Partial<Game>) => void;
 };

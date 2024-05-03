@@ -6,7 +6,7 @@ import home from '../../../../assets/room.jpg';
 import smsTone from '../../../../assets/sms-tone.mp3';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
-import { MissionBanner, MissionText, Backdrop } from '../../styles/game.styles';
+import { Backdrop } from '../../styles/game.styles';
 import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
 import { NextStage } from '../../components/NextStage';
 import { Character } from '../../components/Character';
@@ -18,7 +18,7 @@ export const Home = () => {
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
-  const onHomeClick = () => {
+  const onCupboardClick = () => {
     update({ stats: null });
     setShowOutfits(true);
   };
@@ -54,6 +54,7 @@ export const Home = () => {
   const onClickMessage = () => {
     setShowPhone(false);
     setShowMessage(false);
+    update({ mission: 'Get changed and head to the club' });
     setMessageSeen(true);
   };
 
@@ -63,7 +64,10 @@ export const Home = () => {
         <track default kind="captions" src={smsTone} />
       </audio>
       {stats && (
-        <NextStage right onClick={() => update({ stage: Stage.CLUB })} />
+        <NextStage
+          right
+          onClick={() => update({ stage: Stage.CLUB, mission: null })}
+        />
       )}
       {showPhone && (
         <Phone onClick={onClickPhone} src={phone} alt="message received" />
@@ -78,12 +82,7 @@ export const Home = () => {
       <Backdrop src={home} alt="home" />
       <Character />
       {(messageSeen || stats) && (
-        <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
-      )}
-      {messageSeen && (
-        <MissionBanner>
-          <MissionText>Get changed and head to the club</MissionText>
-        </MissionBanner>
+        <Cupboard onClick={onCupboardClick} src={cupboard} alt="cupboard" />
       )}
       {showOutfits && (
         <OutfitContainer>
