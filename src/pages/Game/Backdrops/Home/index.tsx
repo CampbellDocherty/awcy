@@ -6,11 +6,11 @@ import home from '../../../../assets/room.jpg';
 import smsTone from '../../../../assets/sms-tone.mp3';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
-import { Backdrop } from '../../styles/game.styles';
-import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
-import { NextStage } from '../../components/NextStage';
 import { Character } from '../../components/Character';
-import { outfits, OutfitType } from './outfits';
+import { NextStage } from '../../components/NextStage';
+import { Backdrop } from '../../styles/game.styles';
+import { OutfitType, outfits } from './outfits';
+import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
