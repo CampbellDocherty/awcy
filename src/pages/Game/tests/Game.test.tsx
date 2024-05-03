@@ -81,8 +81,7 @@ describe('home mission', () => {
     expect(screen.queryByAltText('outfit-2')).toBeNull();
     expect(screen.queryByAltText('outfit-3')).toBeNull();
 
-    screen.getByText('Health: 80');
-    screen.getByText('Clout: 80');
+    screen.getByAltText('stat bar');
   });
 
   test('shows outfits when cupboard clicked', async () => {
@@ -92,5 +91,9 @@ describe('home mission', () => {
     screen.getByAltText('outfit-1');
     screen.getByAltText('outfit-2');
     screen.getByAltText('outfit-3');
+  });
+
+  test('shows mission', () => {
+    screen.getByText('Get changed and head to the club');
   });
 });

@@ -1,27 +1,24 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import character from '../../../assets/character.png';
-import cupboard from '../../../assets/cupboard.jpg';
-import message from '../../../assets/message.png';
-import phone from '../../../assets/phone.png';
-import home from '../../../assets/room.jpg';
-import smsTone from '../../../assets/sms-tone.mp3';
-import { GameContext } from '../../../context/Game';
-import { Stage } from '../../../context/Game/types';
+import character from '../../../../assets/character.png';
+import cupboard from '../../../../assets/cupboard.jpg';
+import message from '../../../../assets/message.png';
+import phone from '../../../../assets/phone.png';
+import home from '../../../../assets/room.jpg';
+import smsTone from '../../../../assets/sms-tone.mp3';
+import { GameContext } from '../../../../context/Game';
+import { Stage } from '../../../../context/Game/types';
 import {
-  Backdrop,
   Character,
-  Cupboard,
-  LeftButton,
-  Message,
   MissionBanner,
-  Outfit,
-  OutfitContainer,
-  Phone,
-} from '../styles/game.styles';
+  MissionText,
+  Backdrop,
+} from '../../styles/game.styles';
+import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
+import { NextStage } from '../NextStage';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { stage, update } = useContext(GameContext);
+  const { stage, update, stats } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
@@ -39,6 +36,7 @@ export const Home = () => {
 
   useEffect(() => {
     setTimeout(() => {
+      if (stats) return;
       if (!audioRef) return;
       if (!audioRef.current) return;
       if (!audioRef.current.play) return;
@@ -68,9 +66,9 @@ export const Home = () => {
       <audio ref={audioRef} controls={false} src={smsTone}>
         <track default kind="captions" src={smsTone} />
       </audio>
-      <LeftButton onClick={() => update({ stage: Stage.CLUB })}>
-        {'<'}
-      </LeftButton>
+      {stats && (
+        <NextStage right onClick={() => update({ stage: Stage.CLUB })} />
+      )}
       {showPhone && (
         <Phone onClick={onClickPhone} src={phone} alt="message received" />
       )}
@@ -83,12 +81,12 @@ export const Home = () => {
       )}
       <Backdrop src={home} alt="home" />
       <Character $stage={stage} src={character} alt="character" />
-      {messageSeen && (
+      {(messageSeen || stats) && (
         <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
       )}
       {messageSeen && (
         <MissionBanner>
-          <p>Get changed and head to the club</p>
+          <MissionText>Get changed and head to the club</MissionText>
         </MissionBanner>
       )}
       {showOutfits && (
