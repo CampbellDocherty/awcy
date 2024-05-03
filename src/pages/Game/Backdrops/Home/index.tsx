@@ -4,42 +4,13 @@ import message from '../../../../assets/message.png';
 import phone from '../../../../assets/phone.png';
 import home from '../../../../assets/room.jpg';
 import smsTone from '../../../../assets/sms-tone.mp3';
-import bigDripFront from '../../../../assets/big-drip-front.png';
-import steadyFront from '../../../../assets/steady-front.png';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
 import { MissionBanner, MissionText, Backdrop } from '../../styles/game.styles';
 import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
-import { NextStage } from '../NextStage';
-import { Character } from '../Character';
-
-type OutfitType = {
-  src: string;
-  alt: string;
-  stats: {
-    health: number;
-    clout: number;
-  };
-};
-
-const outfits: OutfitType[] = [
-  {
-    src: bigDripFront,
-    alt: 'drippy outfit',
-    stats: {
-      health: 20,
-      clout: 100,
-    },
-  },
-  {
-    src: steadyFront,
-    alt: 'steady outfit',
-    stats: {
-      health: 60,
-      clout: 40,
-    },
-  },
-];
+import { NextStage } from '../../components/NextStage';
+import { Character } from '../../components/Character';
+import { outfits, OutfitType } from './outfits';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);

@@ -5,7 +5,7 @@ import arrow from '../../../assets/arrow.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import { Backdrop, Bouncer, LeftButton } from '../styles/game.styles';
-import { Character } from './Character';
+import { Character } from '../components/Character';
 
 export const Club = () => {
   const { update } = useContext(GameContext);

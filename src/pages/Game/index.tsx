@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from '../../context/User';
-import { Game } from './Backdrops/Game';
+import { Game } from './backdrops/Game';
 import { GameProvider } from '../../context/Game/GameProvider';
 
 export const GameWrapper = () => {
