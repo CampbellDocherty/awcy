@@ -4,42 +4,13 @@ import message from '../../../../assets/message.png';
 import phone from '../../../../assets/phone.png';
 import home from '../../../../assets/room.jpg';
 import smsTone from '../../../../assets/sms-tone.mp3';
-import bigDripFront from '../../../../assets/big-drip-front.png';
-import steadyFront from '../../../../assets/steady-front.png';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
-import { MissionBanner, MissionText, Backdrop } from '../../styles/game.styles';
+import { Character } from '../../components/Character';
+import { NextStage } from '../../components/NextStage';
+import { Backdrop } from '../../styles/game.styles';
+import { OutfitType, outfits } from './outfits';
 import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
-import { NextStage } from '../NextStage';
-import { Character } from '../Character';
-
-type OutfitType = {
-  src: string;
-  alt: string;
-  stats: {
-    health: number;
-    clout: number;
-  };
-};
-
-const outfits: OutfitType[] = [
-  {
-    src: bigDripFront,
-    alt: 'drippy outfit',
-    stats: {
-      health: 20,
-      clout: 100,
-    },
-  },
-  {
-    src: steadyFront,
-    alt: 'steady outfit',
-    stats: {
-      health: 60,
-      clout: 40,
-    },
-  },
-];
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -47,7 +18,7 @@ export const Home = () => {
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
-  const onHomeClick = () => {
+  const onCupboardClick = () => {
     update({ stats: null });
     setShowOutfits(true);
   };
@@ -83,6 +54,7 @@ export const Home = () => {
   const onClickMessage = () => {
     setShowPhone(false);
     setShowMessage(false);
+    update({ mission: 'Get changed and head to the club' });
     setMessageSeen(true);
   };
 
@@ -92,7 +64,10 @@ export const Home = () => {
         <track default kind="captions" src={smsTone} />
       </audio>
       {stats && (
-        <NextStage right onClick={() => update({ stage: Stage.CLUB })} />
+        <NextStage
+          right
+          onClick={() => update({ stage: Stage.CLUB, mission: null })}
+        />
       )}
       {showPhone && (
         <Phone onClick={onClickPhone} src={phone} alt="message received" />
@@ -107,12 +82,7 @@ export const Home = () => {
       <Backdrop src={home} alt="home" />
       <Character />
       {(messageSeen || stats) && (
-        <Cupboard onClick={onHomeClick} src={cupboard} alt="cupboard" />
-      )}
-      {messageSeen && (
-        <MissionBanner>
-          <MissionText>Get changed and head to the club</MissionText>
-        </MissionBanner>
+        <Cupboard onClick={onCupboardClick} src={cupboard} alt="cupboard" />
       )}
       {showOutfits && (
         <OutfitContainer>
