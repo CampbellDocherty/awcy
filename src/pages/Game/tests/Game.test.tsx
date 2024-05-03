@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, test, vitest } from 'vitest';
 import { GameProvider } from '../../../context/Game/GameProvider';
-import { Game } from '../backdrops/Game';
+import { Game } from '../Backdrops/Game';
 
 const renderGame = () => {
   render(
