@@ -29,7 +29,6 @@ export const StatsWrapper = ({ health }: { health: number }) => {
         {healthPieces.map((_, index) => {
           const offset = 6.5 * index;
           const left = `${46 - offset}%`;
-          console.log(left);
           return <StatPiece key={index} $left={left} />;
         })}
         {cloutPieces.map((_, index) => {
