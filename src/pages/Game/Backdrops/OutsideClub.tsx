@@ -4,7 +4,12 @@ import outsideClub from '../../../assets/outside-club.jpg';
 import arrow from '../../../assets/arrow.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
-import { Backdrop, Bouncer, LeftButton } from '../styles/game.styles';
+import {
+  Backdrop,
+  Bouncer,
+  DecisionOption,
+  LeftButton,
+} from '../styles/game.styles';
 import { Character } from '../components/Character';
 import instagram from '../../../assets/following.png';
 import { Message } from './Home/styles';
@@ -46,6 +51,22 @@ export const OutsideClub = () => {
     });
   };
 
+  const onFirstOptionClick = () => {
+    setShowPopUp(false);
+    update({
+      health: health + 1,
+      hasAccessToClub: true,
+    });
+  };
+
+  const onSecondOptionClick = () => {
+    setShowPopUp(false);
+    update({
+      health: health - 1,
+      hasAccessToClub: true,
+    });
+  };
+
   const onThirdOptionClick = () => {
     setShowIg(true);
   };
@@ -53,14 +74,23 @@ export const OutsideClub = () => {
   return (
     <>
       {showPopUp && (
-        <PopUpDecision
-          backgroundSrc={popUp}
-          firstOptionSrc={firstOption}
-          secondOptionSrc={secondOption}
-          thirdOptionSrc={thirdOption}
-          onClose={() => setShowPopUp(false)}
-          onThirdOptionClick={onThirdOptionClick}
-        />
+        <PopUpDecision backgroundSrc={popUp}>
+          <DecisionOption
+            onClick={onFirstOptionClick}
+            src={firstOption}
+            alt=""
+          />
+          <DecisionOption
+            onClick={onSecondOptionClick}
+            src={secondOption}
+            alt=""
+          />
+          <DecisionOption
+            onClick={onThirdOptionClick}
+            src={thirdOption}
+            alt=""
+          />
+        </PopUpDecision>
       )}
       {showIg && (
         <Message

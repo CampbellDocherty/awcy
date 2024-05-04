@@ -256,26 +256,23 @@ export const PopUp = styled.img`
   height: 100%;
 `;
 
-export const FirstOption = styled.img`
+export const DecisionOption = styled.img`
   position: absolute;
   width: 17.4%;
-  top: 60.7%;
-  left: 29.2%;
   cursor: pointer;
-`;
 
-export const SecondOption = styled.img`
-  position: absolute;
-  width: 17.4%;
-  top: 60.7%;
-  right: 29.7%;
-  cursor: pointer;
-`;
+  &:nth-of-type(2) {
+    top: 60.7%;
+    right: 29.7%;
+  }
 
-export const ThirdOption = styled.img`
-  position: absolute;
-  width: 17.4%;
-  bottom: 8.7%;
-  left: 29.1%;
-  cursor: pointer;
+  &:nth-of-type(3) {
+    bottom: 8.7%;
+    left: 29.1%;
+  }
+
+  &:nth-of-type(4) {
+    top: 60.7%;
+    left: 29.2%;
+  }
 `;
