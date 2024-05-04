@@ -32,6 +32,7 @@ export const Home = () => {
 
   useEffect(() => {
     setTimeout(() => {
+      if (outfit) return;
       if (!audioRef) return;
       if (!audioRef.current) return;
       if (!audioRef.current.play) return;
