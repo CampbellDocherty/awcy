@@ -280,3 +280,72 @@ export const DecisionOption = styled.img`
     left: 29.2%;
   }
 `;
+
+export const Djs = styled.img`
+  width: 19.75%;
+  position: absolute;
+  top: 40.8%;
+  left: 44.72%;
+  cursor: pointer;
+`;
+
+export const ResultContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 800;
+  background-color: rgb(0, 0, 0, 0.9);
+  padding: 4px;
+  word-wrap: wrap;
+`;
+
+export const ResultContainerInner = styled.div`
+  width: 60%;
+`;
+
+export const ResultTitle = styled.h2<{ $win: boolean }>`
+  font-family: Nokia;
+  font-size: 40px;
+  margin: 0;
+  margin-bottom: 8px;
+  color: ${(props) => (props.$win ? 'yellow' : 'red')};
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 24px;
+  }
+`;
+
+export const ResultSubtitle = styled.h4`
+  font-family: Nokia;
+  font-size: 20px;
+  color: white;
+  margin: 0;
+  @media screen and (max-device-width: 568px) {
+    font-size: 10px;
+  }
+`;
+
+export const Restart = styled.button`
+  font-family: Nokia;
+  font-size: 16px;
+  color: white;
+  margin: 0;
+  background: transparent;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 8px;
+  margin-top: 12px;
+  cursor: pointer;
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 8px;
+  }
+`;
