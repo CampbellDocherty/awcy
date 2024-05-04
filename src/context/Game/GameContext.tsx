@@ -8,6 +8,7 @@ export const defaultValues = {
   stage: Stage.LOGIN,
   mission: null,
   hasAccessToClub: false,
+  hasCompletedClub: false,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   update: () => {},
 };

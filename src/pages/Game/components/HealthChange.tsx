@@ -19,13 +19,17 @@ const moveHealth = () => keyframes`
 
 const HealthChangeText = styled.p<{ $color: string }>`
   font-family: Nokia;
-  font-size: 20px;
+  font-size: 28px;
   position: absolute;
   opacity: 0;
   color: ${(props) => props.$color};
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  animation: ${moveHealth} 1s ease;
+  animation: ${moveHealth} 1.5s ease;
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 18px;
+  }
 `;
 
 export const HealthChange = ({ healthChange }: { healthChange: number }) => {
