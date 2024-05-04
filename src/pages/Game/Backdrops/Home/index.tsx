@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import popUp from '../../../../assets/choose-fit-pop-up.png';
 import cupboard from '../../../../assets/cupboard.jpg';
 import message from '../../../../assets/message.png';
 import phone from '../../../../assets/phone.png';
@@ -8,12 +7,11 @@ import smsTone from '../../../../assets/sms-tone.mp3';
 import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
 import { Character } from '../../components/Character';
-import { NextStage } from '../../components/NextStage';
-import { PopUpDecision } from '../../components/PopUpDecision';
-import { Backdrop, DecisionOption } from '../../styles/game.styles';
-import { OutfitType, outfits } from './outfits';
-import { Cupboard, Message, Phone } from './styles';
 import { HealthChange } from '../../components/HealthChange';
+import { NextStage } from '../../components/NextStage';
+import { Backdrop } from '../../styles/game.styles';
+import { OutfitType, outfits } from './outfits';
+import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -96,19 +94,20 @@ export const Home = () => {
       {messageSeen && (
         <Cupboard onClick={onCupboardClick} src={cupboard} alt="cupboard" />
       )}
+
       {showOutfits && (
-        <PopUpDecision backgroundSrc={popUp}>
+        <OutfitContainer>
           {outfits.map((outfit) => {
             return (
-              <DecisionOption
-                key={outfit.alt}
+              <Outfit
+                key={outfit.src}
                 onClick={() => onOutfitSelect(outfit)}
-                src={outfit.optionSrc}
+                src={outfit.src}
                 alt={outfit.alt}
               />
             );
           })}
-        </PopUpDecision>
+        </OutfitContainer>
       )}
     </>
   );
