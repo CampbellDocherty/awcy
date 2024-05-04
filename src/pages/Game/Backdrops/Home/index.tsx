@@ -66,7 +66,7 @@ export const Home = () => {
       {stats && (
         <NextStage
           right
-          onClick={() => update({ stage: Stage.CLUB, mission: null })}
+          onClick={() => update({ stage: Stage.OUTSIDE_CLUB, mission: null })}
         />
       )}
       {showPhone && (

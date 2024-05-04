@@ -1,24 +1,22 @@
 import { useContext } from 'react';
-import bouncer from '../../../assets/bouncer.png';
-import club from '../../../assets/club.jpg';
 import arrow from '../../../assets/arrow.png';
+import insideClub from '../../../assets/inside-club.jpg';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
-import { Backdrop, Bouncer, LeftButton } from '../styles/game.styles';
 import { Character } from '../components/Character';
+import { Backdrop, LeftButton } from '../styles/game.styles';
 
-export const Club = () => {
+export const InsideClub = () => {
   const { update } = useContext(GameContext);
   return (
     <>
       <LeftButton
         src={arrow}
         alt="left arrow"
-        onClick={() => update({ stage: Stage.HOME })}
+        onClick={() => update({ stage: Stage.OUTSIDE_CLUB })}
       />
-      <Backdrop src={club} alt="club" />
+      <Backdrop src={insideClub} alt="club" />
       <Character />
-      <Bouncer src={bouncer} alt="bouncer" />
     </>
   );
 };

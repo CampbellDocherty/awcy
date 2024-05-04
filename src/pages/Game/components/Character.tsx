@@ -9,15 +9,33 @@ const homeStyle = {
   height: '38%',
 };
 
-const clubStyle = {
+const outsideClubStyle = {
   width: '15%',
   height: '24%',
+};
+
+const insideClubStyle = {
+  width: '20%',
+  height: '30%',
+  left: '5%',
+};
+
+const getStyles = (stage: Stage) => {
+  if (stage === Stage.INSIDE_CLUB) {
+    return insideClubStyle;
+  }
+
+  if (stage === Stage.OUTSIDE_CLUB) {
+    return outsideClubStyle;
+  }
+
+  return homeStyle;
 };
 
 export const Character = () => {
   const { stage, outfit } = useContext(GameContext);
   const src = outfit || character;
-  const style = stage === Stage.CLUB ? clubStyle : homeStyle;
+  const style = getStyles(stage);
   return (
     <CharacterStyle style={style} $stage={stage} src={src} alt="character" />
   );
