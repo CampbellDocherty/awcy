@@ -18,11 +18,13 @@ import popUp from '../../../assets/bouncer-pop-up.png';
 import firstOption from '../../../assets/obey.png';
 import secondOption from '../../../assets/i-know-the-dj.png';
 import thirdOption from '../../../assets/show-ig.png';
+import { HealthChange } from '../components/HealthChange';
 
 export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showIg, setShowIg] = useState(false);
+  const [hpChange, setHpChange] = useState<number | null>(null);
 
   const onBouncerClick = () => {
     if (hasAccessToClub) {
@@ -43,28 +45,41 @@ export const OutsideClub = () => {
   const onExitFollowing = () => {
     setShowIg(false);
     setShowPopUp(false);
-    update({
-      stage: Stage.INSIDE_CLUB,
-      mission: null,
-      health: health - 2,
-      hasAccessToClub: true,
-    });
+    setHpChange(-2);
+    update({ mission: null });
+    setTimeout(() => {
+      update({
+        mission: null,
+        health: health - 2,
+        hasAccessToClub: true,
+      });
+    }, 1000);
   };
 
   const onFirstOptionClick = () => {
     setShowPopUp(false);
-    update({
-      health: health + 1,
-      hasAccessToClub: true,
-    });
+    setHpChange(1);
+    update({ mission: null });
+    setTimeout(() => {
+      update({
+        mission: null,
+        health: health + 1,
+        hasAccessToClub: true,
+      });
+    }, 1000);
   };
 
   const onSecondOptionClick = () => {
     setShowPopUp(false);
-    update({
-      health: health - 1,
-      hasAccessToClub: true,
-    });
+    setHpChange(-1);
+    update({ mission: null });
+    setTimeout(() => {
+      update({
+        mission: null,
+        health: health - 1,
+        hasAccessToClub: true,
+      });
+    }, 1000);
   };
 
   const onThirdOptionClick = () => {
@@ -73,6 +88,7 @@ export const OutsideClub = () => {
 
   return (
     <>
+      {hpChange && <HealthChange healthChange={hpChange} />}
       {showPopUp && (
         <PopUpDecision backgroundSrc={popUp}>
           <DecisionOption

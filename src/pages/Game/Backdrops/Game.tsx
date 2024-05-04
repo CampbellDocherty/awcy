@@ -26,9 +26,7 @@ export const Game = () => {
             {stage === Stage.OUTSIDE_CLUB && <OutsideClub />}
             {stage === Stage.INSIDE_CLUB && <InsideClub />}
             {stage === Stage.HOME && <Home />}
-            {health && stage !== Stage.LOGIN && (
-              <StatsWrapper health={health} />
-            )}
+            {stage !== Stage.LOGIN && <StatsWrapper health={health} />}
             {mission && stage !== Stage.LOGIN && <Mission />}
           </GameWindow>
         </InnerAspectRatioBox>

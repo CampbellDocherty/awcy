@@ -93,7 +93,7 @@ export const Home = () => {
       )}
       <Backdrop src={home} alt="home" />
       <Character />
-      {(messageSeen || outfit) && (
+      {messageSeen && (
         <Cupboard onClick={onCupboardClick} src={cupboard} alt="cupboard" />
       )}
       {showOutfits && (
