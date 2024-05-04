@@ -282,10 +282,10 @@ export const DecisionOption = styled.img`
 `;
 
 export const Djs = styled.img`
-  width: 19.8%;
+  width: 19.75%;
   position: absolute;
   top: 40.8%;
-  left: 44.8%;
+  left: 44.72%;
   cursor: pointer;
 `;
 

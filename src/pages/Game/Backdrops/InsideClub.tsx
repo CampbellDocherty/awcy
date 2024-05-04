@@ -32,7 +32,7 @@ export const InsideClub = () => {
     }
     setTimeout(() => {
       setShowPopUp(true);
-    }, 1000);
+    }, 1500);
   }, []);
 
   const onClose = () => setShowPopUp(false);
