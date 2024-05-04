@@ -53,7 +53,7 @@ export const OutsideClub = () => {
         health: health - 2,
         hasAccessToClub: true,
       });
-    }, 1000);
+    }, 1500);
   };
 
   const onFirstOptionClick = () => {
@@ -66,7 +66,7 @@ export const OutsideClub = () => {
         health: health + 1,
         hasAccessToClub: true,
       });
-    }, 1000);
+    }, 1500);
   };
 
   const onSecondOptionClick = () => {
@@ -79,7 +79,7 @@ export const OutsideClub = () => {
         health: health - 1,
         hasAccessToClub: true,
       });
-    }, 1000);
+    }, 1500);
   };
 
   const onThirdOptionClick = () => {

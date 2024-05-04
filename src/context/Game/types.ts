@@ -12,5 +12,6 @@ export type Game = {
   stage: Stage;
   mission: string | null;
   hasAccessToClub: boolean;
+  hasCompletedClub: boolean;
   update: (newGameState: Partial<Game>) => void;
 };
