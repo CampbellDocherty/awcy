@@ -9,7 +9,7 @@ export const OutfitContainer = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: 100;
+  z-index: 800;
   background-color: rgb(0, 0, 0, 0.4);
 `;
 
