@@ -14,24 +14,24 @@ import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { update, stats, outfit } = useContext(GameContext);
+  const { update, outfit, health } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
   const onCupboardClick = () => {
+    update({ health: 2 });
     setShowOutfits(true);
   };
 
   const onOutfitSelect = (outfit: OutfitType) => {
     setShowOutfits(false);
-    update({ stats: outfit.stats, outfit: outfit.src });
+    update({ health: health + outfit.health, outfit: outfit.src });
   };
 
   const [showPhone, setShowPhone] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
-      if (stats) return;
       if (!audioRef) return;
       if (!audioRef.current) return;
       if (!audioRef.current.play) return;
@@ -55,7 +55,6 @@ export const Home = () => {
     setShowMessage(false);
     update({
       mission: 'Get changed and head to the club',
-      stats: { health: 2, clout: 0 },
     });
     setMessageSeen(true);
   };
@@ -83,7 +82,7 @@ export const Home = () => {
       )}
       <Backdrop src={home} alt="home" />
       <Character />
-      {(messageSeen || stats) && (
+      {(messageSeen || health) && (
         <Cupboard onClick={onCupboardClick} src={cupboard} alt="cupboard" />
       )}
       {showOutfits && (

@@ -1,8 +1,3 @@
-export type Stats = {
-  health: number;
-  clout: number;
-};
-
 export enum Stage {
   LOGIN = 'login',
   OUTSIDE_CLUB = 'outside-club',
@@ -12,9 +7,10 @@ export enum Stage {
 
 export type Game = {
   name: string;
-  stats: Stats | null;
+  health: number;
   outfit: string | null;
   stage: Stage;
   mission: string | null;
+  hasAccessToClub: boolean;
   update: (newGameState: Partial<Game>) => void;
 };
