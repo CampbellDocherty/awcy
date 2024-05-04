@@ -300,7 +300,7 @@ export const ResultContainer = styled.div`
   height: 100%;
   width: 100%;
   z-index: 800;
-  background-color: rgb(0, 0, 0, 0.8);
+  background-color: rgb(0, 0, 0, 0.9);
   padding: 4px;
   word-wrap: wrap;
 `;
@@ -330,5 +330,22 @@ export const ResultSubtitle = styled.h4`
   margin: 0;
   @media screen and (max-device-width: 568px) {
     font-size: 10px;
+  }
+`;
+
+export const Restart = styled.button`
+  font-family: Nokia;
+  font-size: 16px;
+  color: white;
+  margin: 0;
+  background: transparent;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 8px;
+  margin-top: 12px;
+  cursor: pointer;
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 8px;
   }
 `;

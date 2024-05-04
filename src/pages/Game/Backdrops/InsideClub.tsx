@@ -8,7 +8,6 @@ import waaw from '../../../assets/waaw.jpg';
 import secondOption from '../../../assets/wave-and-smile.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
-import { StatsWrapper } from '../StatsWrapper';
 import { Character } from '../components/Character';
 import { HealthChange } from '../components/HealthChange';
 import { PopUpDecision } from '../components/PopUpDecision';
@@ -17,15 +16,11 @@ import {
   DecisionOption,
   Djs,
   LeftButton,
-  ResultContainer,
-  ResultContainerInner,
-  ResultSubtitle,
-  ResultTitle,
 } from '../styles/game.styles';
-import { OutfitContainer } from './Home/styles';
+import { Results } from './Results';
 
 export const InsideClub = () => {
-  const { update, health, hasCompletedClub, mission } = useContext(GameContext);
+  const { update, health, hasCompletedClub } = useContext(GameContext);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [hpChange, setHpChange] = useState<number | null>(null);
@@ -85,20 +80,7 @@ export const InsideClub = () => {
 
   return (
     <>
-      {showResults && (
-        <OutfitContainer>
-          <ResultContainer>
-            <ResultContainerInner>
-              <StatsWrapper health={health} />
-              <ResultTitle $win={false}>Game over</ResultTitle>
-              <ResultSubtitle>
-                Ouch! The DJ&apos;s think you&apos;re doing too much, your night
-                ends here
-              </ResultSubtitle>
-            </ResultContainerInner>
-          </ResultContainer>
-        </OutfitContainer>
-      )}
+      {showResults && <Results />}
       {hpChange && <HealthChange healthChange={hpChange} />}
       {hasCompletedClub && <Djs onClick={onDjClick} src={waaw} alt="dj's" />}
       {showPopUp && (
