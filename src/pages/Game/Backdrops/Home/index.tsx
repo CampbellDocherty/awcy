@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import popUp from '../../../../assets/choose-fit-pop-up.png';
 import cupboard from '../../../../assets/cupboard.jpg';
 import message from '../../../../assets/message.png';
 import phone from '../../../../assets/phone.png';
@@ -8,9 +9,10 @@ import { GameContext } from '../../../../context/Game';
 import { Stage } from '../../../../context/Game/types';
 import { Character } from '../../components/Character';
 import { NextStage } from '../../components/NextStage';
-import { Backdrop } from '../../styles/game.styles';
+import { PopUpDecision } from '../../components/PopUpDecision';
+import { Backdrop, DecisionOption } from '../../styles/game.styles';
 import { OutfitType, outfits } from './outfits';
-import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
+import { Cupboard, Message, Phone } from './styles';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -21,11 +23,6 @@ export const Home = () => {
   const onCupboardClick = () => {
     update({ health: 2 });
     setShowOutfits(true);
-  };
-
-  const onOutfitSelect = (outfit: OutfitType) => {
-    setShowOutfits(false);
-    update({ health: health + outfit.health, outfit: outfit.src });
   };
 
   const [showPhone, setShowPhone] = useState(false);
@@ -60,6 +57,11 @@ export const Home = () => {
     setMessageSeen(true);
   };
 
+  const onOutfitSelect = (outfit: OutfitType) => {
+    setShowOutfits(false);
+    update({ health: health + outfit.health, outfit: outfit.src });
+  };
+
   return (
     <>
       <audio ref={audioRef} controls={false} src={smsTone}>
@@ -83,22 +85,22 @@ export const Home = () => {
       )}
       <Backdrop src={home} alt="home" />
       <Character />
-      {(messageSeen || health) && (
+      {(messageSeen || outfit) && (
         <Cupboard onClick={onCupboardClick} src={cupboard} alt="cupboard" />
       )}
       {showOutfits && (
-        <OutfitContainer>
+        <PopUpDecision backgroundSrc={popUp}>
           {outfits.map((outfit) => {
             return (
-              <Outfit
-                key={outfit.src}
+              <DecisionOption
+                key={outfit.alt}
                 onClick={() => onOutfitSelect(outfit)}
-                src={outfit.src}
+                src={outfit.optionSrc}
                 alt={outfit.alt}
               />
             );
           })}
-        </OutfitContainer>
+        </PopUpDecision>
       )}
     </>
   );

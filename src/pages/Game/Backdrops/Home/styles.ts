@@ -1,49 +1,5 @@
 import { keyframes, styled } from 'styled-components';
 
-export const OutfitContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-`;
-
-const grow = keyframes`
-0% {
-  opacity: 0.85;
-  -webkit-transform: scale(0.2);
-  -moz-transform: scale(0.2);
-  -o-transform: scale(0.2);
-  transform: scale(0.2);
-}
-100% {
-  opacity: 1;
-  -webkit-transform: translate(1);
-  -moz-transform: translate(1);
-  -o-transform: translate(1);
-  transform: translate(1);
-}`;
-
-export const Outfit = styled.img`
-  width: 30%;
-  cursor: pointer;
-
-  &:nth-of-type(1) {
-    animation: ${grow} 1s ease-in-out;
-  }
-
-  &:nth-of-type(2) {
-    animation: ${grow} 1.5s ease-in-out;
-  }
-
-  &:nth-of-type(3) {
-    animation: ${grow} 2s ease-in-out;
-  }
-`;
-
 const slideUp = keyframes`
 0% {
     opacity: 0;
@@ -76,7 +32,7 @@ export const Message = styled.img`
   top: -15%;
   left: 0;
   cursor: pointer;
-  z-index: 200;
+  z-index: 500;
 `;
 
 export const Cupboard = styled.img`
