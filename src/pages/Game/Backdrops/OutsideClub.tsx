@@ -78,17 +78,17 @@ export const OutsideClub = () => {
           <DecisionOption
             onClick={onFirstOptionClick}
             src={firstOption}
-            alt=""
+            alt="obey"
           />
           <DecisionOption
             onClick={onSecondOptionClick}
             src={secondOption}
-            alt=""
+            alt="I know the dj"
           />
           <DecisionOption
             onClick={onThirdOptionClick}
             src={thirdOption}
-            alt=""
+            alt="show instagram"
           />
         </PopUpDecision>
       )}
