@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import bouncer from '../../../assets/bouncer.png';
 import outsideClub from '../../../assets/outside-club.jpg';
 import arrow from '../../../assets/arrow.png';
@@ -10,14 +10,21 @@ import { Character } from '../components/Character';
 export const OutsideClub = () => {
   const { update } = useContext(GameContext);
   const onBouncerClick = () => {
-    update({ stage: Stage.INSIDE_CLUB });
+    update({ stage: Stage.INSIDE_CLUB, mission: null });
   };
+
+  useEffect(() => {
+    update({
+      mission: 'Talk to the bouncer',
+    });
+  }, []);
+
   return (
     <>
       <LeftButton
         src={arrow}
         alt="left arrow"
-        onClick={() => update({ stage: Stage.HOME })}
+        onClick={() => update({ stage: Stage.HOME, mission: null })}
       />
       <Backdrop src={outsideClub} alt="club" />
       <Character />
