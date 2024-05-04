@@ -76,7 +76,7 @@ export const Message = styled.img`
   top: -15%;
   left: 0;
   cursor: pointer;
-  z-index: 200;
+  z-index: 500;
 `;
 
 export const Cupboard = styled.img`

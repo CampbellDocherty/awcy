@@ -48,7 +48,7 @@ export const OutsideClub = () => {
 
   return (
     <>
-      {true && (
+      {showPopUp && (
         <PopUpDecision
           onClose={() => setShowPopUp(false)}
           onThirdOptionClick={onThirdOptionClick}
