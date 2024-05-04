@@ -4,23 +4,11 @@ import outsideClub from '../../../assets/outside-club.jpg';
 import arrow from '../../../assets/arrow.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
-import {
-  Backdrop,
-  Bouncer,
-  FirstOption,
-  LeftButton,
-  PopUp,
-  PopUpContainer,
-  SecondOption,
-  ThirdOption,
-} from '../styles/game.styles';
+import { Backdrop, Bouncer, LeftButton } from '../styles/game.styles';
 import { Character } from '../components/Character';
-import popUp from '../../../assets/bouncer-pop-up.png';
-import firstOption from '../../../assets/obey.png';
-import secondOption from '../../../assets/i-know-the-dj.png';
-import thirdOption from '../../../assets/show-ig.png';
 import instagram from '../../../assets/following.png';
 import { Message } from './Home/styles';
+import { PopUpDecision } from '../components/PopUpDecision';
 
 export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
@@ -43,33 +31,9 @@ export const OutsideClub = () => {
     });
   }, []);
 
-  const onFirstOptionClick = () => {
-    setShowPopUp(false);
-    update({
-      stage: Stage.INSIDE_CLUB,
-      mission: null,
-      health: health + 1,
-      hasAccessToClub: true,
-    });
-  };
-
-  const onSecondOptionClick = () => {
-    setShowPopUp(false);
-    update({
-      stage: Stage.INSIDE_CLUB,
-      mission: null,
-      health: health - 1,
-      hasAccessToClub: true,
-    });
-  };
-
-  const onThirdOptionClick = () => {
-    setShowIg(true);
-    setShowPopUp(false);
-  };
-
   const onExitFollowing = () => {
     setShowIg(false);
+    setShowPopUp(false);
     update({
       stage: Stage.INSIDE_CLUB,
       mission: null,
@@ -78,27 +42,17 @@ export const OutsideClub = () => {
     });
   };
 
+  const onThirdOptionClick = () => {
+    setShowIg(true);
+  };
+
   return (
     <>
-      {showPopUp && (
-        <PopUpContainer>
-          <PopUp src={popUp} alt="pop up screen for bouncer" />
-          <FirstOption
-            onClick={onFirstOptionClick}
-            src={firstOption}
-            alt="obey"
-          />
-          <SecondOption
-            onClick={onSecondOptionClick}
-            src={secondOption}
-            alt="I know the dj"
-          />
-          <ThirdOption
-            onClick={onThirdOptionClick}
-            src={thirdOption}
-            alt="show instagram"
-          />
-        </PopUpContainer>
+      {true && (
+        <PopUpDecision
+          onClose={() => setShowPopUp(false)}
+          onThirdOptionClick={onThirdOptionClick}
+        />
       )}
       {showIg && (
         <Message
