@@ -208,9 +208,50 @@ export const MissionBanner = styled.div`
 
 export const MissionText = styled.p`
   font-size: 20px;
-  margin: 4px;
+  margin: 12px;
   @media screen and (max-device-width: 568px) {
     font-size: 12px;
     margin: 4px;
   }
+`;
+
+export const PopUpContainer = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PopUp = styled.img`
+  position: relative;
+  height: 100%;
+`;
+
+export const FirstOption = styled.img`
+  position: absolute;
+  width: 17.4%;
+  top: 60.7%;
+  left: 29.2%;
+  cursor: pointer;
+`;
+
+export const SecondOption = styled.img`
+  position: absolute;
+  width: 17.4%;
+  top: 60.7%;
+  right: 29.7%;
+  cursor: pointer;
+`;
+
+export const ThirdOption = styled.img`
+  position: absolute;
+  width: 17.4%;
+  bottom: 8.7%;
+  left: 29.1%;
+  cursor: pointer;
 `;

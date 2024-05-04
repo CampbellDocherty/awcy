@@ -14,12 +14,11 @@ import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { update, stats } = useContext(GameContext);
+  const { update, stats, outfit } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
 
   const onCupboardClick = () => {
-    update({ stats: null });
     setShowOutfits(true);
   };
 
@@ -54,7 +53,10 @@ export const Home = () => {
   const onClickMessage = () => {
     setShowPhone(false);
     setShowMessage(false);
-    update({ mission: 'Get changed and head to the club' });
+    update({
+      mission: 'Get changed and head to the club',
+      stats: { health: 2, clout: 0 },
+    });
     setMessageSeen(true);
   };
 
@@ -63,7 +65,7 @@ export const Home = () => {
       <audio ref={audioRef} controls={false} src={smsTone}>
         <track default kind="captions" src={smsTone} />
       </audio>
-      {stats && (
+      {outfit && (
         <NextStage
           right
           onClick={() => update({ stage: Stage.OUTSIDE_CLUB, mission: null })}
