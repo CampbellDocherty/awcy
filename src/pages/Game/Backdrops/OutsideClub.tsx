@@ -23,15 +23,21 @@ import instagram from '../../../assets/following.png';
 import { Message } from './Home/styles';
 
 export const OutsideClub = () => {
-  const { update, health } = useContext(GameContext);
+  const { update, health, hasAccessToClub } = useContext(GameContext);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showIg, setShowIg] = useState(false);
 
   const onBouncerClick = () => {
+    if (hasAccessToClub) {
+      update({
+        stage: Stage.INSIDE_CLUB,
+      });
+    }
     setShowPopUp(true);
   };
 
   useEffect(() => {
+    if (hasAccessToClub) return;
     update({
       mission: 'Talk to the bouncer',
     });
@@ -43,6 +49,7 @@ export const OutsideClub = () => {
       stage: Stage.INSIDE_CLUB,
       mission: null,
       health: health + 1,
+      hasAccessToClub: true,
     });
   };
 
@@ -52,6 +59,7 @@ export const OutsideClub = () => {
       stage: Stage.INSIDE_CLUB,
       mission: null,
       health: health - 1,
+      hasAccessToClub: true,
     });
   };
 
@@ -66,6 +74,7 @@ export const OutsideClub = () => {
       stage: Stage.INSIDE_CLUB,
       mission: null,
       health: health - 2,
+      hasAccessToClub: true,
     });
   };
 
