@@ -13,12 +13,14 @@ import { PopUpDecision } from '../../components/PopUpDecision';
 import { Backdrop, DecisionOption } from '../../styles/game.styles';
 import { OutfitType, outfits } from './outfits';
 import { Cupboard, Message, Phone } from './styles';
+import { HealthChange } from '../../components/HealthChange';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const { update, outfit, health } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
+  const [hpChange, setHpChange] = useState<number | null>(null);
 
   const onCupboardClick = () => {
     update({ health: 2 });
@@ -59,7 +61,12 @@ export const Home = () => {
 
   const onOutfitSelect = (outfit: OutfitType) => {
     setShowOutfits(false);
-    update({ health: health + outfit.health, outfit: outfit.src });
+    setHpChange(outfit.health);
+    update({ outfit: outfit.src });
+    setTimeout(() => {
+      update({ health: health + outfit.health, outfit: outfit.src });
+      setHpChange(null);
+    }, 1000);
   };
 
   return (
@@ -67,6 +74,7 @@ export const Home = () => {
       <audio ref={audioRef} controls={false} src={smsTone}>
         <track default kind="captions" src={smsTone} />
       </audio>
+      {hpChange && <HealthChange healthChange={hpChange} />}
       {outfit && (
         <NextStage
           right
@@ -85,7 +93,7 @@ export const Home = () => {
       )}
       <Backdrop src={home} alt="home" />
       <Character />
-      {(messageSeen || outfit) && (
+      {messageSeen && (
         <Cupboard onClick={onCupboardClick} src={cupboard} alt="cupboard" />
       )}
       {showOutfits && (
