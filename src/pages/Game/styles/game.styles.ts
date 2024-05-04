@@ -26,6 +26,10 @@ export const Wrapper = styled.div`
   width: 80%;
   height: 40%;
   margin: 30px auto;
+
+  @media screen and (max-device-width: 568px) {
+    width: 95%;
+  }
 `;
 
 export const AspectRatioBox = styled.div`
