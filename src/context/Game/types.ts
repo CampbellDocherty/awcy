@@ -5,7 +5,8 @@ export type Stats = {
 
 export enum Stage {
   LOGIN = 'login',
-  CLUB = 'club',
+  OUTSIDE_CLUB = 'outside-club',
+  INSIDE_CLUB = 'inside-club',
   HOME = 'home',
 }
 

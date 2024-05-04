@@ -7,8 +7,11 @@ import { Stage } from '../../../context/Game/types';
 import { Backdrop, Bouncer, LeftButton } from '../styles/game.styles';
 import { Character } from '../components/Character';
 
-export const Club = () => {
+export const OutsideClub = () => {
   const { update } = useContext(GameContext);
+  const onBouncerClick = () => {
+    update({ stage: Stage.INSIDE_CLUB });
+  };
   return (
     <>
       <LeftButton
@@ -18,7 +21,7 @@ export const Club = () => {
       />
       <Backdrop src={outsideClub} alt="club" />
       <Character />
-      <Bouncer src={bouncer} alt="bouncer" />
+      <Bouncer onClick={onBouncerClick} src={bouncer} alt="bouncer" />
     </>
   );
 };
