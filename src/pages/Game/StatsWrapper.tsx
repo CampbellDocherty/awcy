@@ -8,34 +8,22 @@ import {
 } from './styles/game.styles';
 
 export const StatsWrapper = ({ health }: { health: number }) => {
-  const [healthPieces, cloutPieces] = useMemo(() => {
+  const left = useMemo(() => {
     if (health > 0) {
-      const healthPieces = [...Array(health)].map(() => 0);
-      return [healthPieces, []];
+      const offset = 6.5 * (health - 1);
+      const left = `${46 - offset}%`;
+      return left;
     }
-
-    if (health < 0) {
-      const cloutPieces = [...Array(0 - health)].map(() => 0);
-      return [[], cloutPieces];
-    }
-
-    return [[], []];
+    const offset = 6.5 * Math.abs(health);
+    const left = `${53 + offset}%`;
+    return left;
   }, [health]);
 
   return (
     <StatsContainer>
       <StatsInner>
         <StatsBar src={hpClout} alt="stat bar" />
-        {healthPieces.map((_, index) => {
-          const offset = 6.5 * index;
-          const left = `${46 - offset}%`;
-          return <StatPiece key={index} $left={left} />;
-        })}
-        {cloutPieces.map((_, index) => {
-          const offset = 6.5 * index;
-          const left = `${53 + offset}%`;
-          return <StatPiece key={index} $left={left} />;
-        })}
+        <StatPiece $left={left} />;
       </StatsInner>
     </StatsContainer>
   );

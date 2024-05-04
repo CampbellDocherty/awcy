@@ -12,7 +12,7 @@ export const outfits: OutfitType[] = [
   {
     src: bigDripFront,
     alt: 'drippy outfit',
-    health: -3,
+    health: -2,
   },
   {
     src: steadyFront,
