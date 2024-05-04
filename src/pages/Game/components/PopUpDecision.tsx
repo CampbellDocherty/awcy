@@ -1,8 +1,4 @@
 import { useContext } from 'react';
-import popUp from '../../../assets/bouncer-pop-up.png';
-import secondOption from '../../../assets/i-know-the-dj.png';
-import firstOption from '../../../assets/obey.png';
-import thirdOption from '../../../assets/show-ig.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import {
@@ -15,10 +11,18 @@ import {
 
 export const PopUpDecision = ({
   onClose,
+  backgroundSrc,
+  firstOptionSrc,
+  secondOptionSrc,
+  thirdOptionSrc,
   onThirdOptionClick,
 }: {
   onClose: () => void;
   onThirdOptionClick: () => void;
+  backgroundSrc: string;
+  firstOptionSrc: string;
+  secondOptionSrc: string;
+  thirdOptionSrc: string;
 }) => {
   const { update, health } = useContext(GameContext);
   const onFirstOptionClick = () => {
@@ -43,16 +47,20 @@ export const PopUpDecision = ({
 
   return (
     <PopUpContainer>
-      <PopUp src={popUp} alt="pop up screen for bouncer" />
-      <FirstOption onClick={onFirstOptionClick} src={firstOption} alt="OBEY" />
+      <PopUp src={backgroundSrc} alt="pop up screen for bouncer" />
+      <FirstOption
+        onClick={onFirstOptionClick}
+        src={firstOptionSrc}
+        alt="OBEY"
+      />
       <SecondOption
         onClick={onSecondOptionClick}
-        src={secondOption}
+        src={secondOptionSrc}
         alt="I know the dj"
       />
       <ThirdOption
         onClick={onThirdOptionClick}
-        src={thirdOption}
+        src={thirdOptionSrc}
         alt="Show my instagram"
       />
     </PopUpContainer>

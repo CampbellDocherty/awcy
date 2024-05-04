@@ -9,6 +9,10 @@ import { Character } from '../components/Character';
 import instagram from '../../../assets/following.png';
 import { Message } from './Home/styles';
 import { PopUpDecision } from '../components/PopUpDecision';
+import popUp from '../../../assets/bouncer-pop-up.png';
+import firstOption from '../../../assets/obey.png';
+import secondOption from '../../../assets/i-know-the-dj.png';
+import thirdOption from '../../../assets/show-ig.png';
 
 export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
@@ -50,6 +54,10 @@ export const OutsideClub = () => {
     <>
       {showPopUp && (
         <PopUpDecision
+          backgroundSrc={popUp}
+          firstOptionSrc={firstOption}
+          secondOptionSrc={secondOption}
+          thirdOptionSrc={thirdOption}
           onClose={() => setShowPopUp(false)}
           onThirdOptionClick={onThirdOptionClick}
         />
