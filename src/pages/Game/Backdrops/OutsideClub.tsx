@@ -23,7 +23,7 @@ import instagram from '../../../assets/following.png';
 import { Message } from './Home/styles';
 
 export const OutsideClub = () => {
-  const { update } = useContext(GameContext);
+  const { update, health } = useContext(GameContext);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showIg, setShowIg] = useState(false);
 
@@ -42,7 +42,7 @@ export const OutsideClub = () => {
     update({
       stage: Stage.INSIDE_CLUB,
       mission: null,
-      stats: { health: 3, clout: 0 },
+      health: health + 1,
     });
   };
 
@@ -51,7 +51,7 @@ export const OutsideClub = () => {
     update({
       stage: Stage.INSIDE_CLUB,
       mission: null,
-      stats: { health: 1, clout: 0 },
+      health: health - 1,
     });
   };
 
@@ -65,7 +65,7 @@ export const OutsideClub = () => {
     update({
       stage: Stage.INSIDE_CLUB,
       mission: null,
-      stats: { health: 0, clout: 1 },
+      health: health - 2,
     });
   };
 

@@ -164,15 +164,39 @@ export const Character = styled.img<{ $stage: string }>`
   right: 3%;
 `;
 
-export const StatsBar = styled.img`
+export const StatsContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   top: 2%;
   left: 0;
   right: 0;
   max-width: 30%;
+  height: 14%;
   animation: ${slideDown} 0.5s ease-in-out;
   position: absolute;
+`;
+
+export const StatsInner = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+`;
+export const StatsBar = styled.img`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+`;
+
+export const StatPiece = styled.div<{ $left: string }>`
+  left: ${(props) => props.$left};
+  bottom: 32%;
+  background-color: #57df00;
+  width: 6%;
+  height: 49%;
+  position: absolute;
+  z-index: 1;
 `;
 
 const slideUp = keyframes`

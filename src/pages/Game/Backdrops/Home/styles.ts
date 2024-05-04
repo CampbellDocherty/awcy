@@ -38,6 +38,10 @@ export const Outfit = styled.img`
   &:nth-of-type(2) {
     animation: ${grow} 1.5s ease-in-out;
   }
+
+  &:nth-of-type(3) {
+    animation: ${grow} 2s ease-in-out;
+  }
 `;
 
 const slideUp = keyframes`

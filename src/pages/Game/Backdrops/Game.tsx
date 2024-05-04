@@ -15,7 +15,7 @@ import { Mission } from '../components/Mission';
 import { InsideClub } from './InsideClub';
 
 export const Game = () => {
-  const { stats, stage, mission } = useContext(GameContext);
+  const { health, stage, mission } = useContext(GameContext);
 
   return (
     <Wrapper>
@@ -26,7 +26,9 @@ export const Game = () => {
             {stage === Stage.OUTSIDE_CLUB && <OutsideClub />}
             {stage === Stage.INSIDE_CLUB && <InsideClub />}
             {stage === Stage.HOME && <Home />}
-            {stats && stage !== Stage.LOGIN && <StatsWrapper stats={stats} />}
+            {health && stage !== Stage.LOGIN && (
+              <StatsWrapper health={health} />
+            )}
             {mission && stage !== Stage.LOGIN && <Mission />}
           </GameWindow>
         </InnerAspectRatioBox>
