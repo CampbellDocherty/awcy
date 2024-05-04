@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import bouncer from '../../../assets/bouncer.png';
-import club from '../../../assets/club.jpg';
+import outsideClub from '../../../assets/outside-club.jpg';
 import arrow from '../../../assets/arrow.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
@@ -16,7 +16,7 @@ export const Club = () => {
         alt="left arrow"
         onClick={() => update({ stage: Stage.HOME })}
       />
-      <Backdrop src={club} alt="club" />
+      <Backdrop src={outsideClub} alt="club" />
       <Character />
       <Bouncer src={bouncer} alt="bouncer" />
     </>

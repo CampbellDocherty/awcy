@@ -114,11 +114,11 @@ export const Form = styled.form`
 `;
 
 export const Bouncer = styled.img`
-  width: 30%;
-  height: 50%;
+  width: 25%;
+  height: 43%;
   position: absolute;
-  left: 42%;
-  top: 48%;
+  left: 37%;
+  top: 50.5%;
   cursor: pointer;
 `;
 
