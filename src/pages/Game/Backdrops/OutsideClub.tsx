@@ -19,6 +19,7 @@ export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showIg, setShowIg] = useState(false);
+  const [showBouncer, setShowBouncer] = useState(true);
   const [hpChange, setHpChange] = useState<number | null>(null);
 
   const onBouncerClick = () => {
@@ -37,6 +38,7 @@ export const OutsideClub = () => {
     setShowPopUp(false);
     setHpChange(-2);
     update({ mission: null });
+    setShowBouncer(false);
     setTimeout(() => {
       update({
         mission: null,
@@ -50,6 +52,7 @@ export const OutsideClub = () => {
     setShowPopUp(false);
     setHpChange(1);
     update({ mission: null });
+    setShowBouncer(false);
     setTimeout(() => {
       update({
         mission: null,
@@ -63,6 +66,7 @@ export const OutsideClub = () => {
     setShowPopUp(false);
     setHpChange(-1);
     update({ mission: null });
+    setShowBouncer(false);
     setTimeout(() => {
       update({
         mission: null,
@@ -114,7 +118,7 @@ export const OutsideClub = () => {
       )}
       <Backdrop src={outsideClub} alt="club" />
       <Character />
-      {!hasAccessToClub && (
+      {(!hasAccessToClub || !showBouncer) && (
         <Bouncer onClick={onBouncerClick} src={bouncer} alt="bouncer" />
       )}
     </>
