@@ -1,5 +1,6 @@
 import { useContext, useMemo } from 'react';
 import { GameContext } from '../../../context/Game';
+import { defaultValues } from '../../../context/Game/GameContext';
 import { StatsWrapper } from '../StatsWrapper';
 import {
   Restart,
@@ -8,11 +9,9 @@ import {
   ResultSubtitle,
   ResultTitle,
 } from '../styles/game.styles';
-import { defaultValues } from '../../../context/Game/GameContext';
-import { Stage } from '../../../context/Game/types';
 
 export const Results = () => {
-  const { health, update, name, email } = useContext(GameContext);
+  const { health, update } = useContext(GameContext);
   const { title, subtitle } = useMemo(() => {
     if (health > 0) {
       return {
