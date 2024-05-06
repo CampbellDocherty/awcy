@@ -81,14 +81,12 @@ export const Message = styled.img`
   z-index: 500;
 `;
 
-export const Cupboard = styled.img`
-  width: 19%;
+export const CupboardOverlay = styled.div`
+  width: 18.5%;
   cursor: pointer;
+  border: 3px solid blue;
   position: absolute;
   left: 8.2%;
   top: 32%;
-
-  &:hover {
-    outline: 3px solid lightblue;
-  }
+  height: 30%;
 `;
