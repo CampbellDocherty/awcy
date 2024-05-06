@@ -28,7 +28,7 @@ export const Results = () => {
   }, [health]);
 
   const onRestart = () => {
-    update({ ...defaultValues, stage: Stage.HOME, name, email });
+    update(defaultValues);
   };
 
   return (
