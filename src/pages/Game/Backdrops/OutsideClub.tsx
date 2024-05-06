@@ -12,7 +12,11 @@ import { Character } from '../components/Character';
 import { HealthChange } from '../components/HealthChange';
 import { NextStage } from '../components/NextStage';
 import { PopUpDecision } from '../components/PopUpDecision';
-import { Backdrop, Bouncer, DecisionOption } from '../styles/game.styles';
+import {
+  Backdrop,
+  BouncerOverlay,
+  DecisionOption,
+} from '../styles/game.styles';
 import { Message } from './Home/styles';
 
 export const OutsideClub = () => {
@@ -119,7 +123,7 @@ export const OutsideClub = () => {
       <Backdrop src={outsideClub} alt="club" />
       <Character />
       {(!hasAccessToClub || !showBouncer) && (
-        <Bouncer onClick={onBouncerClick} src={bouncer} alt="bouncer" />
+        <BouncerOverlay onClick={onBouncerClick} />
       )}
     </>
   );

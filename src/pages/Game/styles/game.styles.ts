@@ -135,9 +135,9 @@ export const LoginGraphic = styled.img`
   height: 100%;
 `;
 
-export const Bouncer = styled.img`
-  width: 9%;
-  height: 28%;
+export const BouncerOverlay = styled.div`
+  width: 8%;
+  height: 27%;
   position: absolute;
   left: 44.5%;
   top: 58%;
