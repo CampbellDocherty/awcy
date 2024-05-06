@@ -9,9 +9,10 @@ import {
   ResultTitle,
 } from '../styles/game.styles';
 import { defaultValues } from '../../../context/Game/GameContext';
+import { Stage } from '../../../context/Game/types';
 
 export const Results = () => {
-  const { health, update } = useContext(GameContext);
+  const { health, update, name, email } = useContext(GameContext);
   const { title, subtitle } = useMemo(() => {
     if (health > 0) {
       return {
@@ -27,7 +28,7 @@ export const Results = () => {
   }, [health]);
 
   const onRestart = () => {
-    update(defaultValues);
+    update({ ...defaultValues, stage: Stage.HOME, name, email });
   };
 
   return (

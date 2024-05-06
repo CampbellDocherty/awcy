@@ -29,10 +29,9 @@ export const InsideClub = () => {
     if (hasCompletedClub) {
       update({ mission: "Talk to the DJ's try to get back stage" });
       return;
+    } else {
+      update({ mission: 'Chat to your friend E' });
     }
-    setTimeout(() => {
-      setShowPopUp(true);
-    }, 1500);
   }, []);
 
   const onClose = () => setShowPopUp(false);
@@ -107,7 +106,11 @@ export const InsideClub = () => {
         alt="left arrow"
         onClick={() => update({ stage: Stage.OUTSIDE_CLUB, mission: null })}
       />
-      <Backdrop src={insideClub} alt="club" />
+      <Backdrop
+        onClick={() => setShowPopUp(true)}
+        src={insideClub}
+        alt="club"
+      />
       <Character />
     </>
   );
