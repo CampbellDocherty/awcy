@@ -1,26 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
+import popUp from '../../../assets/bouncer-pop-up.png';
 import bouncer from '../../../assets/bouncer.png';
+import instagram from '../../../assets/following.png';
+import secondOption from '../../../assets/i-know-the-dj.png';
+import firstOption from '../../../assets/obey.png';
 import outsideClub from '../../../assets/outside-club.jpg';
-import arrow from '../../../assets/arrow.png';
+import thirdOption from '../../../assets/show-ig.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
-import {
-  Backdrop,
-  Bouncer,
-  DecisionOption,
-  LeftButton,
-  RightButton,
-} from '../styles/game.styles';
 import { Character } from '../components/Character';
-import instagram from '../../../assets/following.png';
-import { Message } from './Home/styles';
-import { PopUpDecision } from '../components/PopUpDecision';
-import popUp from '../../../assets/bouncer-pop-up.png';
-import firstOption from '../../../assets/obey.png';
-import secondOption from '../../../assets/i-know-the-dj.png';
-import thirdOption from '../../../assets/show-ig.png';
 import { HealthChange } from '../components/HealthChange';
 import { NextStage } from '../components/NextStage';
+import { PopUpDecision } from '../components/PopUpDecision';
+import { Backdrop, Bouncer, DecisionOption } from '../styles/game.styles';
+import { Message } from './Home/styles';
 
 export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
