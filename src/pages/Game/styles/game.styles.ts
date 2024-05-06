@@ -78,13 +78,13 @@ export const LogoColumn = styled.div`
 
 export const Form = styled.form`
   width: 70%;
-  padding: 4%;
+  padding: 20px;
 
   background: white;
   background-image: url(${image});
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: start;
 
   & > label {
@@ -122,9 +122,17 @@ export const Form = styled.form`
   }
 `;
 
-export const LoginGraphic = styled.img`
-  width: 60%;
+export const GraphicWrapper = styled.div`
+  max-height: 60%;
+  object-fit: contain;
   align-self: center;
+  @media screen and (max-device-width: 568px) {
+    max-height: 50%;
+  }
+`;
+
+export const LoginGraphic = styled.img`
+  height: 100%;
 `;
 
 export const Bouncer = styled.img`

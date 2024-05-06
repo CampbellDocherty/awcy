@@ -1,5 +1,10 @@
 import { SyntheticEvent, useContext } from 'react';
-import { Form, LoginGraphic, LogoColumn } from '../styles/game.styles';
+import {
+  Form,
+  GraphicWrapper,
+  LoginGraphic,
+  LogoColumn,
+} from '../styles/game.styles';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import loginGraphic from '../../../assets/login-graphic.png';
@@ -13,14 +18,25 @@ export const Login = () => {
     update({ name, stage: Stage.HOME });
   };
 
+  const isMobile = window.innerWidth <= 568;
+
   return (
     <>
       <LogoColumn>
         <p>AWCY</p>
+        {isMobile && (
+          <GraphicWrapper>
+            <LoginGraphic src={loginGraphic} alt="aol mock graphic" />
+          </GraphicWrapper>
+        )}
         <p>version 1.0</p>
       </LogoColumn>
       <Form onSubmit={onSubmit}>
-        <LoginGraphic src={loginGraphic} alt="aol mock graphic" />
+        {!isMobile && (
+          <GraphicWrapper>
+            <LoginGraphic src={loginGraphic} alt="aol mock graphic" />
+          </GraphicWrapper>
+        )}
         <label htmlFor="name">Name:</label>
         <input
           required
