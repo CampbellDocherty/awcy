@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 70%;
   height: 40%;
   margin: 30px auto;
 
@@ -78,7 +78,7 @@ export const LogoColumn = styled.div`
 
 export const Form = styled.form`
   width: 70%;
-  padding: 30px;
+  padding: 4%;
 
   background: white;
   background-image: url(${image});
@@ -89,6 +89,9 @@ export const Form = styled.form`
 
   & > label {
     margin-bottom: 5px;
+    width: 70%;
+    align-self: center;
+    text-align: left;
   }
 
   & > input,
@@ -100,6 +103,8 @@ export const Form = styled.form`
     outline: none;
     font-size: 18px;
     font-weight: 400;
+    width: 70%;
+    align-self: center;
   }
 
   & > button {
@@ -115,6 +120,11 @@ export const Form = styled.form`
     -moz-box-shadow: 8px 6px 4px 1px rgba(189, 174, 177, 1);
     box-shadow: 8px 6px 4px 1px rgba(189, 174, 177, 1);
   }
+`;
+
+export const LoginGraphic = styled.img`
+  width: 60%;
+  align-self: center;
 `;
 
 export const Bouncer = styled.img`

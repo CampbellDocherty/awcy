@@ -1,14 +1,15 @@
 import { SyntheticEvent, useContext } from 'react';
-import { Form, LogoColumn } from '../styles/game.styles';
+import { Form, LoginGraphic, LogoColumn } from '../styles/game.styles';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
+import loginGraphic from '../../../assets/login-graphic.png';
 
 export const Login = () => {
-  const { name, update } = useContext(GameContext);
+  const { name, update, email } = useContext(GameContext);
 
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name) return;
+    if (!name || !email) return;
     update({ name, stage: Stage.HOME });
   };
 
@@ -19,18 +20,20 @@ export const Login = () => {
         <p>version 1.0</p>
       </LogoColumn>
       <Form onSubmit={onSubmit}>
-        <label
-          style={{ width: '60%', alignSelf: 'center', textAlign: 'left' }}
-          htmlFor="name"
-        >
-          Name:
-        </label>
+        <LoginGraphic src={loginGraphic} alt="aol mock graphic" />
+        <label htmlFor="name">Name:</label>
         <input
-          style={{ width: '60%', alignSelf: 'center' }}
           required
           id="name"
           onChange={(e) => update({ name: e.target.value })}
           value={name}
+        />
+        <label htmlFor="email">Email:</label>
+        <input
+          required
+          id="email"
+          onChange={(e) => update({ email: e.target.value })}
+          value={email}
         />
         <button type="submit">Play</button>
       </Form>
