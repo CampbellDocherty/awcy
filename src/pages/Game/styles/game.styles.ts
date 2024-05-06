@@ -174,6 +174,7 @@ export const LeftButton = styled.img`
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  transform: scaleX(1);
   z-index: 100;
   cursor: pointer;
   width: 10%;

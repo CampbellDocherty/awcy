@@ -9,6 +9,7 @@ import {
   Bouncer,
   DecisionOption,
   LeftButton,
+  RightButton,
 } from '../styles/game.styles';
 import { Character } from '../components/Character';
 import instagram from '../../../assets/following.png';
@@ -19,6 +20,7 @@ import firstOption from '../../../assets/obey.png';
 import secondOption from '../../../assets/i-know-the-dj.png';
 import thirdOption from '../../../assets/show-ig.png';
 import { HealthChange } from '../components/HealthChange';
+import { NextStage } from '../components/NextStage';
 
 export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
@@ -27,11 +29,6 @@ export const OutsideClub = () => {
   const [hpChange, setHpChange] = useState<number | null>(null);
 
   const onBouncerClick = () => {
-    if (hasAccessToClub) {
-      update({
-        stage: Stage.INSIDE_CLUB,
-      });
-    }
     setShowPopUp(true);
   };
 
@@ -89,6 +86,13 @@ export const OutsideClub = () => {
   return (
     <>
       {hpChange && <HealthChange healthChange={hpChange} />}
+      <NextStage
+        right={false}
+        onClick={() => update({ stage: Stage.HOME, mission: null })}
+      />
+      {hasAccessToClub && (
+        <NextStage right onClick={() => update({ stage: Stage.INSIDE_CLUB })} />
+      )}
       {showPopUp && (
         <PopUpDecision backgroundSrc={popUp}>
           <DecisionOption
@@ -115,14 +119,11 @@ export const OutsideClub = () => {
           alt="instagram followers"
         />
       )}
-      <LeftButton
-        src={arrow}
-        alt="left arrow"
-        onClick={() => update({ stage: Stage.HOME, mission: null })}
-      />
       <Backdrop src={outsideClub} alt="club" />
       <Character />
-      <Bouncer onClick={onBouncerClick} src={bouncer} alt="bouncer" />
+      {!hasAccessToClub && (
+        <Bouncer onClick={onBouncerClick} src={bouncer} alt="bouncer" />
+      )}
     </>
   );
 };
