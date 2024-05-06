@@ -300,11 +300,13 @@ export const DecisionOption = styled.img`
   }
 `;
 
-export const Djs = styled.img`
-  width: 19.75%;
+export const DjOverlay = styled.div`
   position: absolute;
-  top: 40.8%;
-  left: 44.72%;
+  width: 18%;
+  height: 20%;
+  top: 42%;
+  right: 36%;
+  z-index: 400;
   cursor: pointer;
 `;
 
@@ -367,4 +369,14 @@ export const Restart = styled.button`
   @media screen and (max-device-width: 568px) {
     font-size: 8px;
   }
+`;
+
+export const EmanOverlay = styled.div`
+  position: absolute;
+  width: 6%;
+  height: 20%;
+  top: 63%;
+  right: 38%;
+  z-index: 400;
+  cursor: pointer;
 `;
