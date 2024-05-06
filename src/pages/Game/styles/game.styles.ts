@@ -181,7 +181,7 @@ export const LeftButton = styled.img`
   animation: ${bounce} 1.5s infinite;
 `;
 
-export const Character = styled.img<{ $stage: string }>`
+export const Character = styled.img`
   position: absolute;
   bottom: 0;
   right: 3%;
