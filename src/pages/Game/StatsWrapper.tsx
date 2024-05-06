@@ -23,7 +23,7 @@ export const StatsWrapper = ({ health }: { health: number }) => {
     <StatsContainer>
       <StatsInner>
         <StatsBar src={hpClout} alt="stat bar" />
-        <StatPiece $left={left} />;
+        <StatPiece $left={left} />
       </StatsInner>
     </StatsContainer>
   );

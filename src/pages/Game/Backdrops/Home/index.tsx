@@ -39,6 +39,11 @@ export const Home = () => {
       setShowPhone(true);
       audioRef.current.play();
     }, 1000);
+
+    setTimeout(() => {
+      if (outfit) return;
+      setShowPhone(true);
+    }, 2000);
   }, []);
 
   const [showMessage, setShowMessage] = useState(false);
