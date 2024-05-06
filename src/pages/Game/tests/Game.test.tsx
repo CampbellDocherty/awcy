@@ -12,8 +12,10 @@ const renderGame = () => {
 };
 
 function enterNameAndPlay() {
-  const input = screen.getByLabelText('Name:');
-  fireEvent.change(input, { target: { value: 'Cammy' } });
+  const nameInput = screen.getByLabelText('Name:');
+  fireEvent.change(nameInput, { target: { value: 'Cammy' } });
+  const emailInput = screen.getByLabelText('Email:');
+  fireEvent.change(emailInput, { target: { value: 'cam@gmail.com' } });
   fireEvent.click(screen.getByText('Play'));
 }
 
