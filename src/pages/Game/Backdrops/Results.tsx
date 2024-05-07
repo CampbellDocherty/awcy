@@ -1,6 +1,8 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
+import raffleTicket from '../../../assets/raffle-ticket.png';
 import { GameContext } from '../../../context/Game';
 import { defaultValues } from '../../../context/Game/GameContext';
+import { addUser } from '../../../firebase/database';
 import { StatsWrapper } from '../StatsWrapper';
 import {
   RaffleNumber,
@@ -12,8 +14,6 @@ import {
   ResultSubtitle,
   ResultTitle,
 } from '../styles/game.styles';
-import raffleTicket from '../../../assets/raffle-ticket.png';
-import { addUser } from '../../../firebase/database';
 
 const getRaffleNumber = () => {
   const randomNumber = Math.floor(Math.random() * 9999) + 1;
