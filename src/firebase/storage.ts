@@ -71,3 +71,13 @@ export const updateCaption = async (name: string, caption: string) => {
     },
   });
 };
+
+export const pinFile = async (name: string, pinned: boolean) => {
+  const storageRef = ref(storage, name);
+  await updateMetadata(storageRef, {
+    customMetadata: {
+      pinned: pinned ? 'true' : 'false',
+      pinnedAt: `${Date.now()}`,
+    },
+  });
+};
