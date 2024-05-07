@@ -1,4 +1,4 @@
-import { SyntheticEvent, useContext } from 'react';
+import { SyntheticEvent, useContext, useEffect, useRef } from 'react';
 import {
   Form,
   GraphicWrapper,
@@ -8,6 +8,7 @@ import {
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import loginGraphic from '../../../assets/login-graphic.png';
+import dialUp from '../../../assets/aol-dial-up.mp3';
 
 export const Login = () => {
   const { name, update, email } = useContext(GameContext);
@@ -20,8 +21,22 @@ export const Login = () => {
 
   const isMobile = window.innerWidth <= 568;
 
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!audioRef) return;
+      if (!audioRef.current) return;
+      if (!audioRef.current.play) return;
+      audioRef.current.play();
+    }, 500);
+  }, []);
+
   return (
     <>
+      <audio ref={audioRef} controls={false} src={dialUp}>
+        <track default kind="captions" src={dialUp} />
+      </audio>
       <LogoColumn>
         <p>AWCY</p>
         {isMobile && (
