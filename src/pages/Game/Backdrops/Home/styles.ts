@@ -88,4 +88,7 @@ export const CupboardOverlay = styled.div`
   left: 8.2%;
   top: 32%;
   height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

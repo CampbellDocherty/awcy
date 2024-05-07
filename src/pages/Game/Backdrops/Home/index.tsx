@@ -17,6 +17,7 @@ import {
   OutfitContainer,
   Phone,
 } from './styles';
+import { Pointer } from '../../components/Pointer';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -102,7 +103,9 @@ export const Home = () => {
       <Backdrop src={home} alt="home" />
       <Character />
       {messageSeen && (
-        <CupboardOverlay data-testid={'cupboard'} onClick={onCupboardClick} />
+        <CupboardOverlay data-testid={'cupboard'} onClick={onCupboardClick}>
+          <Pointer />
+        </CupboardOverlay>
       )}
 
       {showOutfits && (
