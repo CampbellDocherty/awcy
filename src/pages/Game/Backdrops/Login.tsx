@@ -19,7 +19,7 @@ export const Login = () => {
     update({ name, stage: Stage.HOME });
   };
 
-  const isMobile = window.innerWidth <= 568;
+  const isMobile = window.innerWidth <= 900;
 
   const audioRef = useRef<HTMLAudioElement>(null);
 

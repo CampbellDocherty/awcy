@@ -3,17 +3,24 @@ import { GameContext } from '../../../context/Game';
 import { defaultValues } from '../../../context/Game/GameContext';
 import { StatsWrapper } from '../StatsWrapper';
 import {
+  RaffleNumber,
+  RaffleTicket,
+  RaffleTicketContainer,
   Restart,
   ResultContainer,
   ResultContainerInner,
   ResultSubtitle,
   ResultTitle,
 } from '../styles/game.styles';
+import raffleTicket from '../../../assets/raffle-ticket.png';
 
 export const Results = () => {
   const { health, update } = useContext(GameContext);
+
+  const userWon = health > 0;
+
   const { title, subtitle } = useMemo(() => {
-    if (health > 0) {
+    if (userWon) {
       return {
         title: 'Congrats',
         subtitle: 'You made some good decisions',
@@ -34,8 +41,14 @@ export const Results = () => {
     <ResultContainer>
       <ResultContainerInner>
         <StatsWrapper health={health} />
-        <ResultTitle $win={health > 0}>{title}</ResultTitle>
+        <ResultTitle $win={userWon}>{title}</ResultTitle>
         <ResultSubtitle>{subtitle}</ResultSubtitle>
+        {userWon && (
+          <RaffleTicketContainer>
+            <RaffleNumber>0078</RaffleNumber>
+            <RaffleTicket src={raffleTicket} alt="raffle ticket" />
+          </RaffleTicketContainer>
+        )}
         <Restart onClick={onRestart}>Restart</Restart>
       </ResultContainerInner>
     </ResultContainer>
