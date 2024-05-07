@@ -366,6 +366,9 @@ export const RaffleTicketContainer = styled.div`
   margin-right: auto;
   margin-top: 8px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const RaffleNumber = styled.p`
