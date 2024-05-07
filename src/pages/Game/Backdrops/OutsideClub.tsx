@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import popUp from '../../../assets/bouncer-pop-up.png';
-import bouncer from '../../../assets/bouncer.png';
 import instagram from '../../../assets/following.png';
 import secondOption from '../../../assets/i-know-the-dj.png';
 import firstOption from '../../../assets/obey.png';
