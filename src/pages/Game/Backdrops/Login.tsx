@@ -1,14 +1,14 @@
-import { SyntheticEvent, useContext, useEffect, useRef } from 'react';
+import { SyntheticEvent, useContext, useRef } from 'react';
+import dialUp from '../../../assets/aol-dial-up.mp3';
+import loginGraphic from '../../../assets/login-graphic.png';
+import { GameContext } from '../../../context/Game';
+import { Stage } from '../../../context/Game/types';
 import {
   Form,
   GraphicWrapper,
   LoginGraphic,
   LogoColumn,
 } from '../styles/game.styles';
-import { GameContext } from '../../../context/Game';
-import { Stage } from '../../../context/Game/types';
-import loginGraphic from '../../../assets/login-graphic.png';
-import dialUp from '../../../assets/aol-dial-up.mp3';
 
 export const Login = () => {
   const { name, update, email } = useContext(GameContext);
@@ -23,14 +23,12 @@ export const Login = () => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (!audioRef) return;
-      if (!audioRef.current) return;
-      if (!audioRef.current.play) return;
-      audioRef.current.play();
-    }, 500);
-  }, []);
+  const playAudio = () => {
+    if (!audioRef) return;
+    if (!audioRef.current) return;
+    if (!audioRef.current.play) return;
+    audioRef.current.play();
+  };
 
   return (
     <>
@@ -46,7 +44,7 @@ export const Login = () => {
         )}
         <p>version 1.0</p>
       </LogoColumn>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} onClick={() => playAudio()}>
         {!isMobile && (
           <GraphicWrapper>
             <LoginGraphic src={loginGraphic} alt="aol mock graphic" />
