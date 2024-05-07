@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import cupboard from '../../../../assets/cupboard.jpg';
 import message from '../../../../assets/message.png';
 import phone from '../../../../assets/phone.png';
 import home from '../../../../assets/room.jpg';
@@ -11,7 +10,13 @@ import { HealthChange } from '../../components/HealthChange';
 import { NextStage } from '../../components/NextStage';
 import { Backdrop } from '../../styles/game.styles';
 import { OutfitType, outfits } from './outfits';
-import { Cupboard, Message, Outfit, OutfitContainer, Phone } from './styles';
+import {
+  CupboardOverlay,
+  Message,
+  Outfit,
+  OutfitContainer,
+  Phone,
+} from './styles';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -38,7 +43,12 @@ export const Home = () => {
       }
       setShowPhone(true);
       audioRef.current.play();
-    }, 1000);
+    }, 2000);
+
+    setTimeout(() => {
+      if (outfit) return;
+      setShowPhone(true);
+    }, 3000);
   }, []);
 
   const [showMessage, setShowMessage] = useState(false);
@@ -92,7 +102,7 @@ export const Home = () => {
       <Backdrop src={home} alt="home" />
       <Character />
       {messageSeen && (
-        <Cupboard onClick={onCupboardClick} src={cupboard} alt="cupboard" />
+        <CupboardOverlay data-testid={'cupboard'} onClick={onCupboardClick} />
       )}
 
       {showOutfits && (

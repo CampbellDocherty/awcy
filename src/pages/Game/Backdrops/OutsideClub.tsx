@@ -1,37 +1,31 @@
 import { useContext, useEffect, useState } from 'react';
-import bouncer from '../../../assets/bouncer.png';
+import popUp from '../../../assets/bouncer-pop-up.png';
+import instagram from '../../../assets/following.png';
+import secondOption from '../../../assets/i-know-the-dj.png';
+import firstOption from '../../../assets/obey.png';
 import outsideClub from '../../../assets/outside-club.jpg';
-import arrow from '../../../assets/arrow.png';
+import thirdOption from '../../../assets/show-ig.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
+import { Character } from '../components/Character';
+import { HealthChange } from '../components/HealthChange';
+import { NextStage } from '../components/NextStage';
+import { PopUpDecision } from '../components/PopUpDecision';
 import {
   Backdrop,
-  Bouncer,
+  BouncerOverlay,
   DecisionOption,
-  LeftButton,
 } from '../styles/game.styles';
-import { Character } from '../components/Character';
-import instagram from '../../../assets/following.png';
 import { Message } from './Home/styles';
-import { PopUpDecision } from '../components/PopUpDecision';
-import popUp from '../../../assets/bouncer-pop-up.png';
-import firstOption from '../../../assets/obey.png';
-import secondOption from '../../../assets/i-know-the-dj.png';
-import thirdOption from '../../../assets/show-ig.png';
-import { HealthChange } from '../components/HealthChange';
 
 export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showIg, setShowIg] = useState(false);
+  const [showBouncer, setShowBouncer] = useState(true);
   const [hpChange, setHpChange] = useState<number | null>(null);
 
   const onBouncerClick = () => {
-    if (hasAccessToClub) {
-      update({
-        stage: Stage.INSIDE_CLUB,
-      });
-    }
     setShowPopUp(true);
   };
 
@@ -47,6 +41,7 @@ export const OutsideClub = () => {
     setShowPopUp(false);
     setHpChange(-2);
     update({ mission: null });
+    setShowBouncer(false);
     setTimeout(() => {
       update({
         mission: null,
@@ -60,6 +55,7 @@ export const OutsideClub = () => {
     setShowPopUp(false);
     setHpChange(1);
     update({ mission: null });
+    setShowBouncer(false);
     setTimeout(() => {
       update({
         mission: null,
@@ -73,6 +69,7 @@ export const OutsideClub = () => {
     setShowPopUp(false);
     setHpChange(-1);
     update({ mission: null });
+    setShowBouncer(false);
     setTimeout(() => {
       update({
         mission: null,
@@ -89,6 +86,13 @@ export const OutsideClub = () => {
   return (
     <>
       {hpChange && <HealthChange healthChange={hpChange} />}
+      <NextStage
+        right={false}
+        onClick={() => update({ stage: Stage.HOME, mission: null })}
+      />
+      {hasAccessToClub && (
+        <NextStage right onClick={() => update({ stage: Stage.INSIDE_CLUB })} />
+      )}
       {showPopUp && (
         <PopUpDecision backgroundSrc={popUp}>
           <DecisionOption
@@ -115,14 +119,11 @@ export const OutsideClub = () => {
           alt="instagram followers"
         />
       )}
-      <LeftButton
-        src={arrow}
-        alt="left arrow"
-        onClick={() => update({ stage: Stage.HOME, mission: null })}
-      />
       <Backdrop src={outsideClub} alt="club" />
       <Character />
-      <Bouncer onClick={onBouncerClick} src={bouncer} alt="bouncer" />
+      {(!hasAccessToClub || !showBouncer) && (
+        <BouncerOverlay onClick={onBouncerClick} />
+      )}
     </>
   );
 };

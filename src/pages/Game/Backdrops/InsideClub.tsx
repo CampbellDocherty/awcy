@@ -1,26 +1,25 @@
 import { useContext, useEffect, useState } from 'react';
-import arrow from '../../../assets/arrow.png';
 import firstOption from '../../../assets/go-chat.png';
 import popUp from '../../../assets/inside-club-pop-up.png';
 import insideClub from '../../../assets/inside-club.jpg';
 import thirdOption from '../../../assets/keep-moving.png';
-import waaw from '../../../assets/waaw.jpg';
 import secondOption from '../../../assets/wave-and-smile.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import { Character } from '../components/Character';
 import { HealthChange } from '../components/HealthChange';
+import { NextStage } from '../components/NextStage';
 import { PopUpDecision } from '../components/PopUpDecision';
 import {
   Backdrop,
   DecisionOption,
-  Djs,
-  LeftButton,
+  DjOverlay,
+  EmanOverlay,
 } from '../styles/game.styles';
 import { Results } from './Results';
 
 export const InsideClub = () => {
-  const { update, health, hasCompletedClub } = useContext(GameContext);
+  const { update, health, hasCompletedClub, mission } = useContext(GameContext);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [hpChange, setHpChange] = useState<number | null>(null);
@@ -29,10 +28,9 @@ export const InsideClub = () => {
     if (hasCompletedClub) {
       update({ mission: "Talk to the DJ's try to get back stage" });
       return;
+    } else {
+      update({ mission: 'Chat to your friend E' });
     }
-    setTimeout(() => {
-      setShowPopUp(true);
-    }, 1500);
   }, []);
 
   const onClose = () => setShowPopUp(false);
@@ -82,7 +80,10 @@ export const InsideClub = () => {
     <>
       {showResults && <Results />}
       {hpChange && <HealthChange healthChange={hpChange} />}
-      {hasCompletedClub && <Djs onClick={onDjClick} src={waaw} alt="dj's" />}
+      {mission === 'Chat to your friend E' && (
+        <EmanOverlay onClick={() => setShowPopUp(true)} />
+      )}
+      {hasCompletedClub && <DjOverlay onClick={onDjClick} />}
       {showPopUp && (
         <PopUpDecision backgroundSrc={popUp}>
           <DecisionOption
@@ -102,9 +103,8 @@ export const InsideClub = () => {
           />
         </PopUpDecision>
       )}
-      <LeftButton
-        src={arrow}
-        alt="left arrow"
+      <NextStage
+        right={false}
         onClick={() => update({ stage: Stage.OUTSIDE_CLUB, mission: null })}
       />
       <Backdrop src={insideClub} alt="club" />

@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 70%;
   height: 40%;
   margin: 30px auto;
 
@@ -78,17 +78,20 @@ export const LogoColumn = styled.div`
 
 export const Form = styled.form`
   width: 70%;
-  padding: 30px;
+  padding: 20px;
 
   background: white;
   background-image: url(${image});
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: start;
 
   & > label {
     margin-bottom: 5px;
+    width: 70%;
+    align-self: center;
+    text-align: left;
   }
 
   & > input,
@@ -100,6 +103,8 @@ export const Form = styled.form`
     outline: none;
     font-size: 18px;
     font-weight: 400;
+    width: 70%;
+    align-self: center;
   }
 
   & > button {
@@ -117,9 +122,22 @@ export const Form = styled.form`
   }
 `;
 
-export const Bouncer = styled.img`
-  width: 9%;
-  height: 28%;
+export const GraphicWrapper = styled.div`
+  max-height: 60%;
+  object-fit: contain;
+  align-self: center;
+  @media screen and (max-device-width: 568px) {
+    max-height: 50%;
+  }
+`;
+
+export const LoginGraphic = styled.img`
+  height: 100%;
+`;
+
+export const BouncerOverlay = styled.div`
+  width: 8%;
+  height: 27%;
   position: absolute;
   left: 44.5%;
   top: 58%;
@@ -156,13 +174,14 @@ export const LeftButton = styled.img`
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  transform: scaleX(1);
   z-index: 100;
   cursor: pointer;
   width: 10%;
   animation: ${bounce} 1.5s infinite;
 `;
 
-export const Character = styled.img<{ $stage: string }>`
+export const Character = styled.img`
   position: absolute;
   bottom: 0;
   right: 3%;
@@ -281,11 +300,13 @@ export const DecisionOption = styled.img`
   }
 `;
 
-export const Djs = styled.img`
-  width: 19.75%;
+export const DjOverlay = styled.div`
   position: absolute;
-  top: 40.8%;
-  left: 44.72%;
+  width: 18%;
+  height: 20%;
+  top: 42%;
+  right: 36%;
+  z-index: 400;
   cursor: pointer;
 `;
 
@@ -348,4 +369,14 @@ export const Restart = styled.button`
   @media screen and (max-device-width: 568px) {
     font-size: 8px;
   }
+`;
+
+export const EmanOverlay = styled.div`
+  position: absolute;
+  width: 6%;
+  height: 20%;
+  top: 63%;
+  right: 38%;
+  z-index: 400;
+  cursor: pointer;
 `;

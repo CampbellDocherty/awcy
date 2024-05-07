@@ -36,7 +36,5 @@ export const Character = () => {
   const { stage, outfit } = useContext(GameContext);
   const src = outfit || character;
   const style = getStyles(stage);
-  return (
-    <CharacterStyle style={style} $stage={stage} src={src} alt="character" />
-  );
+  return <CharacterStyle style={style} src={src} alt="character" />;
 };

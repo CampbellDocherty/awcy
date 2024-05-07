@@ -12,8 +12,10 @@ const renderGame = () => {
 };
 
 function enterNameAndPlay() {
-  const input = screen.getByLabelText('Name:');
-  fireEvent.change(input, { target: { value: 'Cammy' } });
+  const nameInput = screen.getByLabelText('Name:');
+  fireEvent.change(nameInput, { target: { value: 'Cammy' } });
+  const emailInput = screen.getByLabelText('Email:');
+  fireEvent.change(emailInput, { target: { value: 'cam@gmail.com' } });
   fireEvent.click(screen.getByText('Play'));
 }
 
@@ -23,8 +25,7 @@ function mocks() {
     .mockImplementation(async () => {
       return;
     });
-
-  vitest.useFakeTimers({ shouldAdvanceTime: true });
+  vitest.useFakeTimers();
 }
 
 function clearMocks() {
@@ -58,6 +59,7 @@ describe('home mission', () => {
     renderGame();
     enterNameAndPlay();
     mocks();
+    vitest.advanceTimersByTime(3000);
 
     const phone = await screen.findByAltText('message received');
     fireEvent.click(phone);
@@ -73,7 +75,7 @@ describe('home mission', () => {
 
   test('when outfit selected, outfits disappear and then health and clout appear', async () => {
     expect(screen.queryByAltText('drippy outfit')).toBeNull();
-    const cupboard = screen.getByAltText('cupboard');
+    const cupboard = screen.getByTestId('cupboard');
     fireEvent.click(cupboard);
     const outfitOne = screen.getByAltText('drippy outfit');
     fireEvent.click(outfitOne);
@@ -85,7 +87,7 @@ describe('home mission', () => {
 
   test('shows outfits when cupboard clicked', async () => {
     expect(screen.queryByAltText('drippy outfit')).toBeNull();
-    const cupboard = screen.getByAltText('cupboard');
+    const cupboard = screen.getByTestId('cupboard');
     fireEvent.click(cupboard);
     screen.getByAltText('drippy outfit');
     screen.getByAltText('steady outfit');

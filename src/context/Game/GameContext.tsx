@@ -3,6 +3,7 @@ import { Game, Stage } from './types';
 
 export const defaultValues = {
   name: '',
+  email: '',
   health: 2,
   outfit: null,
   stage: Stage.LOGIN,

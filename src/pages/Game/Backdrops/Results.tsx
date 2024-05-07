@@ -1,5 +1,6 @@
 import { useContext, useMemo } from 'react';
 import { GameContext } from '../../../context/Game';
+import { defaultValues } from '../../../context/Game/GameContext';
 import { StatsWrapper } from '../StatsWrapper';
 import {
   Restart,
@@ -8,7 +9,6 @@ import {
   ResultSubtitle,
   ResultTitle,
 } from '../styles/game.styles';
-import { defaultValues } from '../../../context/Game/GameContext';
 
 export const Results = () => {
   const { health, update } = useContext(GameContext);
