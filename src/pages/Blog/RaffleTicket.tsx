@@ -6,7 +6,12 @@ const Fixed = styled.div`
   width: 10%;
   top: 5px;
   left: 5px;
-  z-index: 900;
+  z-index: 600;
+  cursor: pointer;
+
+  @media screen and (max-device-width: 568px) {
+    width: 30%;
+  }
 `;
 
 export const TicketContainer = styled.div`
@@ -17,17 +22,17 @@ export const TicketContainer = styled.div`
   align-items: center;
 `;
 
-export const Number = styled.p`
+export const Number = styled.p<{ $expanded?: boolean }>`
   font-family: Nokia;
   position: absolute;
-  font-size: 18px;
+  font-size: ${({ $expanded }) => ($expanded ? '30px' : '20px')};
   margin: 0 auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  @media screen and (max-device-width: 568px) {
-    font-size: 8px;
+  @media screen and (max-device-width: 950px) {
+    font-size: ${({ $expanded }) => ($expanded ? '30px' : '12px')};
   }
 `;
 
