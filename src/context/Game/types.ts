@@ -7,7 +7,9 @@ export enum Stage {
 
 export type Game = {
   name: string;
+  id: string | null;
   email: string;
+  raffleNumber: string | null;
   health: number;
   outfit: string | null;
   stage: Stage;

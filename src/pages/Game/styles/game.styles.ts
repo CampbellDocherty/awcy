@@ -259,7 +259,7 @@ export const MissionBanner = styled.div`
 export const MissionText = styled.p`
   font-size: 20px;
   margin: 12px;
-  @media screen and (max-device-width: 568px) {
+  @media screen and (max-device-width: 900px) {
     font-size: 12px;
     margin: 4px;
   }
@@ -345,8 +345,8 @@ export const ResultTitle = styled.h2<{ $win: boolean }>`
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 
-  @media screen and (max-device-width: 568px) {
-    font-size: 24px;
+  @media screen and (max-device-width: 900px) {
+    font-size: 18px;
   }
 `;
 
@@ -355,9 +355,38 @@ export const ResultSubtitle = styled.h4`
   font-size: 20px;
   color: white;
   margin: 0;
-  @media screen and (max-device-width: 568px) {
-    font-size: 10px;
+  @media screen and (max-device-width: 900px) {
+    font-size: 12px;
   }
+`;
+
+export const RaffleTicketContainer = styled.div`
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const RaffleNumber = styled.p`
+  font-family: Nokia;
+  position: absolute;
+  font-size: 18px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @media screen and (max-device-width: 568px) {
+    font-size: 8px;
+  }
+`;
+
+export const RaffleTicket = styled.img`
+  width: 100%;
 `;
 
 export const Restart = styled.button`
@@ -369,7 +398,7 @@ export const Restart = styled.button`
   background-color: transparent;
   border: 1px solid white;
   padding: 8px;
-  margin-top: 12px;
+  margin-top: 8px;
   cursor: pointer;
 
   @media screen and (max-device-width: 568px) {

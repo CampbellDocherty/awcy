@@ -112,7 +112,7 @@ export const Modal = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 5;
+  z-index: 999;
   background-color: hsla(0, 0%, 7%, 0.92);
 `;
 

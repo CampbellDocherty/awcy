@@ -1,8 +1,13 @@
-import { useContext, useMemo } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
+import raffleTicket from '../../../assets/raffle-ticket.png';
 import { GameContext } from '../../../context/Game';
 import { defaultValues } from '../../../context/Game/GameContext';
+import { addUser } from '../../../firebase/database';
 import { StatsWrapper } from '../StatsWrapper';
 import {
+  RaffleNumber,
+  RaffleTicket,
+  RaffleTicketContainer,
   Restart,
   ResultContainer,
   ResultContainerInner,
@@ -10,10 +15,42 @@ import {
   ResultTitle,
 } from '../styles/game.styles';
 
+const getRaffleNumber = () => {
+  const randomNumber = Math.floor(Math.random() * 9999) + 1;
+  const formattedNumber = randomNumber.toString().padStart(4, '0');
+  return formattedNumber;
+};
+
 export const Results = () => {
-  const { health, update } = useContext(GameContext);
+  const {
+    health,
+    update,
+    raffleNumber: raffleNumberFromContext,
+    id,
+    email,
+    name,
+  } = useContext(GameContext);
+  const raffleNumber = raffleNumberFromContext || getRaffleNumber();
+
+  useEffect(() => {
+    localStorage.setItem('raffleNumber', `${raffleNumber}`);
+    update({ raffleNumber });
+
+    const createUser = async () => {
+      if (!id) {
+        return;
+      }
+
+      await addUser(id, { email, name, raffleNumber });
+    };
+
+    createUser();
+  }, []);
+
+  const userWon = health > 0;
+
   const { title, subtitle } = useMemo(() => {
-    if (health > 0) {
+    if (userWon) {
       return {
         title: 'Congrats',
         subtitle: 'You made some good decisions',
@@ -34,8 +71,14 @@ export const Results = () => {
     <ResultContainer>
       <ResultContainerInner>
         <StatsWrapper health={health} />
-        <ResultTitle $win={health > 0}>{title}</ResultTitle>
+        <ResultTitle $win={userWon}>{title}</ResultTitle>
         <ResultSubtitle>{subtitle}</ResultSubtitle>
+        {userWon && (
+          <RaffleTicketContainer>
+            <RaffleNumber>{raffleNumber}</RaffleNumber>
+            <RaffleTicket src={raffleTicket} alt="raffle ticket" />
+          </RaffleTicketContainer>
+        )}
         <Restart onClick={onRestart}>Restart</Restart>
       </ResultContainerInner>
     </ResultContainer>

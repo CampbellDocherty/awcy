@@ -20,6 +20,7 @@ import {
 } from './styles/header.styles';
 import { Column, Container, Main } from './styles/main.styles';
 import { Splash } from './Splash';
+import { RaffleTicket } from './RaffleTicket';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -78,8 +79,11 @@ export const Blog = () => {
     return <Splash onEnded={() => setSplashDone(true)} />;
   }
 
+  const raffleNumber = localStorage.getItem('raffleNumber');
+
   return (
     <>
+      {raffleNumber && <RaffleTicket raffleNumber={raffleNumber} />}
       <Header>
         <HeaderImage>
           <img src={tee} alt="are we cool yet t-shirt" />
