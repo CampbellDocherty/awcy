@@ -46,6 +46,13 @@ export const Delete = styled.button`
   right: 0;
 `;
 
+export const Pin = styled.button`
+  position: absolute;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 export const Edit = styled.button`
   position: absolute;
   bottom: 0;

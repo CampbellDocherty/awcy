@@ -1,13 +1,6 @@
 import { FirebaseStorageContent } from '../../../firebase/storage';
 
-export const splitArray = (
-  content: FirebaseStorageContent[],
-  columns: number
-) => {
-  const flyer = content.find((item) => item.metadata.name === 'flyer');
-  const contentWithoutFlyer = content.filter(
-    (item) => item.metadata.name !== 'flyer'
-  );
+const chunkArray = (content: FirebaseStorageContent[], columns: number) => {
   const subarrayLength = Math.floor(content.length / columns);
   const remainder = content.length % columns;
   let start = 0;
@@ -15,19 +8,39 @@ export const splitArray = (
 
   for (let i = 0; i < columns; i++) {
     const end = start + subarrayLength + (i < remainder ? 1 : 0);
-    chunks.push(contentWithoutFlyer.slice(start, end));
+    chunks.push(content.slice(start, end));
     start = end;
   }
 
-  if (flyer) {
-    const lastElement = chunks[0].pop();
-    const lastChunk = chunks.pop();
-    if (lastElement && lastChunk) {
-      lastChunk.push(lastElement);
-      return [[flyer, ...chunks[0]], ...chunks.slice(1), lastChunk];
-    }
-    return [[flyer, ...chunks[0]], ...chunks.slice(1)];
-  }
-
   return chunks;
+};
+
+export const splitArray = (
+  content: FirebaseStorageContent[],
+  columns: number
+) => {
+  const pinnedFiles = content
+    .filter((file) => file.metadata.customMetadata?.pinned === 'true')
+    .sort((a, b) => {
+      if (
+        !a.metadata.customMetadata?.pinnedAt ||
+        !b.metadata.customMetadata?.pinnedAt
+      ) {
+        return 0;
+      }
+      return (
+        parseInt(a.metadata.customMetadata.pinnedAt) -
+        parseInt(b.metadata.customMetadata.pinnedAt)
+      );
+    });
+  const nonPinnedFiles = content.filter(
+    (file) => file.metadata.customMetadata?.pinned !== 'true'
+  );
+  const splitPinned = chunkArray(pinnedFiles, columns);
+  const splitUnpinned = chunkArray(nonPinnedFiles, columns);
+
+  const mergedArray = splitPinned.map((subArray, index) =>
+    subArray.concat(splitUnpinned[index])
+  );
+  return mergedArray;
 };

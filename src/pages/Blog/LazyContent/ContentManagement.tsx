@@ -4,9 +4,10 @@ import { UserContext } from '../../../context/User';
 import {
   FirebaseStorageContent,
   deleteFile,
+  pinFile,
   updateCaption,
 } from '../../../firebase/storage';
-import { Delete, Edit, EditInput } from '../styles/image.styles';
+import { Delete, Edit, EditInput, Pin } from '../styles/image.styles';
 
 export const ContentManagement = ({
   content,
@@ -21,11 +22,17 @@ export const ContentManagement = ({
 }) => {
   const user = useContext(UserContext);
 
+  const isPinned =
+    content.metadata.customMetadata?.pinned === 'true' ? true : false;
   const [isEditing, setIsEditing] = useState(false);
 
   const handleDelete = async () => {
     await deleteFile(content.metadata.name);
     onDelete(content);
+  };
+
+  const handlePin = () => {
+    pinFile(content.metadata.name, !isPinned);
   };
 
   const handleEdit = () => {
@@ -50,6 +57,7 @@ export const ContentManagement = ({
         />
       )}
       {user && <Delete onClick={handleDelete}>Delete</Delete>}
+      {user && <Pin onClick={handlePin}>{isPinned ? 'Unpin' : 'Pin'}</Pin>}
       {user && <Edit onClick={handleEdit}>Edit</Edit>}
     </>
   );
