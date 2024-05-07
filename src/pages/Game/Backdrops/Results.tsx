@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { GameContext } from '../../../context/Game';
 import { defaultValues } from '../../../context/Game/GameContext';
 import { StatsWrapper } from '../StatsWrapper';
@@ -13,9 +13,39 @@ import {
   ResultTitle,
 } from '../styles/game.styles';
 import raffleTicket from '../../../assets/raffle-ticket.png';
+import { addUser } from '../../../firebase/database';
+
+const getRaffleNumber = () => {
+  const randomNumber = Math.floor(Math.random() * 9999) + 1;
+  const formattedNumber = randomNumber.toString().padStart(4, '0');
+  return formattedNumber;
+};
 
 export const Results = () => {
-  const { health, update } = useContext(GameContext);
+  const {
+    health,
+    update,
+    raffleNumber: raffleNumberFromContext,
+    id,
+    email,
+    name,
+  } = useContext(GameContext);
+  const raffleNumber = raffleNumberFromContext || getRaffleNumber();
+
+  useEffect(() => {
+    localStorage.setItem('raffleNumber', `${raffleNumber}`);
+    update({ raffleNumber });
+
+    const createUser = async () => {
+      if (!id) {
+        return;
+      }
+
+      await addUser(id, { email, name, raffleNumber });
+    };
+
+    createUser();
+  }, []);
 
   const userWon = health > 0;
 
@@ -45,7 +75,7 @@ export const Results = () => {
         <ResultSubtitle>{subtitle}</ResultSubtitle>
         {userWon && (
           <RaffleTicketContainer>
-            <RaffleNumber>0078</RaffleNumber>
+            <RaffleNumber>{raffleNumber}</RaffleNumber>
             <RaffleTicket src={raffleTicket} alt="raffle ticket" />
           </RaffleTicketContainer>
         )}

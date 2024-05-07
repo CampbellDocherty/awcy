@@ -9,6 +9,7 @@ import {
   LoginGraphic,
   LogoColumn,
 } from '../styles/game.styles';
+import { v4 as uuidv4 } from 'uuid';
 
 export const Login = () => {
   const { name, update, email } = useContext(GameContext);
@@ -16,7 +17,9 @@ export const Login = () => {
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name || !email) return;
-    update({ name, stage: Stage.HOME });
+    const id = uuidv4();
+    localStorage.setItem('awcyId', id);
+    update({ name, stage: Stage.HOME, id });
   };
 
   const isMobile = window.innerWidth <= 900;
