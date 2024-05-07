@@ -101,7 +101,9 @@ export const Home = () => {
       )}
       <Backdrop src={home} alt="home" />
       <Character />
-      {messageSeen && <CupboardOverlay onClick={onCupboardClick} />}
+      {messageSeen && (
+        <CupboardOverlay data-testid={'cupboard'} onClick={onCupboardClick} />
+      )}
 
       {showOutfits && (
         <OutfitContainer>
