@@ -136,12 +136,15 @@ export const LoginGraphic = styled.img`
 `;
 
 export const BouncerOverlay = styled.div`
-  width: 8%;
+  width: 12%;
   height: 27%;
   position: absolute;
-  left: 44.5%;
+  left: 43.5%;
   top: 58%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const bounce = keyframes`
@@ -308,6 +311,9 @@ export const DjOverlay = styled.div`
   right: 36%;
   z-index: 400;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ResultContainer = styled.div`
@@ -373,10 +379,13 @@ export const Restart = styled.button`
 
 export const EmanOverlay = styled.div`
   position: absolute;
-  width: 6%;
+  width: 12%;
   height: 20%;
   top: 63%;
-  right: 38%;
+  right: 35%;
   z-index: 400;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

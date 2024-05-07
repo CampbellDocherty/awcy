@@ -17,6 +17,7 @@ import {
   EmanOverlay,
 } from '../styles/game.styles';
 import { Results } from './Results';
+import { Pointer } from '../components/Pointer';
 
 export const InsideClub = () => {
   const { update, health, hasCompletedClub, mission } = useContext(GameContext);
@@ -81,9 +82,15 @@ export const InsideClub = () => {
       {showResults && <Results />}
       {hpChange && <HealthChange healthChange={hpChange} />}
       {mission === 'Chat to your friend E' && (
-        <EmanOverlay onClick={() => setShowPopUp(true)} />
+        <EmanOverlay onClick={() => setShowPopUp(true)}>
+          <Pointer />
+        </EmanOverlay>
       )}
-      {hasCompletedClub && <DjOverlay onClick={onDjClick} />}
+      {hasCompletedClub && (
+        <DjOverlay onClick={onDjClick}>
+          <Pointer />
+        </DjOverlay>
+      )}
       {showPopUp && (
         <PopUpDecision backgroundSrc={popUp}>
           <DecisionOption

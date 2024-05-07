@@ -17,6 +17,7 @@ import {
   DecisionOption,
 } from '../styles/game.styles';
 import { Message } from './Home/styles';
+import { Pointer } from '../components/Pointer';
 
 export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
@@ -121,8 +122,10 @@ export const OutsideClub = () => {
       )}
       <Backdrop src={outsideClub} alt="club" />
       <Character />
-      {(!hasAccessToClub || !showBouncer) && (
-        <BouncerOverlay onClick={onBouncerClick} />
+      {(!hasAccessToClub || showBouncer) && (
+        <BouncerOverlay onClick={onBouncerClick}>
+          <Pointer />
+        </BouncerOverlay>
       )}
     </>
   );
