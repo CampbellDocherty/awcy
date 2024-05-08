@@ -1,6 +1,4 @@
 import { Suspense, lazy, useContext, useEffect, useState } from 'react';
-import awcyAudio from '../../assets/awcy.mp3';
-import tee from '../../assets/tee.png';
 import { UserContext } from '../../context/User';
 import { auth } from '../../firebase/app';
 import { FirebaseStorageContent } from '../../firebase/storage';
@@ -10,16 +8,9 @@ import { RaffleTicket } from './RaffleTicket';
 import { SignIn } from './SignIn';
 import { calculateHowManyColumns } from './columnCalculator/calculateHowManyColumns';
 import { splitArray } from './columnCalculator/splitArray';
-import {
-  Audio,
-  AudioCaption,
-  Header,
-  HeaderImage,
-  RsvpButton,
-  Subtitle,
-  Title,
-} from './styles/header.styles';
 import { Column, Container, Main } from './styles/main.styles';
+import { HeaderComponent } from './HeaderComponent';
+import { GameWrapper } from '../Game';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -72,43 +63,29 @@ export const Blog = ({ files }: { files: FirebaseStorageContent[] }) => {
   return (
     <>
       {raffleNumber && <RaffleTicket raffleNumber={raffleNumber} />}
-      <Header>
-        <HeaderImage>
-          <img src={tee} alt="are we cool yet t-shirt" />
-        </HeaderImage>
-        <Title onClick={() => setCount(count + 1)}>arewecoolyet.blog</Title>
-        <Subtitle>{"YOU'RE ALL WELCOME"}</Subtitle>
-        <a
-          href="https://forms.gle/8dzX8f76mTJm69iw7"
-          target="_blank"
-          rel="noreferrer"
+      <HeaderComponent onTitleClick={() => setCount(count + 1)} />
+      {user && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
         >
-          <RsvpButton>PLEASE RSVP! CLICK HERE</RsvpButton>
-        </a>
-        <Audio
-          controlsList="nodownload noplaybackrate"
-          controls
-          src={awcyAudio}
-        >
-          <track default kind="captions" src={awcyAudio} />
-        </Audio>
-        <AudioCaption>stu$h Auntie - Pattern [Up]</AudioCaption>
-        {user && (
-          <>
-            <FileUpload
-              onUpload={(file: FirebaseStorageContent) => {
-                if (!content) {
-                  setContent([[file]]);
-                  return;
-                }
-                const lastContent = content[content.length - 1];
-                setContent([...content.slice(0, -1), [...lastContent, file]]);
-              }}
-            />
-            <button onClick={logOut}>Log out</button>
-          </>
-        )}
-      </Header>
+          <FileUpload
+            onUpload={(file: FirebaseStorageContent) => {
+              if (!content) {
+                setContent([[file]]);
+                return;
+              }
+              const lastContent = content[content.length - 1];
+              setContent([...content.slice(0, -1), [...lastContent, file]]);
+            }}
+          />
+          <button onClick={logOut}>Log out</button>
+        </div>
+      )}
+      {user && <GameWrapper />}
       <Container>
         <Main>
           {content &&
