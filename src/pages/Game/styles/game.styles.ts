@@ -68,7 +68,7 @@ export const LogoColumn = styled.div`
   background: #005f9f;
   background-image: url(${image});
   color: #96e3ff;
-  border: 3px solid #04214d;
+  outline: 3px solid #04214d;
   padding: 10px;
   display: flex;
   flex-direction: column;
