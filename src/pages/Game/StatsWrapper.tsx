@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import hpClout from '../../assets/hp-clout.png';
+import hpBackground from '../../assets/white-health-bar.png';
 import {
   StatPiece,
+  StatsBackground,
   StatsBar,
   StatsContainer,
   StatsInner,
@@ -23,6 +25,7 @@ export const StatsWrapper = ({ health }: { health: number }) => {
     <StatsContainer>
       <StatsInner>
         <StatsBar src={hpClout} alt="stat bar" />
+        {/* <StatsBackground src={hpBackground} alt="stat background" /> */}
         <StatPiece $left={left} />
       </StatsInner>
     </StatsContainer>
