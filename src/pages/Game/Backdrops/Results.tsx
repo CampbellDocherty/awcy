@@ -5,6 +5,7 @@ import { defaultValues } from '../../../context/Game/GameContext';
 import { addUser } from '../../../firebase/database';
 import { StatsWrapper } from '../StatsWrapper';
 import {
+  HelperText,
   RaffleNumber,
   RaffleTicket,
   RaffleTicketContainer,
@@ -30,6 +31,7 @@ export const Results = () => {
     email,
     name,
   } = useContext(GameContext);
+
   const raffleNumber = raffleNumberFromContext || getRaffleNumber();
 
   useEffect(() => {
@@ -80,6 +82,11 @@ export const Results = () => {
           </RaffleTicketContainer>
         )}
         <Restart onClick={onRestart}>Restart</Restart>
+        {userWon && (
+          <HelperText>
+            Keep a record of your ticket you could win prizes
+          </HelperText>
+        )}
       </ResultContainerInner>
     </ResultContainer>
   );
