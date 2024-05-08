@@ -215,6 +215,14 @@ export const StatsBar = styled.img`
   z-index: 2;
 `;
 
+export const StatsBackground = styled.img`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+`;
+
 export const StatPiece = styled.div<{ $left: string }>`
   left: ${(props) => props.$left};
   bottom: 32%;

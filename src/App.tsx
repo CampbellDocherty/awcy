@@ -1,12 +1,10 @@
+import { Container } from './Container';
 import { UserProvider } from './context/User';
-import { Blog } from './pages/Blog';
-import { GameWrapper } from './pages/Game';
 
 const App = () => {
   return (
     <UserProvider>
-      <Blog />
-      <GameWrapper />
+      <Container />
     </UserProvider>
   );
 };

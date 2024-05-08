@@ -7,7 +7,6 @@ const Fixed = styled.div`
   top: 5px;
   left: 5px;
   z-index: 600;
-  cursor: pointer;
 
   @media screen and (max-device-width: 568px) {
     width: 30%;
