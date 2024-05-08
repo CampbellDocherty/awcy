@@ -42,14 +42,13 @@ export const Home = () => {
       if ('vibrator' in navigator) {
         navigator.vibrate(500);
       }
-      setShowPhone(true);
       audioRef.current.play();
     }, 2000);
 
     setTimeout(() => {
       if (outfit) return;
       setShowPhone(true);
-    }, 3000);
+    }, 2500);
   }, []);
 
   const [showMessage, setShowMessage] = useState(false);

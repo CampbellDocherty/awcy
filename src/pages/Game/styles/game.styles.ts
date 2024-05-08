@@ -216,11 +216,11 @@ export const StatsBar = styled.img`
 `;
 
 export const StatsBackground = styled.img`
-  width: 100%;
+  width: 107%;
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
+  top: -5%;
+  left: -3%;
+  z-index: 1;
 `;
 
 export const StatPiece = styled.div<{ $left: string }>`
