@@ -21,7 +21,7 @@ import { Pointer } from '../../components/Pointer';
 
 export const Home = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { update, outfit, health } = useContext(GameContext);
+  const { update, outfit, health, mission } = useContext(GameContext);
 
   const [showOutfits, setShowOutfits] = useState<boolean>(false);
   const [hpChange, setHpChange] = useState<number | null>(null);
@@ -35,7 +35,7 @@ export const Home = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (outfit) return;
+      if (outfit || mission) return;
       if (!audioRef) return;
       if (!audioRef.current) return;
       if (!audioRef.current.play) return;
@@ -47,7 +47,7 @@ export const Home = () => {
     }, 2000);
 
     setTimeout(() => {
-      if (outfit) return;
+      if (outfit || mission) return;
       setShowPhone(true);
     }, 2500);
   }, []);
@@ -102,7 +102,7 @@ export const Home = () => {
       )}
       <Backdrop src={home} alt="home" />
       <Character />
-      {messageSeen && (
+      {(messageSeen || mission === 'Get changed and head to the club') && (
         <CupboardOverlay data-testid={'cupboard'} onClick={onCupboardClick}>
           <Pointer />
         </CupboardOverlay>
