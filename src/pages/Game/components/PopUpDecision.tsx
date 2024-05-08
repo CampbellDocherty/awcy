@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { PopUp, PopUpContainer } from '../styles/game.styles';
+import { PopUpImg, PopUpContainer } from '../styles/game.styles';
 
 export const PopUpDecision = ({
   backgroundSrc,
@@ -10,7 +10,7 @@ export const PopUpDecision = ({
 }) => {
   return (
     <PopUpContainer>
-      <PopUp src={backgroundSrc} alt="pop up screen for bouncer" />
+      <PopUpImg src={backgroundSrc} alt="pop up screen for bouncer" />
       {children}
     </PopUpContainer>
   );
