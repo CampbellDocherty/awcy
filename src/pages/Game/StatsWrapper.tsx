@@ -1,9 +1,7 @@
 import { useMemo } from 'react';
 import hpClout from '../../assets/hp-clout.png';
-import hpBackground from '../../assets/white-health-bar.png';
 import {
   StatPiece,
-  StatsBackground,
   StatsBar,
   StatsContainer,
   StatsInner,
