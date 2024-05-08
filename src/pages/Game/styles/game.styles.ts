@@ -90,7 +90,7 @@ export const LogoColumn = styled.div`
 
 export const Form = styled.form`
   width: 70%;
-  padding: 20px;
+  padding: 10px;
 
   background: white;
   background-image: url(${image});
@@ -104,6 +104,10 @@ export const Form = styled.form`
     width: 70%;
     align-self: center;
     text-align: left;
+
+    @media screen and (max-device-width: 568px) {
+      font-size: 12px;
+    }
   }
 
   & > input,
@@ -117,6 +121,11 @@ export const Form = styled.form`
     font-weight: 400;
     width: 70%;
     align-self: center;
+
+    @media screen and (max-device-width: 568px) {
+      font-size: 10px;
+      height: 18px;
+    }
   }
 
   & > button {
@@ -131,6 +140,13 @@ export const Form = styled.form`
     -webkit-box-shadow: 8px 6px 4px 1px rgba(189, 174, 177, 1);
     -moz-box-shadow: 8px 6px 4px 1px rgba(189, 174, 177, 1);
     box-shadow: 8px 6px 4px 1px rgba(189, 174, 177, 1);
+
+    @media screen and (max-device-width: 568px) {
+      font-size: 10px;
+      height: 20px;
+      width: 60px;
+      padding: 2px;
+    }
   }
 `;
 
