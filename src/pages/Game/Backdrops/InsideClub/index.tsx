@@ -1,23 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
-import firstOption from '../../../assets/go-chat.png';
-import popUp from '../../../assets/inside-club-pop-up.png';
-import insideClub from '../../../assets/inside-club.jpg';
-import thirdOption from '../../../assets/keep-moving.png';
-import secondOption from '../../../assets/wave-and-smile.png';
-import { GameContext } from '../../../context/Game';
-import { Stage } from '../../../context/Game/types';
-import { Character } from '../components/Character';
-import { HealthChange } from '../components/HealthChange';
-import { NextStage } from '../components/NextStage';
-import { PopUpDecision } from '../components/PopUpDecision';
-import {
-  Backdrop,
-  DecisionOption,
-  DjOverlay,
-  EmanOverlay,
-} from '../styles/game.styles';
-import { Results } from './Results';
-import { Pointer } from '../components/Pointer';
+import insideClub from '../../../../assets/inside-club.jpg';
+import popUp1 from '../../../../assets/pop-up-inside-club-1.png';
+import popUp2 from '../../../../assets/pop-up-inside-club-2.png';
+import popUp3 from '../../../../assets/pop-up-inside-club-3.png';
+import { GameContext } from '../../../../context/Game';
+import { Stage } from '../../../../context/Game/types';
+import { Character } from '../../components/Character';
+import { HealthChange } from '../../components/HealthChange';
+import { NextStage } from '../../components/NextStage';
+import { Pointer } from '../../components/Pointer';
+import { Backdrop, DjOverlay, EmanOverlay } from '../../styles/game.styles';
+import { Results } from '../Results';
+import { PopUp } from '../../components/PopUp';
 
 export const InsideClub = () => {
   const { update, health, hasCompletedClub, mission } = useContext(GameContext);
@@ -38,6 +32,18 @@ export const InsideClub = () => {
 
   const onFirstOptionClick = () => {
     onClose();
+    setHpChange(-2);
+    setTimeout(() => {
+      update({
+        health: health - 2,
+        hasCompletedClub: true,
+        mission: "Talk to the DJ's try to get back stage",
+      });
+    }, 1500);
+  };
+
+  const onSecondOptionClick = () => {
+    onClose();
     setHpChange(1);
     setTimeout(() => {
       update({
@@ -48,24 +54,12 @@ export const InsideClub = () => {
     }, 1500);
   };
 
-  const onSecondOptionClick = () => {
+  const onThirdOptionClick = () => {
     onClose();
     setHpChange(-1);
     setTimeout(() => {
       update({
         health: health - 1,
-        hasCompletedClub: true,
-        mission: "Talk to the DJ's try to get back stage",
-      });
-    }, 1500);
-  };
-
-  const onThirdOptionClick = () => {
-    onClose();
-    setHpChange(-2);
-    setTimeout(() => {
-      update({
-        health: health - 2,
         hasCompletedClub: true,
         mission: "Talk to the DJ's try to get back stage",
       });
@@ -92,23 +86,12 @@ export const InsideClub = () => {
         </DjOverlay>
       )}
       {showPopUp && (
-        <PopUpDecision backgroundSrc={popUp}>
-          <DecisionOption
-            onClick={onFirstOptionClick}
-            src={firstOption}
-            alt="go chat"
-          />
-          <DecisionOption
-            onClick={onSecondOptionClick}
-            src={secondOption}
-            alt="wave and smile"
-          />
-          <DecisionOption
-            onClick={onThirdOptionClick}
-            src={thirdOption}
-            alt="keep moving"
-          />
-        </PopUpDecision>
+        <PopUp
+          popUps={[popUp1, popUp2, popUp3]}
+          onFirstOptionClick={onFirstOptionClick}
+          onSecondOptionClick={onSecondOptionClick}
+          onThirdOptionClick={onThirdOptionClick}
+        />
       )}
       <NextStage
         right={false}

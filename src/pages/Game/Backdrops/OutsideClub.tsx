@@ -1,23 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
-import popUp from '../../../assets/bouncer-pop-up.png';
 import instagram from '../../../assets/following.png';
-import secondOption from '../../../assets/i-know-the-dj.png';
-import firstOption from '../../../assets/obey.png';
 import outsideClub from '../../../assets/outside-club.jpg';
-import thirdOption from '../../../assets/show-ig.png';
+import popUp1 from '../../../assets/pop-up-outside-club-1.png';
+import popUp2 from '../../../assets/pop-up-outside-club-2.png';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import { Character } from '../components/Character';
 import { HealthChange } from '../components/HealthChange';
 import { NextStage } from '../components/NextStage';
-import { PopUpDecision } from '../components/PopUpDecision';
-import {
-  Backdrop,
-  BouncerOverlay,
-  DecisionOption,
-} from '../styles/game.styles';
-import { Message } from './Home/styles';
 import { Pointer } from '../components/Pointer';
+import { PopUp } from '../components/PopUp';
+import { Backdrop, BouncerOverlay } from '../styles/game.styles';
+import { Message } from './Home/styles';
 
 export const OutsideClub = () => {
   const { update, health, hasAccessToClub } = useContext(GameContext);
@@ -95,23 +89,12 @@ export const OutsideClub = () => {
         <NextStage right onClick={() => update({ stage: Stage.INSIDE_CLUB })} />
       )}
       {showPopUp && (
-        <PopUpDecision backgroundSrc={popUp}>
-          <DecisionOption
-            onClick={onFirstOptionClick}
-            src={firstOption}
-            alt="obey"
-          />
-          <DecisionOption
-            onClick={onSecondOptionClick}
-            src={secondOption}
-            alt="I know the dj"
-          />
-          <DecisionOption
-            onClick={onThirdOptionClick}
-            src={thirdOption}
-            alt="show instagram"
-          />
-        </PopUpDecision>
+        <PopUp
+          popUps={[popUp1, popUp2]}
+          onFirstOptionClick={onFirstOptionClick}
+          onSecondOptionClick={onSecondOptionClick}
+          onThirdOptionClick={onThirdOptionClick}
+        />
       )}
       {showIg && (
         <Message

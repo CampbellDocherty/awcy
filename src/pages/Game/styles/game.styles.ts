@@ -285,30 +285,57 @@ export const PopUpContainer = styled.div`
   justify-content: center;
 `;
 
-export const PopUp = styled.img`
+export const RightArrowImg = styled.img`
+  position: absolute;
+  right: 10%;
+  top: 43%;
+  opacity: 0.9;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 8%;
+`;
+
+export const PopUpImg = styled.img`
   position: relative;
   height: 100%;
 `;
 
-export const DecisionOption = styled.img`
+export const FirstDecisionOptionOverlay = styled.div`
   position: absolute;
   width: 17.4%;
   cursor: pointer;
+  top: 60.7%;
+  left: 29.2%;
+  z-index: 500;
+  height: 13%;
+`;
 
-  &:nth-of-type(2) {
-    top: 60.7%;
-    right: 29.7%;
-  }
+export const SecondDecisionOptionOverlay = styled.div`
+  position: absolute;
+  width: 17.4%;
+  cursor: pointer;
+  top: 60.7%;
+  right: 29.7%;
+  z-index: 500;
+  height: 13%;
+`;
 
-  &:nth-of-type(3) {
-    bottom: 8.7%;
-    left: 29.1%;
-  }
+export const ThirdDecisionOptionOverlay = styled.div`
+  position: absolute;
+  width: 17.4%;
+  cursor: pointer;
+  bottom: 8.7%;
+  left: 29.1%;
+  z-index: 500;
+  height: 13%;
+`;
 
-  &:nth-of-type(4) {
-    top: 60.7%;
-    left: 29.2%;
-  }
+export const OptionBlocker = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  background-color: white;
+  bottom: 0;
 `;
 
 export const DjOverlay = styled.div`
