@@ -369,13 +369,17 @@ export const ResultContainer = styled.div`
 
 export const ResultContainerInner = styled.div`
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
 `;
 
 export const ResultTitle = styled.h2<{ $win: boolean }>`
   font-family: Nokia;
   font-size: 40px;
   margin: 0;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   color: ${(props) => (props.$win ? 'yellow' : 'red')};
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
@@ -391,8 +395,16 @@ export const ResultSubtitle = styled.h4`
   color: white;
   margin: 0;
   @media screen and (max-device-width: 900px) {
-    font-size: 12px;
+    font-size: 10px;
   }
+`;
+
+export const HelperText = styled.p`
+  font-size: 8px;
+  bottom: 6%;
+  color: white;
+  margin: 0;
+  margin-top: 8px;
 `;
 
 export const RaffleTicketContainer = styled.div`
