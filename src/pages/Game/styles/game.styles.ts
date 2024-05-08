@@ -32,6 +32,19 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const RotatedWrapper = styled.div`
+  width: 90%;
+  height: 90%;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > div {
+    transform: rotate(90deg);
+  }
+`;
+
 export const AspectRatioBox = styled.div`
   height: 0;
   overflow: hidden;
@@ -68,7 +81,7 @@ export const LogoColumn = styled.div`
   background: #005f9f;
   background-image: url(${image});
   color: #96e3ff;
-  border: 3px solid #04214d;
+  outline: 3px solid #04214d;
   padding: 10px;
   display: flex;
   flex-direction: column;
