@@ -42,6 +42,7 @@ export const Home = () => {
       if ('vibrator' in navigator) {
         navigator.vibrate(500);
       }
+      audioRef.current.volume = 0.05;
       audioRef.current.play();
     }, 2000);
 

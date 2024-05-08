@@ -17,6 +17,7 @@ export const InsideClub = () => {
   const { update, health, hasCompletedClub, mission } = useContext(GameContext);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [hasSpokenToEman, setHasSpokenToEman] = useState(false);
   const [hpChange, setHpChange] = useState<number | null>(null);
 
   useEffect(() => {
@@ -75,8 +76,13 @@ export const InsideClub = () => {
     <>
       {showResults && <Results />}
       {hpChange && <HealthChange healthChange={hpChange} />}
-      {mission === 'Chat to your friend E' && (
-        <EmanOverlay onClick={() => setShowPopUp(true)}>
+      {mission === 'Chat to your friend E' && !hasSpokenToEman && (
+        <EmanOverlay
+          onClick={() => {
+            setHasSpokenToEman(true);
+            setShowPopUp(true);
+          }}
+        >
           <Pointer />
         </EmanOverlay>
       )}
