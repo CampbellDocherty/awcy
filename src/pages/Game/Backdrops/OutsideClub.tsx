@@ -105,7 +105,7 @@ export const OutsideClub = () => {
       )}
       <Backdrop src={outsideClub} alt="club" />
       <Character />
-      {(!hasAccessToClub || showBouncer) && (
+      {!hasAccessToClub && showBouncer && (
         <BouncerOverlay onClick={onBouncerClick}>
           <Pointer />
         </BouncerOverlay>

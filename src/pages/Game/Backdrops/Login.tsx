@@ -15,6 +15,7 @@ export const Login = () => {
   const { name, update, email } = useContext(GameContext);
 
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
+    audioRef.current?.pause();
     e.preventDefault();
     if (!name || !email) return;
     const id = uuidv4();
@@ -30,6 +31,7 @@ export const Login = () => {
     if (!audioRef) return;
     if (!audioRef.current) return;
     if (!audioRef.current.play) return;
+    audioRef.current.volume = 0.02;
     audioRef.current.play();
   };
 
