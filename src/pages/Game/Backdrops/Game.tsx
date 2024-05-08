@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { GameContext } from '../../../context/Game';
 import { Stage } from '../../../context/Game/types';
 import { OutsideClub } from './OutsideClub';
@@ -32,6 +32,8 @@ export const Modal = styled.div`
 export const Game = () => {
   const { health, stage, mission } = useContext(GameContext);
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const isMobile = window.innerWidth <= 500;
@@ -52,9 +54,15 @@ export const Game = () => {
     };
   }, [isExpanded]);
 
+  const onClickModal = (e: React.MouseEvent) => {
+    if (modalRef.current === e.target) {
+      setIsExpanded(false);
+    }
+  };
+
   if (isExpanded) {
     return (
-      <Modal>
+      <Modal ref={modalRef} onClick={onClickModal}>
         <RotatedWrapper>
           <AspectRatioBox>
             <InnerAspectRatioBox>
