@@ -33,15 +33,14 @@ export const Wrapper = styled.div`
 `;
 
 export const RotatedWrapper = styled.div`
-  width: 90%;
-  height: 90%;
-  background-color: blue;
+  width: 65%;
+  height: 55%;
   display: flex;
   justify-content: center;
   align-items: center;
 
   & > div {
-    transform: rotate(90deg);
+    transform: rotate(90deg) scale(2.3);
   }
 `;
 
@@ -271,7 +270,7 @@ export const MissionBanner = styled.div`
   margin-left: auto;
   margin-right: auto;
   color: white;
-  width: 40%;
+  width: 50%;
   border-radius: 3%;
   word-wrap: break-word;
   animation: ${slideUp} 0.5s ease-in-out;
@@ -280,7 +279,8 @@ export const MissionBanner = styled.div`
 export const MissionText = styled.p`
   font-size: 20px;
   margin: 12px;
-  @media screen and (max-device-width: 900px) {
+
+  @media screen and (max-device-width: 600px) {
     font-size: 12px;
     margin: 4px;
   }
