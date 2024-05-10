@@ -85,7 +85,7 @@ export const Blog = ({ files }: { files: FirebaseStorageContent[] }) => {
           <button onClick={logOut}>Log out</button>
         </div>
       )}
-      <GameWrapper />
+      {user && <GameWrapper />}
       <Container>
         <Main>
           {content &&
