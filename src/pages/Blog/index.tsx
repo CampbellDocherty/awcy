@@ -10,6 +10,7 @@ import { SignIn } from './SignIn';
 import { calculateHowManyColumns } from './columnCalculator/calculateHowManyColumns';
 import { splitArray } from './columnCalculator/splitArray';
 import { Column, Container, Main } from './styles/main.styles';
+import { Winners } from './Winners';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -84,6 +85,7 @@ export const Blog = ({ files }: { files: FirebaseStorageContent[] }) => {
           <button onClick={logOut}>Log out</button>
         </div>
       )}
+      {user && <Winners />}
       <Container>
         <Main>
           {content &&
