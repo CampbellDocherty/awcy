@@ -4,13 +4,13 @@ import { auth } from '../../firebase/app';
 import { FirebaseStorageContent } from '../../firebase/storage';
 import { Fallback } from './Fallback';
 import { FileUpload } from './FileUpload';
+import { HeaderComponent } from './HeaderComponent';
 import { RaffleTicket } from './RaffleTicket';
 import { SignIn } from './SignIn';
 import { calculateHowManyColumns } from './columnCalculator/calculateHowManyColumns';
 import { splitArray } from './columnCalculator/splitArray';
 import { Column, Container, Main } from './styles/main.styles';
-import { HeaderComponent } from './HeaderComponent';
-import { GameWrapper } from '../Game';
+import { Winners } from './Winners';
 
 const LazyContent = lazy(() => import('./LazyContent'));
 
@@ -85,7 +85,7 @@ export const Blog = ({ files }: { files: FirebaseStorageContent[] }) => {
           <button onClick={logOut}>Log out</button>
         </div>
       )}
-      <GameWrapper />
+      {user && <Winners />}
       <Container>
         <Main>
           {content &&
